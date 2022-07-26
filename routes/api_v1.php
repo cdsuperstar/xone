@@ -17,7 +17,7 @@ use App\Http\Controllers\ZUserprofileController;
 setlocale(LC_ALL, 'C.UTF-8');
 
 if (env('APP_DEBUG')) {
-    \Log::info('API Debug:', ['url' => Request::url(), 'request' => Request::all(), 'method' => Request::method(), 'Client' => Request::getClientIp(), 'isJson' => Request::isJson()]);
+    \Log::info('API Debug:', ['url' => Request::url(), 'request' => Request::all(), 'method' => Request::method(), 'Client IP' => Request::getClientIp(), 'isJson' => Request::isJson()]);
 }
 //Auth::routes();
 
@@ -25,6 +25,7 @@ if (env('APP_DEBUG')) {
 Route::post('oauth/token', [\Laravel\Passport\Http\Controllers\AccessTokenController::class, 'issueToken']);
 //Route::post('oauth/refresh', '\Laravel\Passport\Http\Controllers\TransientTokenController@refresh');
 Route::post('auth/logout', [LoginController::class, 'logout']);
+Route::get('auth/logout', [LoginController::class, 'logout']);
 Route::get('auth/user', [UserController::class, 'self']);
 Route::post('auth/register', [RegisterController::class, 'register']);
 Route::post('broadcasting/auth', [\Illuminate\Broadcasting\BroadcastController::class, 'authenticate']);
