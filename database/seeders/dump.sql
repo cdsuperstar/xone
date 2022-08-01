@@ -145,15 +145,16 @@ INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lf
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (5, 'units', '单位管理', NULL, 'A', 'apartment', 'units', NULL, 9, 10, 2, '2020-02-09 14:39:58', '2020-02-22 15:33:13');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (11, 'role', '角色管理', NULL, 'A', 'important_devices', 'role', NULL, 3, 4, 2, '2020-02-21 14:04:23', '2020-02-22 15:37:18');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (12, 'profile', '用户信息', NULL, 'A', 'recent_actors', 'profile', NULL, 13, 14, 2, '2020-02-21 14:04:23', '2020-02-22 15:42:59');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (14, 'articlelist', '文章列表', NULL, 'A', 'folder_special', 'articlelist', NULL, 15, 16, 2, '2020-02-24 06:04:34', '2020-03-24 05:55:06');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (2, 'system', '系统管理', NULL, 'A', 'view_module', NULL, NULL, 2, 19, 1, '2020-01-26 21:55:22', '2020-04-02 07:59:47');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (8, 'userprofile', '个人信息', NULL, 'B', 'person_outline', 'userprofile', NULL, 20, 21, 1, '2020-02-14 16:00:40', '2020-04-02 07:59:47');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (9, 'message', '消息中心', NULL, 'B', 'message', 'message', NULL, 22, 23, 1, '2020-02-14 16:01:34', '2020-04-02 07:59:47');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (10, 'help', '帮助中心', NULL, 'B', 'help', 'help', NULL, 24, 25, 1, '2020-02-14 16:02:50', '2020-04-02 07:59:47');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (7, 'changepwd', '更改密码', NULL, 'B', 'vpn_key', 'changepwd', NULL, 26, 27, 1, '2020-02-14 15:59:21', '2020-04-02 07:59:47');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (6, 'notepad', '测试模块', NULL, 'B', 'event_note', 'notepad', NULL, 28, 29, 1, '2020-02-14 15:58:03', '2020-04-02 07:59:47');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (23, 'phonecomlicaton', '手机应用', NULL, 'A', 'phone_android', 'phonecomlicaton', NULL, 17, 18, 2, '2020-04-02 07:55:40', '2020-04-02 08:06:12');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (1, 'root', '根系统', NULL, 'A', 'home', NULL, NULL, 1, 30, NULL, '2020-01-26 22:03:18', '2020-12-01 23:05:44');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (15, 'maptest', '地图测试', NULL, 'A', 'room', 'maptest', NULL, 15, 16, 2, '2022-08-01 09:36:41', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (14, 'articlelist', '文章列表', NULL, 'A', 'folder_special', 'articlelist', NULL, 17, 18, 2, '2020-02-24 06:04:34', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (23, 'phonecomlicaton', '手机应用', NULL, 'A', 'phone_android', 'phonecomlicaton', NULL, 19, 20, 2, '2020-04-02 07:55:40', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (2, 'system', '系统管理', NULL, 'A', 'view_module', NULL, NULL, 2, 21, 1, '2020-01-26 21:55:22', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (8, 'userprofile', '个人信息', NULL, 'B', 'person_outline', 'userprofile', NULL, 22, 23, 1, '2020-02-14 16:00:40', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (9, 'message', '消息中心', NULL, 'B', 'message', 'message', NULL, 24, 25, 1, '2020-02-14 16:01:34', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (10, 'help', '帮助中心', NULL, 'B', 'help', 'help', NULL, 26, 27, 1, '2020-02-14 16:02:50', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (7, 'changepwd', '更改密码', NULL, 'B', 'vpn_key', 'changepwd', NULL, 28, 29, 1, '2020-02-14 15:59:21', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (6, 'notepad', '测试模块', NULL, 'B', 'event_note', 'notepad', NULL, 30, 31, 1, '2020-02-14 15:58:03', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (1, 'root', '根系统', NULL, 'A', 'home', NULL, NULL, 1, 32, NULL, '2020-01-26 22:03:18', '2022-08-01 14:46:45');
 
 
 --
@@ -196,14 +197,15 @@ INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 13);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 5);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 11);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 12);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 15);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 14);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 23);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 2);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 8);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 9);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 10);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 7);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 6);
-INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 23);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 1);
 
 
@@ -213,8 +215,8 @@ INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 1);
 
 INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (3, '33', '3@3.com', NULL, NULL, '$2y$10$TIqHWiRgmZa0O67hSJ9wB.nRgLiCaqh5Pqx2YJwIm/Rr8r2ynONCi', NULL, '2020-02-25 14:06:21', '2020-02-25 14:06:21');
 INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (4, '44', '4@4.com', NULL, NULL, '$2y$10$cPmvOYJzl0iK6PxYa5teOunHE0rlYTEgjADAoTLX5oxFz2Mhwl6/i', NULL, '2020-02-25 14:06:34', '2020-02-25 14:06:34');
-INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (1, '11', '1@1.com', '{"quickapplication":[{"id":38,"name":"p3s1proj_data","title":"项目数据","tip":null,"ismenu":"A","icon":"library_books","url":"p3s1/p3s1proj_data","memo":null,"_lft":49,"_rgt":50,"parent_id":34,"children":[]},{"id":39,"name":"p3s1checked_data","title":"已检数据","tip":null,"ismenu":"A","icon":"playlist_add_check","url":"p3s1/p3s1checked_data","memo":null,"_lft":51,"_rgt":52,"parent_id":34,"children":[]}]}', NULL, '$2y$10$B/0mHy.9GpDW7tS4N7SSiOzA5xS46c6IFSQe/XJYi.GFP84MsUA4C', NULL, '2020-01-24 08:12:56', '2020-11-27 11:28:49');
 INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (2, '22', '2@2.com', '{"theme":"Bright","dark":false}', NULL, '$2y$10$Co/4Yv77LDf3EbXK5MvyqOxrxyqwKbERIPAuyBivBbiTXVx3zYlfC', NULL, '2020-02-25 14:06:05', '2020-11-16 21:20:20');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (1, '11', '1@1.com', '{"quickapplication":[]}', NULL, '$2y$10$B/0mHy.9GpDW7tS4N7SSiOzA5xS46c6IFSQe/XJYi.GFP84MsUA4C', NULL, '2020-01-24 08:12:56', '2022-08-01 14:45:59');
 
 
 --
