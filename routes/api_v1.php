@@ -12,6 +12,7 @@ use App\Http\Controllers\ZUnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZeroController;
 use App\Http\Controllers\ZUserprofileController;
+use App\Http\Controllers\WeChatController;
 
 // 解决下载文件的中文名BUG
 setlocale(LC_ALL, 'C.UTF-8');
@@ -254,4 +255,16 @@ Route::group(['middleware' => ['auth']], function () {
 //});
 });
 
+//不需要认证
+Route::any('wechat', [WeChatController::class,'serve']);
+
+//微信认证
+Route::group(['middleware' => ['easywechat.oauth']], function () {
+    Route::get('/wechatuser', function () {
+        $user = session('easywechat.oauth_user.default'); // 拿到授权用户资料
+        if (env('APP_DEBUG')) {
+            \Log::info('Webchat Debug:', ['user info' => $user]);
+        }
+    });
+});
 ?>
