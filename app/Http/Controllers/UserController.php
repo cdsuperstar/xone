@@ -156,8 +156,8 @@ class UserController extends Controller
         }
         $rec->password = $request->get("newpwd");
         if ($rec->save()) {
-            $$aRet = array_merge([
-                'messages' => trans('SetPasswordSuccess'),
+            $aRet = array_merge([
+                'messages' => 'SetPasswordSuccess',
                 'success' => true,
             ], ["data" => $rec]
             );
