@@ -157,9 +157,9 @@ INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lf
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (45, 'xapp1s1explore', '发现', NULL, 'A', 'search', 'xapp1s1explore', NULL, 33, 34, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (43, 'xapp1s1noti', '通知', NULL, 'A', 'notifications', 'xapp1s1noti', NULL, 35, 36, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (44, 'xapp1s1msg', '消息', NULL, 'A', 'chat', 'xapp1s1msg', NULL, 37, 38, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (49, 'xapp1s1', '朋棚', NULL, 'A', 'groups', 'xapp1s1', NULL, 30, 39, 1, '2022-08-03 10:55:26', '2022-08-03 10:57:32');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (6, 'notepad', '测试模块', NULL, 'B', 'event_note', 'notepad', NULL, 40, 41, 1, '2020-02-14 15:58:03', '2022-08-03 10:57:32');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (1, 'root', '根系统', NULL, 'A', 'home', NULL, NULL, 1, 42, NULL, '2020-01-26 22:03:18', '2022-08-03 10:57:32');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (49, 'xapp1s1', '朋棚', NULL, 'A', 'groups', NULL, NULL, 30, 39, 1, '2022-08-03 10:55:26', '2022-08-03 11:05:07');
 
 
 --
