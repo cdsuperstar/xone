@@ -153,8 +153,13 @@ INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lf
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (9, 'message', '消息中心', NULL, 'B', 'message', 'message', NULL, 24, 25, 1, '2020-02-14 16:01:34', '2022-08-01 14:46:45');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (10, 'help', '帮助中心', NULL, 'B', 'help', 'help', NULL, 26, 27, 1, '2020-02-14 16:02:50', '2022-08-01 14:46:45');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (7, 'changepwd', '更改密码', NULL, 'B', 'vpn_key', 'changepwd', NULL, 28, 29, 1, '2020-02-14 15:59:21', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (6, 'notepad', '测试模块', NULL, 'B', 'event_note', 'notepad', NULL, 30, 31, 1, '2020-02-14 15:58:03', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (1, 'root', '根系统', NULL, 'A', 'home', NULL, NULL, 1, 32, NULL, '2020-01-26 22:03:18', '2022-08-01 14:46:45');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (46, 'xapp1s1home', '首页', NULL, 'A', 'home', 'xapp1s1home', NULL, 31, 32, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (45, 'xapp1s1explore', '发现', NULL, 'A', 'search', 'xapp1s1explore', NULL, 33, 34, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (43, 'xapp1s1noti', '通知', NULL, 'A', 'notifications', 'xapp1s1noti', NULL, 35, 36, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (44, 'xapp1s1msg', '消息', NULL, 'A', 'chat', 'xapp1s1msg', NULL, 37, 38, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (49, 'xapp1s1', '朋棚', NULL, 'A', 'groups', 'xapp1s1', NULL, 30, 39, 1, '2022-08-03 10:55:26', '2022-08-03 10:57:32');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (6, 'notepad', '测试模块', NULL, 'B', 'event_note', 'notepad', NULL, 40, 41, 1, '2020-02-14 15:58:03', '2022-08-03 10:57:32');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (1, 'root', '根系统', NULL, 'A', 'home', NULL, NULL, 1, 42, NULL, '2020-01-26 22:03:18', '2022-08-03 10:57:32');
 
 
 --
@@ -207,6 +212,11 @@ INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 10);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 7);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 6);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 1);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 46);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 45);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 43);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 44);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 49);
 
 
 --
@@ -286,7 +296,7 @@ SELECT pg_catalog.setval('public.users_id_seq', 15, true);
 -- Name: z_modules_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.z_modules_id_seq', 42, true);
+SELECT pg_catalog.setval('public.z_modules_id_seq', 49, true);
 
 
 --
