@@ -20,7 +20,7 @@ return new class extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('no')->nullable()->unique();
-            $table->string('avatar', 100)->default('/statics/default_avatar.jpg');
+            $table->string('avatar', 100)->default('/assets/default_avatar.jpg');
             $table->string('name',30)->default('Nickname');
 
             $table->string('sex', 1)->nullable();//性别
