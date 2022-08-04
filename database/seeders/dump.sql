@@ -157,9 +157,11 @@ INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lf
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (45, 'xapp1s1explore', '发现', NULL, 'A', 'search', 'xapp1s1explore', NULL, 33, 34, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (43, 'xapp1s1noti', '通知', NULL, 'A', 'notifications', 'xapp1s1noti', NULL, 35, 36, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (44, 'xapp1s1msg', '消息', NULL, 'A', 'chat', 'xapp1s1msg', NULL, 37, 38, 49, '2022-08-03 10:45:43', '2022-08-03 10:57:32');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (6, 'notepad', '测试模块', NULL, 'B', 'event_note', 'notepad', NULL, 40, 41, 1, '2020-02-14 15:58:03', '2022-08-03 10:57:32');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (1, 'root', '根系统', NULL, 'A', 'home', NULL, NULL, 1, 42, NULL, '2020-01-26 22:03:18', '2022-08-03 10:57:32');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (49, 'xapp1s1', '朋棚', NULL, 'A', 'groups', NULL, NULL, 30, 39, 1, '2022-08-03 10:55:26', '2022-08-03 11:05:07');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (51, 'xapp1s1profile', '资料', NULL, 'A', 'portrait', 'xapp1s1profile', NULL, 39, 40, 49, '2022-08-04 14:31:12', '2022-08-04 14:32:24');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (52, 'xapp1s1set', '设置', NULL, 'A', 'settings', 'xapp1s1set', NULL, 41, 42, 49, '2022-08-04 14:33:33', '2022-08-04 14:33:49');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (49, 'xapp1s1', '朋棚', NULL, 'A', 'groups', NULL, NULL, 30, 43, 1, '2022-08-03 10:55:26', '2022-08-04 14:33:49');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (6, 'notepad', '测试模块', NULL, 'B', 'event_note', 'notepad', NULL, 44, 45, 1, '2020-02-14 15:58:03', '2022-08-04 14:33:49');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (1, 'root', '根系统', NULL, 'A', 'home', NULL, NULL, 1, 46, NULL, '2020-01-26 22:03:18', '2022-08-04 14:33:49');
 
 
 --
@@ -210,13 +212,15 @@ INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 8);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 9);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 10);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 7);
-INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 6);
-INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 1);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 46);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 45);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 43);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 44);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 51);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 52);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 49);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 6);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 1);
 
 
 --
@@ -296,7 +300,7 @@ SELECT pg_catalog.setval('public.users_id_seq', 15, true);
 -- Name: z_modules_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.z_modules_id_seq', 49, true);
+SELECT pg_catalog.setval('public.z_modules_id_seq', 52, true);
 
 
 --
