@@ -98,9 +98,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 // XApp1s1
-    Route::apiResource('xapp1s1', ZUserprofileController::class)->except(['show'])->parameters([
-        'profile' => 'xapp1s1profile'
-    ]);
+    Route::apiResource('xapp1s1', ZUserprofileController::class)->except(['show']);
     Route::prefix('xapp1s1')->group(function () {
         Route::get('getMyProfile', [Xapp1s1profileController::class, 'getMyProfile']);
         Route::post('updateMyProfile', [Xapp1s1profileController::class, 'updateMyProfile']);
