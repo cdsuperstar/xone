@@ -13,12 +13,10 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      * 系统
-     * pg_dump -h postgres -O -x -a --column-inserts xone -U default -t oauth_clients -t users -t z_modules -t z_userprofiles -t roles -t role_z_module -t z_units -t model_has_roles -t permissions -t model_has_permissions -t user_z_unit -t media >database/seeders/dump.sql
-     * p1业务
-     * pg_dump -h postgres -O -x -a --column-inserts default -U default -t oauth_clients  >>database/seeders/dump.sql
+     * docker-compose exec postgres pg_dump -O -x -a --column-inserts xone -U default -t oauth_clients -t users -t z_modules -t z_userprofiles -t roles -t role_z_module -t z_units -t model_has_roles -t permissions -t model_has_permissions -t user_z_unit -t media >../xone/database/seeders/dump.sql
+     * xapp1s1业务
+     * ocker-compose exec postgres pg_dump -O -x -a --column-inserts xone -U default -t xapp1s1categs -t xapp1s1profiles -t xapp1s1profiles -t xapp1s1shops  >>../xone/database/seeders/dump.sql
      *
-     * p3业务
-     * pg_dump -h postgres -O -x -a --column-inserts default -U default -t p3s1devices -t p3s1projects -t p3s1projectdatas -t p3s1checkeddatas  -t p3s1mods>>database/seeders/dump.sql
      */
     public function run()
     {

@@ -85,6 +85,9 @@ class Xapp1s1profileController extends Controller
     public function updateMyProfile(Request $request)
     {
         $oItem=xapp1s1profile::where(["id" => $request->user()->id])->first();
+        if($oItem==null){
+            $oItem=new xapp1s1profile(["id" => $request->user()->id]);
+        }
         $oItem->id=$request->user()->id;
         $oItem->fill($request->input());
 

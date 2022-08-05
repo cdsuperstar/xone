@@ -16,7 +16,7 @@ use App\Http\Controllers\WeChatController;
 
 //xapp1s1
 use App\Http\Controllers\Xapp1s1profileController;
-
+use App\Http\Controllers\Xapp1s1categController;
 
 // 解决下载文件的中文名BUG
 setlocale(LC_ALL, 'C.UTF-8');
@@ -39,20 +39,20 @@ Route::post('broadcasting/auth', [\Illuminate\Broadcasting\BroadcastController::
 Route::group(['middleware' => ['auth']], function () {
 // 模块管理
     Route::apiResource('z_module', ZModuleController::class)->except(['show']);
-    Route::prefix('z_module')->group(function () {
-        Route::get('getMyMenu/{role}', [ZModuleController::class, 'getMyMenu']);
-        Route::get('getSelfLowModules/{role}', [ZModuleController::class, 'getSelfLowModules']);
+    Route::controller(ZModuleController::class)->prefix('z_module')->group(function () {
+        Route::get('getMyMenu/{role}', 'getMyMenu');
+        Route::get('getSelfLowModules/{role}', 'getSelfLowModules');
         // 根据节点设置树形结构
-        Route::post('setModuleTree/{z_module}', [ZModuleController::class, 'setModuleTree']);
+        Route::post('setModuleTree/{z_module}', 'setModuleTree');
     });
 
 // 角色管理
     Route::apiResource('z_role', ZRoleController::class)->except(['show'])->parameters([
         'z_role' => 'role'
     ]);
-    Route::prefix('z_role')->group(function () {
+    Route::controller(ZRoleController::class)->prefix('z_role')->group(function () {
         // 得到子或等同角色
-        Route::get('getSelfOrLowRoles/{role}', [ZRoleController::class, 'getSelfOrLowRoles']);
+        Route::get('getSelfOrLowRoles/{role}', 'getSelfOrLowRoles');
     });
 
 // 权限管理
@@ -62,46 +62,53 @@ Route::group(['middleware' => ['auth']], function () {
 
 // 单位管理
     Route::apiResource('z_unit', ZUnitController::class)->except(['show']);
-    Route::prefix('z_unit')->group(function () {
-        Route::get('getUnitTree', [ZUnitController::class, 'getUnitTree']);
+    Route::controller(ZUnitController::class)->prefix('z_unit')->group(function () {
+        Route::get('getUnitTree', 'getUnitTree');
         // 得到指定节点树
-        Route::get('getTheUnitTree/{z_unit}', [ZUnitController::class, 'getTheUnitTree']);
+        Route::get('getTheUnitTree/{z_unit}', 'getTheUnitTree');
         // 根据节点设置树形结构
-        Route::post('setUnitTree/{z_unit}', [ZUnitController::class, 'setUnitTree']);
+        Route::post('setUnitTree/{z_unit}', 'setUnitTree');
     });
 
 // 用户管理
     Route::apiResource('users', UserController::class)->except(['show']);
-    Route::prefix('users')->group(function () {
-        Route::post('setMyPassword', [UserController::class, 'setMyPassword']);
+    Route::controller(UserController::class)->prefix('users')->group(function () {
+        Route::post('setMyPassword', 'setMyPassword');
         // 设置用户们的权限
-        Route::post('setUsersRoles', [UserController::class, 'setUsersRoles']);
+        Route::post('setUsersRoles', 'setUsersRoles');
         // 得到用户所属单位
-        Route::get('getUserUnit/{user}', [UserController::class, 'getUserUnit']);
+        Route::get('getUserUnit/{user}', 'getUserUnit');
         // 设置用户所属单位
-        Route::post('setUserUnit', [UserController::class, 'setUserUnit']);
+        Route::post('setUserUnit', 'setUserUnit');
         // 得到用户角色
-        Route::get('getUserRoles/{user}', [UserController::class, 'getUserRoles']);
+        Route::get('getUserRoles/{user}', 'getUserRoles');
         // 得到用户所具有的权限配置模板
-        Route::post('getUsersPermisstionCfgs', [UserController::class, 'getUsersPermisstionCfgs']);
+        Route::post('getUsersPermisstionCfgs', 'getUsersPermisstionCfgs');
         // 设置用户所具有的权限配置模板,返回设置用户数及权限数
-        Route::post('setUsersPermissionCfgs', [UserController::class, 'setUsersPermissionCfgs']);
+        Route::post('setUsersPermissionCfgs', 'setUsersPermissionCfgs');
     });
 
 // 用户资料管理
     Route::apiResource('profile', ZUserprofileController::class)->except(['show'])->parameters([
         'profile' => 'z_userprofile'
     ]);
-    Route::prefix('profile')->group(function () {
-        Route::get('getMyProfile', [ZUserprofileController::class, 'getMyProfile']);
-        Route::post('updateMyProfile/', [ZUserprofileController::class, 'updateMyProfile']);
+    Route::controller(ZUserprofileController::class)->prefix('profile')->group(function () {
+        Route::get('getMyProfile', 'getMyProfile');
+        Route::post('updateMyProfile/', 'updateMyProfile');
     });
 
 // XApp1s1
-    Route::apiResource('xapp1s1', ZUserprofileController::class)->except(['show']);
     Route::prefix('xapp1s1')->group(function () {
-        Route::get('getMyProfile', [Xapp1s1profileController::class, 'getMyProfile']);
-        Route::post('updateMyProfile', [Xapp1s1profileController::class, 'updateMyProfile']);
+        // 用户个人资料
+        Route::apiResource('profile', Xapp1s1profileController::class)->except(['show']);
+        Route::controller(Xapp1s1profileController::class)->prefix('profile')->group(function () {
+            Route::get('getMyProfile', 'getMyProfile');
+            Route::post('updateMyProfile', 'updateMyProfile');
+        });
+        // 类别管理
+        Route::apiResource('categs', Xapp1s1categController::class)->except(['show']);
+        Route::prefix('categs')->group(function () {
+        });
     });
 
 //// 文章管理
@@ -138,7 +145,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 //不需要认证
-Route::any('wechat', [WeChatController::class,'serve']);
+Route::any('wechat', [WeChatController::class, 'serve']);
 
 //微信认证
 Route::group(['middleware' => ['easywechat.oauth']], function () {
