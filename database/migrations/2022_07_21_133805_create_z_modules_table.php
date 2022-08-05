@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('icon')->nullable();
             //URL route
             $table->string('url')->nullable();
+            //客户端验证
+            $table->string('author')->nullable()->default('vue-auth');
             //备注
             $table->string('memo')->nullable();
 
