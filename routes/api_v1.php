@@ -106,7 +106,9 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('updateMyProfile', 'updateMyProfile');
         });
         // 类别管理
-        Route::apiResource('categs', Xapp1s1categController::class)->except(['show']);
+        Route::apiResource('categs', Xapp1s1categController::class)->except(['show'])->parameters([
+            'categs' => 'xapp1s1categ'
+        ]);
         Route::prefix('categs')->group(function () {
         });
     });
