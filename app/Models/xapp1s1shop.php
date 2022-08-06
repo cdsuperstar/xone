@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
 /**
  * App\Models\xapp1s1shop
  *
@@ -19,7 +22,25 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1shop whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class xapp1s1shop extends Model
+class xapp1s1shop extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory, InteractsWithMedia;
+
+    protected $fillable = [
+        'name','startTime','endTime','phone','tel','addr','longitude','latitude'
+    ];
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('shopAvatar')
+            ->addMediaCollection('products')
+            ->addMediaCollection('environments')
+            ->addMediaCollection('menus')
+            ->addMediaCollection('qualifications');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'id');
+    }
 }
