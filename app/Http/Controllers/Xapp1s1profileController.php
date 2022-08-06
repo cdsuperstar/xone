@@ -41,9 +41,10 @@ class Xapp1s1profileController extends Controller
             if($oItem->hasMedia('userAvatars')){
                 $oItem->avatar=$oItem->getMedia('userAvatars')[0]->getFullUrl();
             }
+            return response()->json(['success'=>true,'data'=>$oItem]);
+        }else{
+            return response()->json(['error' => "Null profile."]);
         }
-
-        return response()->json(['success'=>true,'data'=>$oItem]);
     }
 
     /**
