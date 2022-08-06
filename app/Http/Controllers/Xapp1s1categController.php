@@ -15,6 +15,10 @@ class Xapp1s1categController extends Controller
     public function index()
     {
         //
+        $oItems = xapp1s1categ::all()->sortBy('id')->values()->all();
+        $aRet = ["success" => true, "data" => $oItems];
+        return response()->json($aRet);
+
     }
 
     /**
@@ -26,6 +30,18 @@ class Xapp1s1categController extends Controller
     public function store(Request $request)
     {
         //
+        $rec = new xapp1s1categ($request->input());
+        $aRet = [];
+        if ($rec->save()) {
+            $aRet = array_merge([
+                'messages' => $rec->id,
+                'success' => true
+            ], ['data' => $rec]
+            );
+        } else {
+            $aRet = ['error' => 'NotCreated'];
+        }
+        return response()->json($aRet);
     }
 
     /**
@@ -49,6 +65,19 @@ class Xapp1s1categController extends Controller
     public function update(Request $request, xapp1s1categ $xapp1s1categ)
     {
         //
+        $aRet = [];
+        if ($xapp1s1categ) {
+
+            if ($xapp1s1categ->update($request->toArray())) {
+                $aRet = array_merge([
+                    'success' => true,
+                ], ['data' => $xapp1s1categ]
+                );
+            } else {
+                $aRet = ['error' => $xapp1s1categ->errors()->all()];
+            }
+        }
+        return response()->json($aRet);
     }
 
     /**
@@ -60,5 +89,15 @@ class Xapp1s1categController extends Controller
     public function destroy(xapp1s1categ $xapp1s1categ)
     {
         //
+        if ($xapp1s1categ->delete()) {
+
+            $aRet = array_merge([
+                'messages' => $xapp1s1categ->id,
+                'success' => true,
+            ], ['data' => $xapp1s1categ]);
+        } else {
+            $aRet = ['error' => trans('data.destroyfailed', ['data' => $xapp1s1categ->id])];
+        }
+        return response()->json($aRet);
     }
 }
