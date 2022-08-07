@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('companyname')->nullable();//就职单位
 
             $table->string('avatar', 100)->default('/statics/default_avatar.jpg');
-            $table->string('nickname',30)->default('Nickname');
+            $table->string('nickname',30)->nullable();
 
             $table->string('sex', 1)->nullable();//性别
             $table->integer('height')->nullable();//身高
