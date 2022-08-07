@@ -118,6 +118,8 @@ Route::group(['middleware' => ['auth']], function () {
             'shop' => 'xapp1s1shop'
         ]);
         Route::prefix('shops')->group(function () {
+            Route::get('getMyShop', 'getMyShop');
+            Route::post('updateMyShop', 'updateMyShop');
         });
     });
 

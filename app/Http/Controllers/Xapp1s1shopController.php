@@ -101,4 +101,52 @@ class Xapp1s1shopController extends Controller
         }
         return response()->json($aRet);
     }
+
+    public function getMyShop(Request $request)
+    {
+        $oItem=xapp1s1shop::where(["id" => $request->user()->id])->first();
+        if($oItem){
+            if($oItem->hasMedia('userAvatars')){
+                $oItem->avatar=$oItem->getMedia('userAvatars')[0]->getFullUrl();
+            }
+            return response()->json(['success'=>true,'data'=>$oItem]);
+        }else{
+            return response()->json(['error' => "Null profile."]);
+        }
+    }
+
+    public function updateMyShop(Request $request)
+    {
+        $oItem=xapp1s1shop::where(["id" => $request->user()->id])->first();
+        if($oItem==null){
+            $oItem=new xapp1s1shop(["id" => $request->user()->id]);
+        }
+        $oItem->id=$request->user()->id;
+        $oItem->fill($request->input());
+
+
+        if($oItem->save()){
+            if (is_array($request->input('files'))) {
+                $aFiles = $request->input('files');
+                $request->user()
+                    ->getMedia('userTmpFiles')
+                    ->each(function ($fileAdder) use ($aFiles, $oItem) {
+                        foreach ($aFiles as $aFile) {
+                            if ($fileAdder->file_name == $aFile) {
+                                $fileAdder->move($oItem, 'userAvatars');
+                            }
+                        }
+                    });
+                $oItem->avatar=$oItem->getMedia('userAvatars')[0]->getFullUrl();
+            }
+            return response()->json(array_merge([
+                    'messages' => '保存成功，ID:'.$oItem->id,
+                    'success' => true,
+                ], ['data'=>$oItem]
+                )
+            );
+        }else{
+            return response()->json(['error' => $oItem->errors()->all()]);
+        }
+    }
 }
