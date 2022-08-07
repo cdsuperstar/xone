@@ -20,8 +20,9 @@ return new class extends Migration {
             // 图片分为 菜品 环境 菜单 资质 其他
 
             $table->string('name', 30)->nullable(); // 商铺名称
-            $table->time('startTime')->nullable(); // 开始营业时间
-            $table->time('endTime')->nullable(); // 结束营业时间
+            $table->time('starttime')->nullable(); // 开始营业时间
+            $table->time('endtime')->nullable(); // 结束营业时间
+            $table->string('status')->nullable(); // 商铺状态
             $table->string('phone')->nullable(); // 联系电话
             $table->string('tel')->nullable(); // 座机电话
             $table->string('addr')->nullable(); // 商业地址

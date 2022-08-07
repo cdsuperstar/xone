@@ -27,7 +27,7 @@ class xapp1s1shop extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'name','startTime','endTime','phone','tel','addr','longitude','latitude'
+        'name','starttime','endtime','status','phone','tel','addr','longitude','latitude'
     ];
     public function registerMediaCollections(): void
     {

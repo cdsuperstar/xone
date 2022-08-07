@@ -105,11 +105,19 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('getMyProfile', 'getMyProfile');
             Route::post('updateMyProfile', 'updateMyProfile');
         });
+
         // 类别管理
         Route::apiResource('categs', Xapp1s1categController::class)->except(['show'])->parameters([
             'categs' => 'xapp1s1categ'
         ]);
         Route::prefix('categs')->group(function () {
+        });
+
+        // 商铺管理
+        Route::apiResource('shops', Xapp1s1categController::class)->except(['show'])->parameters([
+            'shop' => 'xapp1s1shop'
+        ]);
+        Route::prefix('shops')->group(function () {
         });
     });
 
