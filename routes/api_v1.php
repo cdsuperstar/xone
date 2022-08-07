@@ -12,6 +12,7 @@ use App\Http\Controllers\ZUnitController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZeroController;
 use App\Http\Controllers\ZUserprofileController;
+use App\Http\Controllers\XapperrController;
 use App\Http\Controllers\WeChatController;
 
 //xapp1s1
@@ -99,6 +100,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::controller(ZUserprofileController::class)->prefix('profile')->group(function () {
         Route::get('getMyProfile', 'getMyProfile');
         Route::post('updateMyProfile/', 'updateMyProfile');
+    });
+
+    Route::controller(XapperrController::class)->prefix('xapperr')->group(function () {
+        Route::get('getAllLogs', 'index');
+        Route::post('clearLogs', 'clearLogs');
+        Route::post('storeLog', 'store');
     });
 
 // XApp1s1

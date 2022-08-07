@@ -145,27 +145,28 @@ INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, m
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (5, 'units', '单位管理', NULL, 'A', 'apartment', 'units', 'vue-auth', NULL, 9, 10, 2, '2020-02-09 14:39:58', '2020-02-22 15:33:13');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (11, 'role', '角色管理', NULL, 'A', 'important_devices', 'role', 'vue-auth', NULL, 3, 4, 2, '2020-02-21 14:04:23', '2020-02-22 15:37:18');
 INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (12, 'profile', '用户信息', NULL, 'A', 'recent_actors', 'profile', 'vue-auth', NULL, 13, 14, 2, '2020-02-21 14:04:23', '2020-02-22 15:42:59');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (15, 'maptest', '地图测试', NULL, 'A', 'room', 'maptest', 'vue-auth', NULL, 15, 16, 2, '2022-08-01 09:36:41', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (14, 'articlelist', '文章列表', NULL, 'A', 'folder_special', 'articlelist', 'vue-auth', NULL, 17, 18, 2, '2020-02-24 06:04:34', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (23, 'phonecomlicaton', '手机应用', NULL, 'A', 'phone_android', 'phonecomlicaton', 'vue-auth', NULL, 19, 20, 2, '2020-04-02 07:55:40', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (2, 'system', '系统管理', NULL, 'A', 'view_module', NULL, 'vue-auth', NULL, 2, 21, 1, '2020-01-26 21:55:22', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (8, 'userprofile', '个人信息', NULL, 'B', 'person_outline', 'userprofile', 'vue-auth', NULL, 22, 23, 1, '2020-02-14 16:00:40', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (9, 'message', '消息中心', NULL, 'B', 'message', 'message', 'vue-auth', NULL, 24, 25, 1, '2020-02-14 16:01:34', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (10, 'help', '帮助中心', NULL, 'B', 'help', 'help', 'vue-auth', NULL, 26, 27, 1, '2020-02-14 16:02:50', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (7, 'changepwd', '更改密码', NULL, 'B', 'vpn_key', 'changepwd', 'vue-auth', NULL, 28, 29, 1, '2020-02-14 15:59:21', '2022-08-01 14:46:45');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (55, 'xapp1s1categs', '分类管理', NULL, 'A', 'category', 'xapp1s1categs', 'vue-auth', NULL, 34, 35, 54, '2022-08-05 14:08:41', '2022-08-05 14:09:05');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (53, 'xapp1s1profiles', '用户资料', NULL, 'A', 'people', 'xapp1s1profiles', 'vue-auth', NULL, 32, 33, 54, '2022-08-05 12:40:51', '2022-08-06 08:29:24');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (56, 'xapp1s1shops', '商铺', NULL, 'A', 'storefront', 'xapp1s1shops', 'vue-auth', NULL, 36, 37, 54, '2022-08-06 10:22:21', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (54, 'xapp1s1manage', '管理', NULL, 'A', 'manage_accounts', NULL, 'vue-auth', NULL, 31, 38, 49, '2022-08-05 12:40:51', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (46, 'xapp1s1home', '首页', NULL, 'A', 'home', 'xapp1s1home', 'vue-auth', NULL, 39, 40, 49, '2022-08-03 10:45:43', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (45, 'xapp1s1explore', '发现', NULL, 'A', 'search', 'xapp1s1explore', 'vue-auth', NULL, 41, 42, 49, '2022-08-03 10:45:43', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (43, 'xapp1s1noti', '通知', NULL, 'A', 'notifications', 'xapp1s1noti', 'vue-auth', NULL, 43, 44, 49, '2022-08-03 10:45:43', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (44, 'xapp1s1msg', '消息', NULL, 'A', 'chat', 'xapp1s1msg', 'vue-auth', NULL, 45, 46, 49, '2022-08-03 10:45:43', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (51, 'xapp1s1profile', '资料', NULL, 'A', 'portrait', 'xapp1s1profile', 'vue-auth', NULL, 47, 48, 49, '2022-08-04 14:31:12', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (52, 'xapp1s1set', '设置', NULL, 'A', 'settings', 'xapp1s1set', 'vue-auth', NULL, 49, 50, 49, '2022-08-04 14:33:33', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (49, 'xapp1s1', '朋棚', NULL, 'A', 'groups', NULL, 'vue-auth', NULL, 30, 51, 1, '2022-08-03 10:55:26', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (6, 'notepad', '测试模块', NULL, 'B', 'event_note', 'notepad', 'vue-auth', NULL, 52, 53, 1, '2020-02-14 15:58:03', '2022-08-06 10:22:37');
-INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (1, 'root', '根系统', NULL, 'A', 'home', NULL, 'vue-auth', NULL, 1, 54, NULL, '2020-01-26 22:03:18', '2022-08-06 10:22:37');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (57, 'xapperrs', '前端日志', NULL, 'A', 'bug_report', 'xapperrs', 'vue-auth', NULL, 15, 16, 2, '2022-08-07 16:03:03', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (15, 'maptest', '地图测试', NULL, 'A', 'room', 'maptest', 'vue-auth', NULL, 17, 18, 2, '2022-08-01 09:36:41', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (14, 'articlelist', '文章列表', NULL, 'A', 'folder_special', 'articlelist', 'vue-auth', NULL, 19, 20, 2, '2020-02-24 06:04:34', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (23, 'phonecomlicaton', '手机应用', NULL, 'A', 'phone_android', 'phonecomlicaton', 'vue-auth', NULL, 21, 22, 2, '2020-04-02 07:55:40', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (2, 'system', '系统管理', NULL, 'A', 'view_module', NULL, 'vue-auth', NULL, 2, 23, 1, '2020-01-26 21:55:22', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (8, 'userprofile', '个人信息', NULL, 'B', 'person_outline', 'userprofile', 'vue-auth', NULL, 24, 25, 1, '2020-02-14 16:00:40', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (9, 'message', '消息中心', NULL, 'B', 'message', 'message', 'vue-auth', NULL, 26, 27, 1, '2020-02-14 16:01:34', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (10, 'help', '帮助中心', NULL, 'B', 'help', 'help', 'vue-auth', NULL, 28, 29, 1, '2020-02-14 16:02:50', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (7, 'changepwd', '更改密码', NULL, 'B', 'vpn_key', 'changepwd', 'vue-auth', NULL, 30, 31, 1, '2020-02-14 15:59:21', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (53, 'xapp1s1profiles', '用户资料', NULL, 'A', 'people', 'xapp1s1profiles', 'vue-auth', NULL, 34, 35, 54, '2022-08-05 12:40:51', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (55, 'xapp1s1categs', '分类管理', NULL, 'A', 'category', 'xapp1s1categs', 'vue-auth', NULL, 36, 37, 54, '2022-08-05 14:08:41', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (56, 'xapp1s1shops', '商铺', NULL, 'A', 'storefront', 'xapp1s1shops', 'vue-auth', NULL, 38, 39, 54, '2022-08-06 10:22:21', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (54, 'xapp1s1manage', '管理', NULL, 'A', 'manage_accounts', NULL, 'vue-auth', NULL, 33, 40, 49, '2022-08-05 12:40:51', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (46, 'xapp1s1home', '首页', NULL, 'A', 'home', 'xapp1s1home', 'vue-auth', NULL, 41, 42, 49, '2022-08-03 10:45:43', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (45, 'xapp1s1explore', '发现', NULL, 'A', 'search', 'xapp1s1explore', 'vue-auth', NULL, 43, 44, 49, '2022-08-03 10:45:43', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (43, 'xapp1s1noti', '通知', NULL, 'A', 'notifications', 'xapp1s1noti', 'vue-auth', NULL, 45, 46, 49, '2022-08-03 10:45:43', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (44, 'xapp1s1msg', '消息', NULL, 'A', 'chat', 'xapp1s1msg', 'vue-auth', NULL, 47, 48, 49, '2022-08-03 10:45:43', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (51, 'xapp1s1profile', '资料', NULL, 'A', 'portrait', 'xapp1s1profile', 'vue-auth', NULL, 49, 50, 49, '2022-08-04 14:31:12', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (52, 'xapp1s1set', '设置', NULL, 'A', 'settings', 'xapp1s1set', 'vue-auth', NULL, 51, 52, 49, '2022-08-04 14:33:33', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (49, 'xapp1s1', '朋棚', NULL, 'A', 'groups', NULL, 'vue-auth', NULL, 32, 53, 1, '2022-08-03 10:55:26', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (6, 'notepad', '测试模块', NULL, 'B', 'event_note', 'notepad', 'vue-auth', NULL, 54, 55, 1, '2020-02-14 15:58:03', '2022-08-07 16:03:35');
+INSERT INTO public.z_modules (id, name, title, tip, ismenu, icon, url, author, memo, _lft, _rgt, parent_id, created_at, updated_at) VALUES (1, 'root', '根系统', NULL, 'A', 'home', NULL, 'vue-auth', NULL, 1, 56, NULL, '2020-01-26 22:03:18', '2022-08-07 16:03:35');
 
 
 --
@@ -208,6 +209,7 @@ INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 13);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 5);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 11);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 12);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 57);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 15);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 14);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 23);
@@ -216,8 +218,8 @@ INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 8);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 9);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 10);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 7);
-INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 55);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 53);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 55);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 56);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 54);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 46);
@@ -308,7 +310,7 @@ SELECT pg_catalog.setval('public.users_id_seq', 15, true);
 -- Name: z_modules_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.z_modules_id_seq', 56, true);
+SELECT pg_catalog.setval('public.z_modules_id_seq', 57, true);
 
 
 --
