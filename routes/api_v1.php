@@ -17,6 +17,10 @@ use App\Http\Controllers\WeChatController;
 //xapp1s1
 use App\Http\Controllers\Xapp1s1profileController;
 use App\Http\Controllers\Xapp1s1categController;
+use App\Http\Controllers\Xapp1s1shopController;
+
+
+
 
 // 解决下载文件的中文名BUG
 setlocale(LC_ALL, 'C.UTF-8');
@@ -114,10 +118,10 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         // 商铺管理
-        Route::apiResource('shops', Xapp1s1categController::class)->except(['show'])->parameters([
+        Route::apiResource('shops', Xapp1s1shopController::class)->except(['show'])->parameters([
             'shop' => 'xapp1s1shop'
         ]);
-        Route::prefix('shops')->group(function () {
+        Route::controller(Xapp1s1shopController::class)->prefix('shops')->group(function () {
             Route::get('getMyShop', 'getMyShop');
             Route::post('updateMyShop', 'updateMyShop');
         });
