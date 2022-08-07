@@ -20,7 +20,7 @@ return new class extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('realname',30)->default('Nickname');
-            $table->string('idcard', 1)->nullable();//身份证
+            $table->string('idcard')->nullable();//身份证
             $table->string('phone')->nullable();//电话号码
             $table->string('companyname')->nullable();//就职单位
 
