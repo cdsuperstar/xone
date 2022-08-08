@@ -102,12 +102,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('updateMyProfile/', 'updateMyProfile');
     });
 
-    Route::controller(XapperrController::class)->prefix('xapperr')->group(function () {
-        Route::get('getAllLogs', 'index');
-        Route::post('clearLogs', 'clearLogs');
-        Route::post('storeLog', 'store');
-    });
-
 // XApp1s1
     Route::prefix('xapp1s1')->group(function () {
         // 用户个人资料
@@ -168,6 +162,12 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 //不需要认证
+Route::controller(XapperrController::class)->prefix('xapperr')->group(function () {
+    Route::get('getAllLogs', 'index');
+    Route::post('clearLogs', 'clearLogs');
+    Route::post('storeLog', 'store');
+});
+
 Route::any('wechat', [WeChatController::class, 'serve']);
 
 //微信认证
