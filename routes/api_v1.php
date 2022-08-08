@@ -120,7 +120,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         // 商铺管理
         Route::apiResource('shops', Xapp1s1shopController::class)->except(['show'])->parameters([
-            'shop' => 'xapp1s1shop'
+            'shops' => 'xapp1s1shop'
         ]);
         Route::controller(Xapp1s1shopController::class)->prefix('shops')->group(function () {
             Route::get('getMyShop', 'getMyShop');
@@ -179,4 +179,12 @@ Route::group(['middleware' => ['easywechat.oauth']], function () {
         }
     });
 });
+
+
+// 数据库调试
+//DB::listen(function ($event) {
+//    Log::info($event->sql);
+//    Log::info($event->bindings);
+//});
+
 ?>
