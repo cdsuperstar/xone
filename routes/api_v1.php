@@ -19,8 +19,7 @@ use App\Http\Controllers\WeChatController;
 use App\Http\Controllers\Xapp1s1profileController;
 use App\Http\Controllers\Xapp1s1categController;
 use App\Http\Controllers\Xapp1s1shopController;
-
-
+use App\Http\Controllers\Xapp1s1productController;
 
 
 // 解决下载文件的中文名BUG
@@ -126,6 +125,12 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('getMyShop', 'getMyShop');
             Route::post('updateMyShop', 'updateMyShop');
         });
+
+        // 商品管理
+        Route::apiResource('products', Xapp1s1productController::class)->except(['show'])->parameters([
+            'products' => 'xapp1s1product',
+        ]);
+
     });
 
 //// 文章管理

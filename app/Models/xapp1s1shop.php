@@ -39,6 +39,9 @@ class xapp1s1shop extends Model implements HasMedia
             ->addMediaCollection('qualifications');
     }
 
+    public function products() {
+        return $this->hasMany('App\Models\xapp1s1product');
+    }
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'id');
