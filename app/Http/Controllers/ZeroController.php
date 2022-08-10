@@ -141,7 +141,7 @@ class ZeroController extends Controller
 
         $oModules = [];
         $oMenuTree = [];
-        \Log::info('tmp log',[$request->user(),$request->user()->roles]);
+//        \Log::info('tmp log',[$request->user(),$request->user()->roles]);
         if ($oRole) {
             if (env('APP_ADMIN') == $request->user()->id) {
 //                $oMenuTree = $oRole->modules()->defaultOrder()->get()->toTree();

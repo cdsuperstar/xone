@@ -120,7 +120,8 @@ class User extends Authenticatable implements HasMedia
 
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = bcrypt($value);
+        if ($this->attributes['password'] != $value)
+            $this->attributes['password'] = bcrypt($value);
     }
 
 }
