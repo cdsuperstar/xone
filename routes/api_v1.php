@@ -21,7 +21,7 @@ use App\Http\Controllers\Xapp1s1categController;
 use App\Http\Controllers\Xapp1s1shopController;
 use App\Http\Controllers\Xapp1s1productController;
 use App\Http\Controllers\Xapp1s1momentController;
-
+use App\Http\Controllers\Xapp1s1activateController;
 
 // 解决下载文件的中文名BUG
 setlocale(LC_ALL, 'C.UTF-8');
@@ -135,6 +135,11 @@ Route::group(['middleware' => ['auth']], function () {
         // 动态管理
         Route::apiResource('moments', Xapp1s1momentController::class)->except(['show'])->parameters([
             'moments' => 'xapp1s1moment',
+        ]);
+
+        // 活动管理
+        Route::apiResource('activates', Xapp1s1activateController::class)->except(['show'])->parameters([
+            'activates' => 'xapp1s1activate',
         ]);
 
     });
