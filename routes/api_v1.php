@@ -20,6 +20,7 @@ use App\Http\Controllers\Xapp1s1profileController;
 use App\Http\Controllers\Xapp1s1categController;
 use App\Http\Controllers\Xapp1s1shopController;
 use App\Http\Controllers\Xapp1s1productController;
+use App\Http\Controllers\Xapp1s1momentController;
 
 
 // 解决下载文件的中文名BUG
@@ -129,6 +130,11 @@ Route::group(['middleware' => ['auth']], function () {
         // 商品管理
         Route::apiResource('products', Xapp1s1productController::class)->except(['show'])->parameters([
             'products' => 'xapp1s1product',
+        ]);
+
+        // 动态管理
+        Route::apiResource('moments', Xapp1s1momentController::class)->except(['show'])->parameters([
+            'moments' => 'xapp1s1moment',
         ]);
 
     });

@@ -124,4 +124,7 @@ class User extends Authenticatable implements HasMedia
             $this->attributes['password'] = bcrypt($value);
     }
 
+    public function xapp1s1moments(){
+        return $this->hasMany('App\Models\xapp1s1moment');
+    }
 }
