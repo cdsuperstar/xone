@@ -132,7 +132,7 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany('App\Models\xapp1s1slot');
     }
 
-    public function xapp1s1profile(){
-        return $this->hasOne('App\Models\xapp1s1profile', 'id');
+    public function xapp1s1profile_pub(){
+        return $this->hasOne('App\Models\xapp1s1profile','id')->select(['id','avatar','nickname','sex','height','incomebegin','incomeend','marriage','career','weight']);
     }
 }

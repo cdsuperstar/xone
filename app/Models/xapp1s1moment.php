@@ -24,7 +24,7 @@ class xapp1s1moment extends Model implements HasMedia
 //        return $date->toW3cString();
     }
 
-    public function user(){
-        return $this->belongsTo('App\Models\User');
+    public function user_pub(){
+        return $this->belongsTo('App\Models\User','user_id')->select(['id','created_at']);
     }
 }
