@@ -158,4 +158,13 @@ class Xapp1s1momentController extends Controller
 
         return response()->json($aRet);
     }
+
+    // 自已的动态
+    public function getMyPostedMoments(Request $request)
+    {
+        $oItems = xapp1s1moment::where('user_id',"=",$request->user()->id)->sortBy('id')->values()->all();
+        $aRet = ["success" => true, "data" => $oItems];
+
+        return response()->json($aRet);
+    }
 }

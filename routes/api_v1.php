@@ -138,10 +138,10 @@ Route::group(['middleware' => ['auth']], function () {
         ]);
         Route::controller(Xapp1s1momentController::class)->prefix('moments')->group(function () {
             Route::post('postMyMoment', 'postMyMoment');
+            Route::get('getMyPostedMoments', 'getMyPostedMoments');
             Route::get('getFocusedMoments', 'getFocusedMoments');
             Route::get('getRecommMoments', 'getRecommMoments');
             Route::get('getShopMoments', 'getShopMoments');
-//            Route::post('updateMyShop', 'updateMyShop');
         });
 
         // 活动管理
