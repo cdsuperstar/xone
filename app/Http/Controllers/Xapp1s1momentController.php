@@ -17,8 +17,7 @@ class Xapp1s1momentController extends Controller
         //
         $oItems = xapp1s1moment::all()->sortBy('id')->values()->all();
         $aRet = ["success" => true, "data" => $oItems];
-        $script_tz = date_default_timezone_get();
-        \Log::info("Time test",[$oItems,$script_tz,config('app.timezone')]);
+
         return response()->json($aRet);
 
     }
@@ -134,4 +133,29 @@ class Xapp1s1momentController extends Controller
         }
     }
 
+    // 关注的动态
+    public function getFocusedMoments(){
+        $oItems = xapp1s1moment::all()->sortBy('id')->values()->all();
+        $aRet = ["success" => true, "data" => $oItems];
+
+        return response()->json($aRet);
+    }
+
+    // 推荐的动态
+    public function getRecommMoments()
+    {
+        $oItems = xapp1s1moment::all()->sortBy('id')->values()->all();
+        $aRet = ["success" => true, "data" => $oItems];
+
+        return response()->json($aRet);
+    }
+
+    // 商铺的动态
+    public function getShopMoments()
+    {
+        $oItems = xapp1s1moment::all()->sortBy('id')->values()->all();
+        $aRet = ["success" => true, "data" => $oItems];
+
+        return response()->json($aRet);
+    }
 }
