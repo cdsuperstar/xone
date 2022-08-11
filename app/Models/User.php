@@ -131,4 +131,8 @@ class User extends Authenticatable implements HasMedia
     public function xapp1s1slots(){
         return $this->hasMany('App\Models\xapp1s1slot');
     }
+
+    public function xapp1s1profile(){
+        return $this->hasOne('App\Models\xapp1s1profile', 'id');
+    }
 }
