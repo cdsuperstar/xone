@@ -68,7 +68,6 @@ class Xapp1s1momentController extends Controller
         //
         $aRet = [];
         if ($xapp1s1moment) {
-            \Log::info('Update test',[$xapp1s1moment]);
             if ($xapp1s1moment->update($request->toArray())) {
                 $aRet = array_merge([
                     'success' => true,
@@ -165,6 +164,38 @@ class Xapp1s1momentController extends Controller
         $oItems = xapp1s1moment::where('user_id',"=",$request->user()->id)->sortBy('id')->values()->all();
         $aRet = ["success" => true, "data" => $oItems];
 
+        return response()->json($aRet);
+    }
+
+    // 更新的动态
+    public function updateMyMoment(Request $request,xapp1s1moment $xapp1s1moment)
+    {
+        $aRet = [];
+        if ($xapp1s1moment) {
+            if ($request->user()->xapp1s1moments()->find($xapp1s1moment->id)->update($request->toArray())) {
+                $aRet = array_merge([
+                    'success' => true,
+                ], ['data' => $xapp1s1moment]
+                );
+            } else {
+                $aRet = ['error' => $xapp1s1moment->all()];
+            }
+        }
+        return response()->json($aRet);
+    }
+
+    // 删除的动态
+    public function delMyMoment(Request $request,xapp1s1moment $xapp1s1moment)
+    {
+        if ($request->user()->xapp1s1moments()->find($xapp1s1moment->id)->delete()) {
+
+            $aRet = array_merge([
+                'messages' => $xapp1s1moment->id,
+                'success' => true,
+            ], ['data' => $xapp1s1moment]);
+        } else {
+            $aRet = ['error' => trans('data.destroyfailed', ['data' => $xapp1s1moment->id])];
+        }
         return response()->json($aRet);
     }
 }

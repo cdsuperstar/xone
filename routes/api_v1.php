@@ -138,6 +138,8 @@ Route::group(['middleware' => ['auth']], function () {
         ]);
         Route::controller(Xapp1s1momentController::class)->prefix('moments')->group(function () {
             Route::post('postMyMoment', 'postMyMoment');
+            Route::post('updateMyMoment/{xapp1s1moment}', 'updateMyMoment');
+            Route::post('delMyMoment/{xapp1s1moment}', 'delMyMoment');
             Route::get('getMyPostedMoments', 'getMyPostedMoments');
             Route::get('getFocusedMoments', 'getFocusedMoments');
             Route::get('getRecommMoments', 'getRecommMoments');
