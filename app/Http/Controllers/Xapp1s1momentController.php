@@ -152,7 +152,7 @@ class Xapp1s1momentController extends Controller
     // 商铺的动态
     public function getShopMoments()
     {
-        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type','=','商铺')->orderBy('id')->get();
+        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type','=','商家')->orderBy('id')->get();
         $aRet = ["success" => true, "data" => $oItems];
 
         return response()->json($aRet);
