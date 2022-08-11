@@ -24,4 +24,7 @@ class xapp1s1activate extends Model implements HasMedia
         return $this->belongsTo('App\Models\xapp1s1shop');
     }
 
+    public function slots(){
+        return $this->hasMany('App\Models\xapp1s1slot');
+    }
 }

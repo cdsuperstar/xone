@@ -17,6 +17,8 @@ class Xapp1s1momentController extends Controller
         //
         $oItems = xapp1s1moment::all()->sortBy('id')->values()->all();
         $aRet = ["success" => true, "data" => $oItems];
+        $script_tz = date_default_timezone_get();
+        \Log::info("Time test",[$oItems,$script_tz,config('app.timezone')]);
         return response()->json($aRet);
 
     }

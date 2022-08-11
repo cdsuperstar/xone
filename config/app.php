@@ -15,7 +15,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+//    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Xone'),
 
     /*
     |--------------------------------------------------------------------------
@@ -71,7 +72,8 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+//    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
