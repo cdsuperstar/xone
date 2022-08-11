@@ -104,7 +104,7 @@ class Xapp1s1momentController extends Controller
 
     public function postMyMoment(Request $request)
     {
-        $oItem=new xapp1s1moment(["id" => $request->user()->id]);
+        $oItem=new xapp1s1moment();
         $oItem->user()->associate($request->user());
         $oItem->fill($request->input());
 
