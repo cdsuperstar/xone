@@ -136,7 +136,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::apiResource('moments', Xapp1s1momentController::class)->except(['show'])->parameters([
             'moments' => 'xapp1s1moment',
         ]);
-
+        Route::controller(Xapp1s1momentController::class)->prefix('moments')->group(function () {
+            Route::post('postMyMoment', 'postMyMoment');
+//            Route::post('updateMyShop', 'updateMyShop');
+        });
         // 活动管理
         Route::apiResource('activates', Xapp1s1activateController::class)->except(['show'])->parameters([
             'activates' => 'xapp1s1activate',

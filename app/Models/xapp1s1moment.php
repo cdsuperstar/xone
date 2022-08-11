@@ -10,7 +10,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class xapp1s1moment extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
-    protected $fillable = ['note'];
+    protected $fillable = ['note','type'];
 
     public function registerMediaCollections(): void
     {

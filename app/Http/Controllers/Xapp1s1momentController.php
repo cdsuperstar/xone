@@ -102,4 +102,36 @@ class Xapp1s1momentController extends Controller
         }
         return response()->json($aRet);
     }
+
+    public function postMyMoment(Request $request)
+    {
+        $oItem=new xapp1s1moment(["id" => $request->user()->id]);
+        $oItem->user()->assortment($request->user());
+        $oItem->fill($request->input());
+
+        if($oItem->save()){
+            if (is_array($request->input('files'))) {
+                $aFiles = $request->input('files');
+                $request->user()
+                    ->getMedia('userTmpFiles')
+                    ->each(function ($fileAdder) use ($aFiles, $oItem) {
+                        foreach ($aFiles as $aFile) {
+                            if ($fileAdder->file_name == $aFile) {
+                                $fileAdder->move($oItem, 'pics');
+                            }
+                        }
+                    });
+                $oItem->avatar=$oItem->getMedia('pics')[0]->getFullUrl();
+            }
+            return response()->json(array_merge([
+                    'messages' => '保存成功，ID:'.$oItem->id,
+                    'success' => true,
+                ], ['data'=>$oItem]
+                )
+            );
+        }else{
+            return response()->json(['error' => $oItem->errors()->all()]);
+        }
+    }
+
 }

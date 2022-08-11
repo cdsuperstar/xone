@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('user_id')->nullable(); // 用户ID
             $table->text('note')->nullable(); // 动态
+            $table->text('type')->default('个人'); // 类型
             $table->timestamps();
         });
     }
