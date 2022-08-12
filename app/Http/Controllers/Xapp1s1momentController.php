@@ -25,7 +25,7 @@ class Xapp1s1momentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,7 +48,7 @@ class Xapp1s1momentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\xapp1s1moment  $xapp1s1moment
+     * @param \App\Models\xapp1s1moment $xapp1s1moment
      * @return \Illuminate\Http\Response
      */
     public function show(xapp1s1moment $xapp1s1moment)
@@ -59,8 +59,8 @@ class Xapp1s1momentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\xapp1s1moment  $xapp1s1moment
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\xapp1s1moment $xapp1s1moment
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, xapp1s1moment $xapp1s1moment)
@@ -83,7 +83,7 @@ class Xapp1s1momentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\xapp1s1moment  $xapp1s1moment
+     * @param \App\Models\xapp1s1moment $xapp1s1moment
      * @return \Illuminate\Http\Response
      */
     public function destroy(xapp1s1moment $xapp1s1moment)
@@ -103,38 +103,43 @@ class Xapp1s1momentController extends Controller
 
     public function postMyMoment(Request $request)
     {
-        $oItem=new xapp1s1moment();
+        $oItem = new xapp1s1moment();
         $oItem->user_pub()->associate($request->user());
         $oItem->fill($request->input());
 
-        if($oItem->save()){
-            if (is_array($request->input('files'))) {
-                $aFiles = $request->input('files');
+        if ($oItem->save()) {
+            if (is_array($request->input('pics'))) {
+                $aFiles = $request->input('pics');
+                $aUrls = [];
                 $request->user()
                     ->getMedia('userTmpFiles')
-                    ->each(function ($fileAdder) use ($aFiles, $oItem) {
+                    ->each(function ($fileAdder) use ($aFiles, $oItem, &$aUrls) {
                         foreach ($aFiles as $aFile) {
                             if ($fileAdder->file_name == $aFile) {
                                 $fileAdder->move($oItem, 'pics');
+                                $aUrls[]=$fileAdder->getFullUrl();
                             }
                         }
                     });
-                $oItem->avatar=$oItem->getMedia('pics')[0]->getFullUrl();
+//                $oItem->avatar = $oItem->getMedia('pics')[0]->getFullUrl();
             }
+
+            $oItem->pics=$aUrls;
             return response()->json(array_merge([
-                    'messages' => '保存成功，ID:'.$oItem->id,
+                    'messages' => '保存成功，ID:' . $oItem->id,
                     'success' => true,
-                ], ['data'=>$oItem]
+                ], ['data' => $oItem]
                 )
             );
-        }else{
-            return response()->json(['error' => $oItem->errors()->all()]);
+        } else {
+            return response()->json(['error' => $oItem->all()]);
         }
     }
 
     // 关注的动态
-    public function getFocusedMoments(){
-        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type','=','个人')->orderBy('id')->get();
+    public function getFocusedMoments()
+    {
+        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type', '=', '个人')->orderBy('id')->get();
         $aRet = ["success" => true, "data" => $oItems];
 
         return response()->json($aRet);
@@ -143,7 +148,7 @@ class Xapp1s1momentController extends Controller
     // 推荐的动态
     public function getRecommMoments()
     {
-        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type','=','个人')->orderBy('id')->get();
+        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type', '=', '个人')->orderBy('id')->get();
         $aRet = ["success" => true, "data" => $oItems];
 
         return response()->json($aRet);
@@ -152,7 +157,7 @@ class Xapp1s1momentController extends Controller
     // 商铺的动态
     public function getShopMoments()
     {
-        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type','=','商家')->orderBy('id')->get();
+        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type', '=', '商家')->orderBy('id')->get();
         $aRet = ["success" => true, "data" => $oItems];
 
         return response()->json($aRet);
@@ -161,14 +166,14 @@ class Xapp1s1momentController extends Controller
     // 自已的动态
     public function getMyPostedMoments(Request $request)
     {
-        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('user_id',"=",$request->user()->id)->orderBy('id')->get();;
+        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('user_id', "=", $request->user()->id)->orderBy('id')->get();;
         $aRet = ["success" => true, "data" => $oItems];
 
         return response()->json($aRet);
     }
 
     // 更新的动态
-    public function updateMyMoment(Request $request,xapp1s1moment $xapp1s1moment)
+    public function updateMyMoment(Request $request, xapp1s1moment $xapp1s1moment)
     {
         $aRet = [];
         if ($xapp1s1moment) {
@@ -185,7 +190,7 @@ class Xapp1s1momentController extends Controller
     }
 
     // 删除的动态
-    public function delMyMoment(Request $request,xapp1s1moment $xapp1s1moment)
+    public function delMyMoment(Request $request, xapp1s1moment $xapp1s1moment)
     {
         if ($request->user()->xapp1s1moments()->find($xapp1s1moment->id)->delete()) {
 
