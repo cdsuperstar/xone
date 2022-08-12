@@ -76,13 +76,13 @@ class xapp1s1profile extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $fillable = [
-        'realname', 'idcard', 'phone', 'companyname', 'avatar', 'nickname', 'sex', 'height', 'incomebegin', 'incomeend', 'workaddress', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
+        'realname', 'idcard', 'phone', 'companyname', 'approval','avatar', 'nickname', 'sex', 'height', 'incomebegin', 'incomeend', 'workaddress', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
     ];
 
     public function registerMediaCollections(): void
     {
         $this
-            ->addMediaCollection('userAvatars');
+            ->addMediaCollection('userAvatar');
     }
 
     public function user()

@@ -19,12 +19,13 @@ return new class extends Migration
             $table->foreign('id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->string('realname',30)->default('Nickname');
+            $table->string('realname',30)->nullable();
             $table->string('idcard')->nullable();//身份证
             $table->string('phone')->nullable();//电话号码
             $table->string('companyname')->nullable();//就职单位
+            $table->string('approval')->default('待审核')->nullable();// 审核状态
 
-            $table->string('avatar', 100)->default('/statics/default_avatar.jpg');
+            $table->string('avatar', 100)->default('/assets/default_avatar.jpg');
             $table->string('nickname',30)->nullable();
 
             $table->string('sex', 1)->nullable();//性别
