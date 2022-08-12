@@ -140,6 +140,14 @@ class Xapp1s1momentController extends Controller
     public function getFocusedMoments()
     {
         $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type', '=', '个人')->orderBy('id')->get();
+        $oItems->each(function(&$oItem){
+            $aUrls=[];
+            $oItem->getMedia('pics')
+                ->each(function($fileAdder) use(&$aUrls){
+                    $aUrls[]=$fileAdder->getFullUrl();
+                });
+            $oItem->pics = $aUrls;
+        });
         $aRet = ["success" => true, "data" => $oItems];
 
         return response()->json($aRet);
