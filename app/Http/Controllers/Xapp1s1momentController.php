@@ -115,7 +115,7 @@ class Xapp1s1momentController extends Controller
                     ->getMedia('userTmpFiles')
                     ->each(function ($fileAdder) use ($aFiles, $oItem, &$aUrls) {
                         foreach ($aFiles as $aFile) {
-                            if ($fileAdder->file_name == $aFile) {
+                            if ($fileAdder->file_name == $aFile["name"]) {
                                 $fileAdder->move($oItem, 'pics');
                                 $aUrls[]=$fileAdder->getFullUrl();
                             }
@@ -125,6 +125,7 @@ class Xapp1s1momentController extends Controller
             }
 
             $oItem->pics=$aUrls;
+
             return response()->json(array_merge([
                     'messages' => '保存成功，ID:' . $oItem->id,
                     'success' => true,
