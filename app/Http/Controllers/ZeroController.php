@@ -63,7 +63,7 @@ class ZeroController extends Controller
 
         if ($request->files->count()) {
             foreach ($request->files->all() as $item) {
-                $sOName = str_replace(['#', '/', '\\', ' '], '-',$item->getClientOriginalName());
+                $sOName = str_replace(['#', '/', '\\', ' '], '-', $item->getClientOriginalName());
                 $request->user()
                     ->getMedia('userTmpFiles')
                     ->each(function ($fileAdder) use ($sOName) {
@@ -71,12 +71,14 @@ class ZeroController extends Controller
                             $fileAdder->delete();
                         }
                     });
+                // 单文件时文件名有效
+                $retArr = ['name' => $sOName];
 
                 $request->user()
                     ->addAllMediaFromRequest()
                     ->each(function ($fileAdder) {
                         $fileAdder
-                            ->sanitizingFileName(function($fileName) {
+                            ->sanitizingFileName(function ($fileName) {
                                 return str_replace(['#', '/', '\\', ' '], '-', $fileName);
                             })
                             ->toMediaCollection('userTmpFiles');
@@ -84,17 +86,31 @@ class ZeroController extends Controller
             }
 
         }
+        return response()->json($retArr);
     }
 
-    public function setMyUsercfg(Request $request){
+    public function getMyTmpFiles(Request $request)
+    {
+        $media=[];
+        $request->user()
+            ->getMedia('userTmpFiles')
+            ->each(function ($fileAdder) use(&$media) {
+                $media[]=['name'=>$fileAdder->file_name,'url'=>$fileAdder->getFullUrl()];
+            });
+        // 单文件时文件名有效
+        $retArr = ['media' => $media];
+        return response()->json($retArr);
+    }
+    public function setMyUsercfg(Request $request)
+    {
         $retArr = [];
-        $oUser=$request->user();
-        if($request->input('usercfg')){
-            $oUser->usercfg=$request->input('usercfg');
-            if($oUser->save()){
-                $retArr = ['success'=>true,'data'=>$oUser];
-            }else{
-                $retArr = ['error'=>'SaveFailed'];
+        $oUser = $request->user();
+        if ($request->input('usercfg')) {
+            $oUser->usercfg = $request->input('usercfg');
+            if ($oUser->save()) {
+                $retArr = ['success' => true, 'data' => $oUser];
+            } else {
+                $retArr = ['error' => 'SaveFailed'];
             }
         }
         return response()->json($retArr);

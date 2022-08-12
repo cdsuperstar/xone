@@ -180,6 +180,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('setRoleModules/{role}', [ZeroController::class, 'setRoleModules']);
         // 上传我的临时文件
         Route::post('uploadMyTmpFiles', [ZeroController::class, 'uploadMyTmpFiles']);
+        // 得到我的临时文件
+        Route::get('getMyTmpFiles', [ZeroController::class, 'getMyTmpFiles']);
         // 设置我的用户配置
         Route::post('setMyUsercfg', [ZeroController::class, 'setMyUsercfg']);
     });

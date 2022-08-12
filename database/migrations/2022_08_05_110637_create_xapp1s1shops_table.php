@@ -29,6 +29,8 @@ return new class extends Migration {
             $table->double('longitude', 11, 8)->nullable(); // 商业地址
             $table->double('latitude', 11, 8)->nullable(); // 商业地址
 
+            $table->string('approval')->nullable(); // 批准状态
+
             $table->primary('id');
             $table->timestamps();
         });
