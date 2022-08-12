@@ -39,7 +39,7 @@ class Xapp1s1profileController extends Controller
         $oItem=xapp1s1profile::where(["id" => $request->user()->id])->first();
         if($oItem){
             if($oItem->hasMedia('userAvatars')){
-                $oItem->avatar=$oItem->getMedia('userAvatars')[0]->getFullUrl();
+                $oItem->avatar=$oItem->getMedia('userAvatar')[0]->getFullUrl();
             }
             return response()->json(['success'=>true,'data'=>$oItem]);
         }else{
