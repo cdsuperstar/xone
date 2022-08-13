@@ -243,13 +243,15 @@ class Xapp1s1momentController extends Controller
     public function commentMoment(Request $request, xapp1s1moment $xapp1s1moment)
     {
         $aRet = [];
-        if ($request->input['content']) {
+        if (isset($request->input['content'])) {
             $tmpContent = $request->input['content'];
             if ($xapp1s1moment->comments()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
                 $aRet = ['success' => true, 'data' => $xapp1s1moment];
             } else {
-                $aRet = ['error' => 'Comment failed!'];
+                $aRet = ['error' => 'Comment create failed!'];
             }
+        }else{
+            $aRet = ['error' => 'Comment null failed!'];
         }
         return response()->json($aRet);
     }
