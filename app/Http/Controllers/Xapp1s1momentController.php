@@ -219,18 +219,18 @@ class Xapp1s1momentController extends Controller
     {
         $aRet = [];
         $tmpContent = 1;
-        if (isset($request->input['content'])) {
-            $tmpContent = $request->input['content'];
+        if ($request->input('content')) {
+            $tmpContent = $request->input('content');
         }
         if ($xapp1s1moment->thumbs()->where('user_id', '=', $request->user()->id)->where('content', '=', $tmpContent)->count() > 0) {
             if ($xapp1s1moment->thumbs()->where('user_id', '=', $request->user()->id)->where('content', '=', $tmpContent)->delete()) {
-                $aRet = ['success' => true, 'data' => $xapp1s1moment->thumbs()->get(['id','user_id','content'])];
+                $aRet = ['success' => true, 'data' => $xapp1s1moment->thumbs()->get(['id', 'user_id', 'content'])];
             } else {
                 $aRet = ['error' => 'Thumb up cancel failed!'];
             }
         } else {
             if ($xapp1s1moment->thumbs()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
-                $aRet = ['success' => true, 'data' => $xapp1s1moment->thumbs()->get(['id','user_id','content'])];
+                $aRet = ['success' => true, 'data' => $xapp1s1moment->thumbs()->get(['id', 'user_id', 'content'])];
             } else {
                 $aRet = ['error' => 'Thumb up failed!'];
             }
@@ -243,14 +243,14 @@ class Xapp1s1momentController extends Controller
     public function commentMoment(Request $request, xapp1s1moment $xapp1s1moment)
     {
         $aRet = [];
-        if (isset($request->input['content'])) {
-            $tmpContent = $request->input['content'];
+        if ($request->input('content')) {
+            $tmpContent = $request->input('content');
             if ($xapp1s1moment->comments()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
-                $aRet = ['success' => true, 'data' => $xapp1s1moment->comments()->get(['id','user_id','content','created_at'])];
+                $aRet = ['success' => true, 'data' => $xapp1s1moment->comments()->get(['id', 'user_id', 'content', 'created_at'])];
             } else {
                 $aRet = ['error' => 'Comment create failed!'];
             }
-        }else{
+        } else {
             $aRet = ['error' => 'Comment null failed!'];
         }
         return response()->json($aRet);
