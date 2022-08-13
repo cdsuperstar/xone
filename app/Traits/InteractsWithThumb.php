@@ -10,5 +10,9 @@ trait InteractsWithThumb
     {
         return $this->morphOne('App\Models\thumb', 'thumbable');
     }
+    public function thumbs(): MorphMany
+    {
+        return $this->MorphMany('App\Models\thumb', 'thumbable');
+    }
 }
 ?>
