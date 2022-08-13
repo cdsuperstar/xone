@@ -219,18 +219,18 @@ class Xapp1s1momentController extends Controller
     {
         $aRet = [];
         $tmpContent = 1;
-        if ($request->input['content']) {
+        if (isset($request->input['content'])) {
             $tmpContent = $request->input['content'];
         }
         if ($xapp1s1moment->thumb()->where('user_id', '=', $request->user()->id)->where('content', '=', $tmpContent)->count() > 0) {
             if ($request->user()->xapp1s1moments()->find($xapp1s1moment->id)->update($request->toArray())) {
-                $aRet = ['success' => true, 'data' => $tmpContent];
+                $aRet = ['success' => true, 'data' => $xapp1s1moment];
             } else {
                 $aRet = ['error' => 'Thumb up cancel failed!'];
             }
         } else {
             if ($xapp1s1moment->thumb()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
-                $aRet = ['success' => true, 'data' => $tmpContent];
+                $aRet = ['success' => true, 'data' => $xapp1s1moment];
             } else {
                 $aRet = ['error' => 'Thumb up failed!'];
             }
