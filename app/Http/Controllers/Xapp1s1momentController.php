@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\comment;
 use App\Models\xapp1s1moment;
 use Illuminate\Http\Request;
 
@@ -117,14 +118,14 @@ class Xapp1s1momentController extends Controller
                         foreach ($aFiles as $aFile) {
                             if ($fileAdder->file_name == $aFile["name"]) {
                                 $fileAdder->move($oItem, 'pics');
-                                $aUrls[]=$fileAdder->getFullUrl();
+                                $aUrls[] = $fileAdder->getFullUrl();
                             }
                         }
                     });
 //                $oItem->avatar = $oItem->getMedia('pics')[0]->getFullUrl();
             }
 
-            $oItem->pics=$aUrls;
+            $oItem->pics = $aUrls;
 
             return response()->json(array_merge([
                     'messages' => '保存成功，ID:' . $oItem->id,
@@ -140,12 +141,12 @@ class Xapp1s1momentController extends Controller
     // 关注的动态
     public function getFocusedMoments()
     {
-        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('type', '=', '个人')->orderBy('id')->get();
-        $oItems->each(function(&$oItem){
-            $aUrls=[];
+        $oItems = xapp1s1moment::with(['user_pub.xapp1s1profile_pub', 'comments.user_pub.xapp1s1profile_pub', 'thumb.user_pub.xapp1s1profile_pub'])->where('type', '=', '个人')->orderBy('id')->get();
+        $oItems->each(function (&$oItem) {
+            $aUrls = [];
             $oItem->getMedia('pics')
-                ->each(function($fileAdder) use(&$aUrls){
-                    $aUrls[]=$fileAdder->getFullUrl();
+                ->each(function ($fileAdder) use (&$aUrls) {
+                    $aUrls[] = $fileAdder->getFullUrl();
                 });
             $oItem->pics = $aUrls;
         });
@@ -175,7 +176,7 @@ class Xapp1s1momentController extends Controller
     // 自已的动态
     public function getMyPostedMoments(Request $request)
     {
-        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('user_id', "=", $request->user()->id)->orderBy('id')->get();;
+        $oItems = xapp1s1moment::with('User_pub.xapp1s1profile_pub')->where('user_id', "=", $request->user()->id)->orderBy('id')->get();
         $aRet = ["success" => true, "data" => $oItems];
 
         return response()->json($aRet);
@@ -212,4 +213,61 @@ class Xapp1s1momentController extends Controller
         }
         return response()->json($aRet);
     }
+
+    // 点赞或者取消点赞
+    public function thumbUpMoment(Request $request, xapp1s1moment $xapp1s1moment)
+    {
+        $aRet = [];
+        $tmpContent = 1;
+        if ($request->input['content']) {
+            $tmpContent = $request->input['content'];
+        }
+        if ($xapp1s1moment->thumb()->where('user_id', '=', $request->user()->id)->where('content', '=', $tmpContent)->count() > 0) {
+            if ($request->user()->xapp1s1moments()->find($xapp1s1moment->id)->update($request->toArray())) {
+                $aRet = ['success' => true, 'data' => $tmpContent];
+            } else {
+                $aRet = ['error' => 'Thumb up cancel failed!'];
+            }
+        } else {
+            if ($xapp1s1moment->thumb()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
+                $aRet = ['success' => true, 'data' => $tmpContent];
+            } else {
+                $aRet = ['error' => 'Thumb up failed!'];
+            }
+        }
+        return response()->json($aRet);
+
+    }
+
+    // 评论
+    public function commentMoment(Request $request, xapp1s1moment $xapp1s1moment)
+    {
+        $aRet = [];
+        if ($request->input['content']) {
+            $tmpContent = $request->input['content'];
+            if ($xapp1s1moment->comments()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
+                $aRet = ['success' => true, 'data' => $xapp1s1moment];
+            } else {
+                $aRet = ['error' => 'Comment failed!'];
+            }
+        }
+        return response()->json($aRet);
+    }
+
+    // 取消评论
+    public function delCommentMoment(Request $request, comment $comment)
+    {
+        $aRet = [];
+        if ($comment->user_pub()->get()[0]->id == $request->user()->id) {
+
+            $aRet = [
+                'success' => true,
+                'data' => $request->user()->id];
+        } else {
+            $aRet = ['error' => 'Delete failed'];
+        }
+        return response()->json($aRet);
+    }
+
+
 }

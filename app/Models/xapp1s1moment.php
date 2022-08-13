@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\InteractsWithComment;
+use App\Traits\InteractsWithThumb;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
@@ -9,7 +11,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class xapp1s1moment extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, InteractsWithComment, Interactswiththumb;
     protected $fillable = ['note','type'];
 
     public function registerMediaCollections(): void

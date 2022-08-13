@@ -140,6 +140,11 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('postMyMoment', 'postMyMoment');
             Route::post('updateMyMoment/{xapp1s1moment}', 'updateMyMoment');
             Route::post('delMyMoment/{xapp1s1moment}', 'delMyMoment');
+            Route::post('thumbUpMoment/{xapp1s1moment}', 'thumbUpMoment');
+
+            Route::post('commentMoment/{xapp1s1moment}', 'commentMoment');
+            Route::post('delCommentMoment/{comment}', 'delCommentMoment');
+
             Route::get('getMyPostedMoments', 'getMyPostedMoments');
             Route::get('getFocusedMoments', 'getFocusedMoments');
             Route::get('getRecommMoments', 'getRecommMoments');
