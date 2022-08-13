@@ -246,7 +246,7 @@ class Xapp1s1momentController extends Controller
         if (isset($request->input['content'])) {
             $tmpContent = $request->input['content'];
             if ($xapp1s1moment->comments()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
-                $aRet = ['success' => true, 'data' => $xapp1s1moment];
+                $aRet = ['success' => true, 'data' => $xapp1s1moment->comments()->get(['id','user_id','content','created_at'])];
             } else {
                 $aRet = ['error' => 'Comment create failed!'];
             }
