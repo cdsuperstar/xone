@@ -141,7 +141,7 @@ class Xapp1s1momentController extends Controller
     // 关注的动态
     public function getFocusedMoments()
     {
-        $oItems = xapp1s1moment::with(['user_pub.xapp1s1profile_pub', 'comments.user_pub.xapp1s1profile_pub', 'thumb.user_pub.xapp1s1profile_pub'])->where('type', '=', '个人')->orderBy('id')->get();
+        $oItems = xapp1s1moment::with(['user_pub.xapp1s1profile_pub', 'comments.user_pub.xapp1s1profile_pub', 'thumbs.user_pub.xapp1s1profile_pub'])->where('type', '=', '个人')->orderBy('id')->get();
         $oItems->each(function (&$oItem) {
             $aUrls = [];
             $oItem->getMedia('pics')
@@ -222,14 +222,14 @@ class Xapp1s1momentController extends Controller
         if (isset($request->input['content'])) {
             $tmpContent = $request->input['content'];
         }
-        if ($xapp1s1moment->thumb()->where('user_id', '=', $request->user()->id)->where('content', '=', $tmpContent)->count() > 0) {
-            if ($xapp1s1moment->thumb()->where('user_id', '=', $request->user()->id)->where('content', '=', $tmpContent)->delete()) {
+        if ($xapp1s1moment->thumbs()->where('user_id', '=', $request->user()->id)->where('content', '=', $tmpContent)->count() > 0) {
+            if ($xapp1s1moment->thumbs()->where('user_id', '=', $request->user()->id)->where('content', '=', $tmpContent)->delete()) {
                 $aRet = ['success' => true, 'data' => $xapp1s1moment->thumbs()->get(['id','user_id','content'])];
             } else {
                 $aRet = ['error' => 'Thumb up cancel failed!'];
             }
         } else {
-            if ($xapp1s1moment->thumb()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
+            if ($xapp1s1moment->thumbs()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
                 $aRet = ['success' => true, 'data' => $xapp1s1moment->thumbs()->get(['id','user_id','content'])];
             } else {
                 $aRet = ['error' => 'Thumb up failed!'];
