@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('xapp1s1categs', function (Blueprint $table) {
             $table->id();
+            $table->morphs('categable');
+
             $table->string('name',30)->nullable()->unique();
             $table->text('memo')->nullable();//文字简介
             $table->timestamps();
