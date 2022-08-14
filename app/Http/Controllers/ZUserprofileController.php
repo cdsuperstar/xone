@@ -84,7 +84,7 @@ class ZUserprofileController extends Controller
                 )
             );
         }else{
-            return response()->json(['error' => $oItem->errors()->all()]);
+            return response()->json(['error' => 'Save failed']);
         }
     }
     /**

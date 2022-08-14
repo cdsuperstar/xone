@@ -75,7 +75,7 @@ class ZPermissionController extends Controller
                 ], ['data' => $permission]
                 );
             } else {
-                $aRet = ['error' => $permission->errors()->all()];
+                $aRet = ['error' => 'Update failed'];
             }
         }
         return response()->json($aRet);

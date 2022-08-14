@@ -24,7 +24,7 @@ class Xapp1s1categController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +47,7 @@ class Xapp1s1categController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\xapp1s1categ  $xapp1s1categ
+     * @param \App\Models\xapp1s1categ $xapp1s1categ
      * @return \Illuminate\Http\Response
      */
     public function show(xapp1s1categ $xapp1s1categ)
@@ -58,8 +58,8 @@ class Xapp1s1categController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\xapp1s1categ  $xapp1s1categ
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\xapp1s1categ $xapp1s1categ
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, xapp1s1categ $xapp1s1categ)
@@ -74,7 +74,7 @@ class Xapp1s1categController extends Controller
                 ], ['data' => $xapp1s1categ]
                 );
             } else {
-                $aRet = ['error' => $xapp1s1categ->errors()->all()];
+                $aRet = ['error' => 'Update failed'];
             }
         }
         return response()->json($aRet);
@@ -83,7 +83,7 @@ class Xapp1s1categController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\xapp1s1categ  $xapp1s1categ
+     * @param \App\Models\xapp1s1categ $xapp1s1categ
      * @return \Illuminate\Http\Response
      */
     public function destroy(xapp1s1categ $xapp1s1categ)

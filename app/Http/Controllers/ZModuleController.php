@@ -54,7 +54,7 @@ class ZModuleController extends Controller
     {
         if (env('APP_ADMIN') == $request->user()->id) {
             $res = z_module::defaultOrder()->get()->toTree();
-        }else{
+        } else {
             $res = $role->modules()->defaultOrder()->get()->totree();
         }
         return response()->json(array_merge([
@@ -126,7 +126,7 @@ class ZModuleController extends Controller
                     )
                 );
             } else {
-                return response()->json(['error' => $z_module->errors()->all()]);
+                return response()->json(['error' => 'Update failed']);
             }
         }
         return response()->json(['error' => 'Unknow Err']);
@@ -148,7 +148,7 @@ class ZModuleController extends Controller
                 'success' => true,
             ], ['data' => $z_module->toArray()]));
         } else {
-            return response()->json(['errors' => trans('data.destroyfailed', ['data' => $z_module->id])]);
+            return response()->json(['error' => trans('data.destroyfailed', ['data' => $z_module->id])]);
         }
     }
 }

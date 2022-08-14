@@ -109,6 +109,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::controller(Xapp1s1profileController::class)->prefix('profile')->group(function () {
             Route::get('getMyProfile', 'getMyProfile');
             Route::post('updateMyProfile', 'updateMyProfile');
+            Route::get('getTheUserProfile/{user}', 'getTheUserProfile');
         });
 
         // 类别管理

@@ -40,13 +40,13 @@ class UserController extends Controller
     public function setUserUnit(Request $request)
     {
         $aRet = [];
-        $aUsers=User::find($request->input('users'));
-        $aUnits=$request->input('units');
-        $iUsers=0;
-        $aUsers->each(function($user) use(&$iUsers,$aUnits){
+        $aUsers = User::find($request->input('users'));
+        $aUnits = $request->input('units');
+        $iUsers = 0;
+        $aUsers->each(function ($user) use (&$iUsers, $aUnits) {
             $user->units()->detach();
             $user->units()->attach($aUnits);
-            $user->userprofile->unitid=$aUnits[0];
+            $user->userprofile->unitid = $aUnits[0];
             $user->userprofile->save();
 
             $iUsers++;
@@ -89,7 +89,7 @@ class UserController extends Controller
                     });
                     $aModules->each(function ($mod) use ($aUsrCfg) {
                         $mod->permissions->each(function ($perm) use ($aUsrCfg) {
-                            if(isset($aUsrCfg[$perm->name]))
+                            if (isset($aUsrCfg[$perm->name]))
                                 $perm->usrcfg = $aUsrCfg[$perm->name];
                         });
                     });
@@ -115,7 +115,7 @@ class UserController extends Controller
                 foreach ($aPermissions as $perm) {
                     $iPerms++;
                     $user->permissions()->detach($perm["id"]);
-                    if(isset($perm["usrcfg"]))
+                    if (isset($perm["usrcfg"]))
                         $user->permissions()->attach($perm["id"], ["usrcfg" => $perm["usrcfg"]]);
                 }
             });
@@ -162,7 +162,7 @@ class UserController extends Controller
             ], ["data" => $rec]
             );
         } else {
-            $aRet = ['error' => $rec->errors()->all()];
+            $aRet = ['error' => 'Save failed'];
         }
         return response()->json($aRet);
     }
@@ -207,7 +207,7 @@ class UserController extends Controller
                 );
             }
         } else {
-            $aRet = ['error' => $user->errors()->all()];
+            $aRet = ['error' => 'User not exist'];
         }
         return response()->json($aRet);
     }
@@ -260,7 +260,7 @@ class UserController extends Controller
                 ], ['data' => $user]
                 );
             } else {
-                $aRet = ['error' => $user->errors()->all()];
+                $aRet = ['error' => 'Save failed'];
             }
         }
         return response()->json($aRet);

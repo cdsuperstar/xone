@@ -85,7 +85,7 @@ class ZRoleController extends Controller
                 ], ['data' => $role]
                 );
             } else {
-                $aRet = ['error' => $role->errors()->all()];
+                $aRet = ['error' => 'Update failed'];
             }
         }
         return response()->json($aRet);

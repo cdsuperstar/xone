@@ -127,7 +127,7 @@ class ZUnitController extends Controller
                 ], ['data' => $z_unit]
                 );
             } else {
-                $aRet = ['error' => $z_unit->errors()->all()];
+                $aRet = ['error' => 'Update failed'];
             }
         }
         return response()->json($aRet);

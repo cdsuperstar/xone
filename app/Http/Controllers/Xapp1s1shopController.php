@@ -24,7 +24,7 @@ class Xapp1s1shopController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +47,7 @@ class Xapp1s1shopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\xapp1s1shop  $xapp1s1shop
+     * @param \App\Models\xapp1s1shop $xapp1s1shop
      * @return \Illuminate\Http\Response
      */
     public function show(xapp1s1shop $xapp1s1shop)
@@ -58,8 +58,8 @@ class Xapp1s1shopController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\xapp1s1shop  $xapp1s1shop
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\xapp1s1shop $xapp1s1shop
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, xapp1s1shop $xapp1s1shop)
@@ -74,7 +74,7 @@ class Xapp1s1shopController extends Controller
                 ], ['data' => $xapp1s1shop]
                 );
             } else {
-                $aRet = ['error' => $xapp1s1shop->errors()->all()];
+                $aRet = ['error' => "Update failed"];
             }
         }
         return response()->json($aRet);
@@ -83,7 +83,7 @@ class Xapp1s1shopController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\xapp1s1shop  $xapp1s1shop
+     * @param \App\Models\xapp1s1shop $xapp1s1shop
      * @return \Illuminate\Http\Response
      */
     public function destroy(xapp1s1shop $xapp1s1shop)
@@ -104,28 +104,28 @@ class Xapp1s1shopController extends Controller
 
     public function getMyShop(Request $request)
     {
-        $oItem=xapp1s1shop::where(["id" => $request->user()->id])->first();
-        if($oItem){
-            if($oItem->hasMedia('userAvatars')){
-                $oItem->avatar=$oItem->getMedia('userAvatars')[0]->getFullUrl();
+        $oItem = xapp1s1shop::where(["id" => $request->user()->id])->first();
+        if ($oItem) {
+            if ($oItem->hasMedia('shopAvatar')) {
+                $oItem->avatar = $oItem->getMedia('shopAvatar')[0]->getFullUrl();
             }
-            return response()->json(['success'=>true,'data'=>$oItem]);
-        }else{
+            return response()->json(['success' => true, 'data' => $oItem]);
+        } else {
             return response()->json(['error' => "Null profile."]);
         }
     }
 
     public function updateMyShop(Request $request)
     {
-        $oItem=xapp1s1shop::where(["id" => $request->user()->id])->first();
-        if($oItem==null){
-            $oItem=new xapp1s1shop(["id" => $request->user()->id]);
+        $oItem = xapp1s1shop::where(["id" => $request->user()->id])->first();
+        if ($oItem == null) {
+            $oItem = new xapp1s1shop(["id" => $request->user()->id]);
         }
-        $oItem->id=$request->user()->id;
+        $oItem->id = $request->user()->id;
         $oItem->fill($request->input());
 
 
-        if($oItem->save()){
+        if ($oItem->save()) {
             if (is_array($request->input('files'))) {
                 $aFiles = $request->input('files');
                 $request->user()
@@ -133,20 +133,20 @@ class Xapp1s1shopController extends Controller
                     ->each(function ($fileAdder) use ($aFiles, $oItem) {
                         foreach ($aFiles as $aFile) {
                             if ($fileAdder->file_name == $aFile) {
-                                $fileAdder->move($oItem, 'userAvatars');
+                                $fileAdder->move($oItem, 'shopAvatar');
                             }
                         }
                     });
-                $oItem->avatar=$oItem->getMedia('userAvatars')[0]->getFullUrl();
+                $oItem->avatar = $oItem->getMedia('shopAvatar')[0]->getFullUrl();
             }
             return response()->json(array_merge([
-                    'messages' => '保存成功，ID:'.$oItem->id,
+                    'messages' => '保存成功，ID:' . $oItem->id,
                     'success' => true,
-                ], ['data'=>$oItem]
+                ], ['data' => $oItem]
                 )
             );
-        }else{
-            return response()->json(['error' => $oItem->errors()->all()]);
+        } else {
+            return response()->json(['error' => "Save failed."]);
         }
     }
 }
