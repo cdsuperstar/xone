@@ -91,6 +91,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('getUsersPermisstionCfgs', 'getUsersPermisstionCfgs');
         // 设置用户所具有的权限配置模板,返回设置用户数及权限数
         Route::post('setUsersPermissionCfgs', 'setUsersPermissionCfgs');
+        // 关注用户
+        Route::post('likeTheUser/{user}', 'likeTheUser');
     });
 
 // 用户资料管理

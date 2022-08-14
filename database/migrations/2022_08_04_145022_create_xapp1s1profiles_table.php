@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -19,14 +18,13 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->string('realname',30)->nullable();
+            $table->string('realname', 30)->nullable();
             $table->string('idcard')->nullable();//身份证
             $table->string('phone')->nullable();//电话号码
             $table->string('companyname')->nullable();//就职单位
             $table->string('approval')->default('待审核')->nullable();// 审核状态
 
-            $table->string('avatar', 100)->default('/assets/default_avatar.jpg');
-            $table->string('nickname',30)->nullable();
+            $table->string('nickname', 30)->nullable();
 
             $table->string('sex', 1)->nullable();//性别
             $table->integer('height')->nullable();//身高

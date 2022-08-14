@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 /**
  * App\Models\xapp1s1profile
@@ -77,13 +78,23 @@ class xapp1s1profile extends Model implements HasMedia
     use HasFactory, InteractsWithMedia, InteractsWithUser;
 
     protected $fillable = [
-        'realname', 'idcard', 'phone', 'companyname', 'approval','avatar', 'nickname', 'sex', 'height', 'incomebegin', 'incomeend', 'workaddress', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
+        'realname', 'idcard', 'phone', 'companyname', 'approval', 'avatar', 'nickname', 'sex', 'height', 'incomebegin', 'incomeend', 'workaddress', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
     ];
+    protected $appends = ['avatar'];
 
     public function registerMediaCollections(): void
     {
         $this
-            ->addMediaCollection('userAvatar');
+            ->addMediaCollection('userAvatar')
+            ->singleFile();
     }
 
+    public function getAvatarAttribute(): string
+    {
+        if(count($this->getMedia('userAvatar'))>0){
+            return $this->getMedia('userAvatar')[0]->getFullUrl();
+        }else{
+            return '/assets/default_avatar.jpg';
+        }
+    }
 }

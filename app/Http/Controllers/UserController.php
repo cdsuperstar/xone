@@ -297,4 +297,29 @@ class UserController extends Controller
         $aReturn = ["success" => true, "data" => auth('api')->user()];
         return response()->json($aReturn);
     }
+
+    // 关注或者取消关注
+    public function likeTheUser(Request $request, User $user)
+    {
+        $aRet = [];
+        $tmpContent = 1;
+        if ($request->input('content')) {
+            $tmpContent = $request->input('content');
+        }
+        if ($request->user()->like()->where('user_id', $user->id)->where('content', $tmpContent)->count() > 0) {
+            if ($request->user()->where('user_id', $user->id)->where('content', $tmpContent)->delete()) {
+                $aRet = ['success' => true, 'data' => $request->user()->like()->get(['id', 'user_id', 'content'])];
+            } else {
+                $aRet = ['error' => 'Like cancel failed!'];
+            }
+        } else {
+            if ($request->user()->like()->create(['content' => $tmpContent])->user_pub()->associate($user->id)->save()) {
+                $aRet = ['success' => true, 'data' => $request->user()->like()->get(['id', 'user_id', 'content'])];
+            } else {
+                $aRet = ['error' => 'Like failed!'];
+            }
+        }
+        return response()->json($aRet);
+    }
+
 }

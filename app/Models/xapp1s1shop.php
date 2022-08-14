@@ -30,11 +30,16 @@ class xapp1s1shop extends Model implements HasMedia
     protected $fillable = [
         'name','starttime','endtime','status','phone','tel','addr','longitude','latitude','approval'
     ];
+
+    protected $appends = ['avatar'];
+
     public function registerMediaCollections(): void
     {
         $this
             ->addMediaCollection('shopAvatar')
-            ->addMediaCollection('products')
+            ->singleFile();
+
+        $this->addMediaCollection('products')
             ->addMediaCollection('environments')
             ->addMediaCollection('menus')
             ->addMediaCollection('qualifications');
@@ -47,4 +52,14 @@ class xapp1s1shop extends Model implements HasMedia
     public function activates() {
         return $this->hasMany('App\Models\xapp1s1activate');
     }
+
+    public function getAvatarAttribute(): string
+    {
+        if(count($this->getMedia('shopAvatar'))>0){
+            return $this->getMedia('shopAvatar')[0]->getFullUrl();
+        }else{
+            return '/assets/default_shop_avatar.jpg';
+        }
+    }
+
 }

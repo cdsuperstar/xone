@@ -6,12 +6,12 @@ use App\Traits\InteractsWithUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class thumb extends Model
+class like extends Model
 {
     use HasFactory, InteractsWithUser;
     protected $fillable = ['content'];
 
-    public function thumbable()
+    public function likeable()
     {
         return $this->morphTo();
     }
