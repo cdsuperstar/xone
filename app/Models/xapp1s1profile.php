@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\InteractsWithUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -73,7 +74,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  */
 class xapp1s1profile extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, InteractsWithUser;
 
     protected $fillable = [
         'realname', 'idcard', 'phone', 'companyname', 'approval','avatar', 'nickname', 'sex', 'height', 'incomebegin', 'incomeend', 'workaddress', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
@@ -85,8 +86,4 @@ class xapp1s1profile extends Model implements HasMedia
             ->addMediaCollection('userAvatar');
     }
 
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User', 'id');
-    }
 }

@@ -156,6 +156,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::apiResource('activates', Xapp1s1activateController::class)->except(['show'])->parameters([
             'activates' => 'xapp1s1activate',
         ]);
+        Route::controller(Xapp1s1activateController::class)->prefix('activates')->group(function () {
+            Route::post('saveMyActivate', 'saveMyActivate');
+            Route::post('updateMyActivate/{xapp1s1activate}', 'updateMyActivate');
+            Route::post('delMyActivate/{xapp1s1activate}', 'delMyActivate');
+        });
 
     });
 

@@ -104,7 +104,7 @@ class Xapp1s1shopController extends Controller
 
     public function getMyShop(Request $request)
     {
-        $oItem = xapp1s1shop::where(["id" => $request->user()->id])->first();
+        $oItem = xapp1s1shop::where(["user_id" => $request->user()->id])->first();
         if ($oItem) {
             if ($oItem->hasMedia('shopAvatar')) {
                 $oItem->avatar = $oItem->getMedia('shopAvatar')[0]->getFullUrl();
@@ -117,11 +117,11 @@ class Xapp1s1shopController extends Controller
 
     public function updateMyShop(Request $request)
     {
-        $oItem = xapp1s1shop::where(["id" => $request->user()->id])->first();
+        $oItem = xapp1s1shop::where(["user_id" => $request->user()->id])->first();
         if ($oItem == null) {
-            $oItem = new xapp1s1shop(["id" => $request->user()->id]);
+            $oItem = new xapp1s1shop(["user_id" => $request->user()->id]);
         }
-        $oItem->id = $request->user()->id;
+        $oItem->user_id = $request->user()->id;
         $oItem->fill($request->input());
 
 

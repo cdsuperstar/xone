@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\InteractsWithUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,7 +25,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  */
 class xapp1s1shop extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory, InteractsWithMedia, InteractsWithUser;
 
     protected $fillable = [
         'name','starttime','endtime','status','phone','tel','addr','longitude','latitude','approval'
@@ -45,10 +46,5 @@ class xapp1s1shop extends Model implements HasMedia
 
     public function activates() {
         return $this->hasMany('App\Models\xapp1s1activate');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User', 'id');
     }
 }

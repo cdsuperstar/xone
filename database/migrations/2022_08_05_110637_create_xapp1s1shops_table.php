@@ -13,9 +13,9 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('xapp1s1shops', function (Blueprint $table) {
-//            $table->id();
-            $table->bigInteger('id')->unsigned();
-            $table->foreign('id')->references('id')->on('users')
+            $table->id();
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
             // 图片分为 菜品 环境 菜单 资质 其他
 
@@ -31,7 +31,7 @@ return new class extends Migration {
 
             $table->string('approval')->default('待审核')->nullable(); // 批准状态
 
-            $table->primary('id');
+            $table->unique('user_id');
             $table->timestamps();
         });
     }
