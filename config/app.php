@@ -253,7 +253,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
+        // by luke
         'EasyWeChat' => Overtrue\LaravelWeChat\EasyWeChat::class,
+
+        'Helper' => App\Helper\Helper::class
 
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),

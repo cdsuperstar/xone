@@ -125,15 +125,18 @@ class User extends Authenticatable implements HasMedia
             $this->attributes['password'] = bcrypt($value);
     }
 
-    public function xapp1s1moments(){
+    public function xapp1s1moments()
+    {
         return $this->hasMany('App\Models\xapp1s1moment');
     }
 
-    public function xapp1s1slots(){
+    public function xapp1s1slots()
+    {
         return $this->hasMany('App\Models\xapp1s1slot');
     }
 
-    public function xapp1s1profile_pub(){
-        return $this->hasOne('App\Models\xapp1s1profile','id')->select(['id','avatar','nickname','sex','height','incomebegin','incomeend','marriage','career','weight']);
+    public function xapp1s1profile_pub()
+    {
+        return $this->hasOne('App\Models\xapp1s1profile', 'id')->select(['id', 'nickname', 'birthday', 'constellation', 'sex', 'height', 'incomebegin', 'incomeend', 'marriage', 'career', 'weight']);
     }
 }

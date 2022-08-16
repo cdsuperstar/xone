@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Helper\Helper;
 use App\Traits\InteractsWithUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+
 
 /**
  * App\Models\xapp1s1profile
@@ -78,7 +79,7 @@ class xapp1s1profile extends Model implements HasMedia
     use HasFactory, InteractsWithMedia, InteractsWithUser;
 
     protected $fillable = [
-        'realname', 'idcard', 'phone', 'companyname', 'approval', 'avatar', 'nickname', 'sex', 'height', 'incomebegin', 'incomeend', 'workaddress', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
+        'realname', 'idcard', 'phone', 'companyname', 'approval', 'nickname', 'height', 'incomebegin', 'incomeend', 'workaddress', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
     ];
     protected $appends = ['avatar'];
 
@@ -91,10 +92,40 @@ class xapp1s1profile extends Model implements HasMedia
 
     public function getAvatarAttribute(): string
     {
-        if(count($this->getMedia('userAvatar'))>0){
+        if (count($this->getMedia('userAvatar')) > 0) {
             return $this->getMedia('userAvatar')[0]->getFullUrl();
-        }else{
+        } else {
             return '/assets/default_avatar.jpg';
+        }
+    }
+
+    public function setIdcardAttribute($tmpIdcard)
+    {
+        if (strlen($tmpIdcard) == 18 && Helper::checkIdcard($tmpIdcard) && $this->attributes['idcard'] != $tmpIdcard) {
+            $month = (int)substr($tmpIdcard, 10, 2);
+            $day = (int)substr($tmpIdcard, 12, 2);
+            if ($month < 1 || $month > 12 || $day < 1 || $day > 31) return false;
+
+            $constellations = [
+                '摩羯座', '水瓶座', '双鱼座', '白羊座', '金牛座', '双子座',
+                '巨蟹座', '狮子座', '处女座', '天秤座', '天蝎座', '射手座',
+            ];
+
+            $endDays = [19, 18, 20, 20, 20, 21, 22, 22, 22, 22, 21, 21];
+            if ($day <= $endDays[$month - 1]) {
+                $constellation = $constellations[$month - 1];
+            } else {
+                $constellation = empty($constellations[$month]) ? $constellations[0] : $constellations[$month];
+            }
+
+            $this->attributes['birthday'] = substr($tmpIdcard, 6, 4) . "-" . substr($tmpIdcard, 10, 2) . "-" . substr($tmpIdcard, 12, 2);
+
+            $this->attributes['constellation'] = $constellation;
+
+            $sexint = (int)substr($tmpIdcard, -2, 1);
+            $this->attributes['sex'] = $sexint % 2 === 0 ? '2' : '1';
+
+            $this->attributes['idcard'] = $tmpIdcard;
         }
     }
 }

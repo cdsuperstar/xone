@@ -19,13 +19,20 @@ return new class extends Migration {
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->string('realname', 30)->nullable();
-            $table->string('idcard')->nullable();//身份证
+            $table->string('idcard', 18)->nullable();//身份证
             $table->string('phone')->nullable();//电话号码
             $table->string('companyname')->nullable();//就职单位
             $table->string('approval')->default('待审核')->nullable();// 审核状态
 
-            $table->string('nickname', 30)->nullable();
+            // 自动生成
+            $table->date('birthday')->nullable();
+            $table->string('constellation', 6)->nullable();
 
+            $table->string('nickname', 30)->nullable();
+            //0 - 未知的性别
+            //1 - 男性
+            //2 - 女性
+            //9 - 未说明的性别
             $table->string('sex', 1)->nullable();//性别
             $table->integer('height')->nullable();//身高
             $table->integer('incomebegin')->nullable();//收入开始
