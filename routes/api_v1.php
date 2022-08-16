@@ -111,6 +111,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::controller(Xapp1s1profileController::class)->prefix('profile')->group(function () {
             Route::get('getMyProfile', 'getMyProfile');
             Route::post('updateMyProfile', 'updateMyProfile');
+            Route::post('updateMyAvatar', 'updateMyAvatar');
             Route::get('getTheUserProfile/{user}', 'getTheUserProfile');
         });
 
@@ -195,6 +196,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('uploadMyTmpFiles', [ZeroController::class, 'uploadMyTmpFiles']);
         // 得到我的临时文件
         Route::get('getMyTmpFiles', [ZeroController::class, 'getMyTmpFiles']);
+        // 删除我的临时文件
+        Route::post('delMyTmpFiles', [ZeroController::class, 'delMyTmpFiles']);
         // 设置我的用户配置
         Route::post('setMyUsercfg', [ZeroController::class, 'setMyUsercfg']);
     });

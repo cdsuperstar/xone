@@ -102,6 +102,40 @@ class Xapp1s1profileController extends Controller
         return response()->json(['error' => 'ProfileNotFound']);
     }
 
+    public function updateMyAvatar(Request $request)
+    {
+        $oItem = xapp1s1profile::where(["user_id" => $request->user()->id])->first();
+        if ($oItem == null) {
+            $oItem = new xapp1s1profile(["user_id" => $request->user()->id]);
+            $oItem->save();
+        }
+
+        if (count($request->input('filenames')) > 0) {
+            $aFiles = $request->input('filenames');
+            $request->user()
+                ->getMedia('userTmpFiles')
+                ->each(function ($fileAdder) use ($aFiles, $oItem) {
+                    foreach ($aFiles as $aFile) {
+                        if ($fileAdder->file_name == $aFile["name"]) {
+                            $oItem->clearMediaCollection('userAvatar');
+                            $fileAdder->move($oItem, 'userAvatar');
+                        }
+                    }
+                });
+
+            return response()->json(array_merge([
+                    'messages' => 'Avatar saved，ID:' . $oItem->id,
+                    'success' => true,
+                ], ['data' => $oItem]
+                )
+            );
+
+        } else {
+            return response()->json(['error' => "Avatar save failed."]);
+        }
+
+    }
+
     public function updateMyProfile(Request $request)
     {
         $oItem = xapp1s1profile::where(["user_id" => $request->user()->id])->first();
@@ -113,19 +147,6 @@ class Xapp1s1profileController extends Controller
 
 
         if ($oItem->save()) {
-            if (is_array($request->input('files'))) {
-                $aFiles = $request->input('files');
-                $request->user()
-                    ->getMedia('userTmpFiles')
-                    ->each(function ($fileAdder) use ($aFiles, $oItem) {
-                        foreach ($aFiles as $aFile) {
-                            if ($fileAdder->file_name == $aFile) {
-                                $fileAdder->move($oItem, 'userAvatar');
-                            }
-                        }
-                    });
-                $oItem->avatar = $oItem->getMedia('userAvatar')[0]->getFullUrl();
-            }
             return response()->json(array_merge([
                     'messages' => '保存成功，ID:' . $oItem->id,
                     'success' => true,

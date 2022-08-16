@@ -89,18 +89,40 @@ class ZeroController extends Controller
         return response()->json($retArr);
     }
 
+    public function delMyTmpFiles(Request $request)
+    {
+        $retArr = [];
+        if (count($request->input("filenames")) > 0) {
+            foreach ($request->input("filenames") as $item) {
+                $sOName = str_replace(['#', '/', '\\', ' '], '-', $item["name"]);
+                $request->user()
+                    ->getMedia('userTmpFiles')
+                    ->each(function ($fileAdder) use ($sOName) {
+                        if ($fileAdder->file_name == $sOName) {
+                            $fileAdder->delete();
+                        }
+                    });
+                // 单文件时文件名有效
+                $retArr = ['success' => true, 'data' => $sOName];
+            }
+
+        }
+        return response()->json($retArr);
+    }
+
     public function getMyTmpFiles(Request $request)
     {
-        $media=[];
+        $media = [];
         $request->user()
             ->getMedia('userTmpFiles')
-            ->each(function ($fileAdder) use(&$media) {
-                $media[]=['name'=>$fileAdder->file_name,'url'=>$fileAdder->getFullUrl()];
+            ->each(function ($fileAdder) use (&$media) {
+                $media[] = ['name' => $fileAdder->file_name, 'url' => $fileAdder->getFullUrl()];
             });
         // 单文件时文件名有效
         $retArr = ['media' => $media];
         return response()->json($retArr);
     }
+
     public function setMyUsercfg(Request $request)
     {
         $retArr = [];
