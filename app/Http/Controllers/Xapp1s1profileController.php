@@ -119,6 +119,8 @@ class Xapp1s1profileController extends Controller
                         if ($fileAdder->file_name == $aFile["name"]) {
                             $oItem->clearMediaCollection('userAvatar');
                             $fileAdder->move($oItem, 'userAvatar');
+                        }else{
+                            $fileAdder->delete();
                         }
                     }
                 });
