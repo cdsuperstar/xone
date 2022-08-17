@@ -10,7 +10,8 @@ trait InteractsWithUser
 
     public function user_pub()
     {
-        return $this->belongsTo('App\Models\User','user_id')->select(['id','created_at']);
+        return $this->belongsTo('App\Models\User', 'user_id')->select(['id', 'user_id', 'created_at']);
     }
 }
+
 ?>
