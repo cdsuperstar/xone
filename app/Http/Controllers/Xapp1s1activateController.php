@@ -106,9 +106,8 @@ class Xapp1s1activateController extends Controller
         $aRet = [];
         $rec->xapp1s1shop_id = $request->user()->id;
         if ($rec->save()) {
-            \Log::info("Slots:", [$request->input("slots")]);
             if (is_array($request->input("slots"))) {
-                $rec->slots()->saveMany($request->input("slots"));
+                $rec->slots()->createMany($request->input("slots"));
             }
 
             $aRet = array_merge([
