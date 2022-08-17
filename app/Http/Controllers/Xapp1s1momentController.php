@@ -141,7 +141,7 @@ class Xapp1s1momentController extends Controller
     // 关注的动态
     public function getFocusedMoments()
     {
-        $oItems = xapp1s1moment::with(['user_pub.xapp1s1profile_pub', 'comments.user_pub.xapp1s1profile_pub', 'thumbs.user_pub.xapp1s1profile_pub'])->where('type', '=', '个人')->orderBy('id')->get();
+        $oItems = xapp1s1moment::with(['user_pub.xapp1s1profile_pub', 'comments.user_pub.xapp1s1profile_pub', 'thumbs.user_pub.xapp1s1profile_pub'])->where('type', '=', '个人')->orderBy('id','desc')->get();
         $oItems->each(function (&$oItem) {
             $aUrls = [];
             $oItem->getMedia('pics')
