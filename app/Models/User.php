@@ -137,6 +137,6 @@ class User extends Authenticatable implements HasMedia
 
     public function xapp1s1profile_pub()
     {
-        return $this->hasOne('App\Models\xapp1s1profile', 'id')->select(['id', 'nickname', 'birthday', 'constellation', 'sex', 'height', 'incomebegin', 'incomeend', 'marriage', 'career', 'weight']);
+        return $this->hasOne('App\Models\xapp1s1profile', 'user_id')->select(['id', 'nickname', 'birthday', 'constellation', 'sex', 'height', 'incomebegin', 'incomeend', 'marriage', 'career', 'weight']);
     }
 }
