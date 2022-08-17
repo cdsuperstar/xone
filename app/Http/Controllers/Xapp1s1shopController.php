@@ -149,4 +149,78 @@ class Xapp1s1shopController extends Controller
             return response()->json(['error' => "Save failed."]);
         }
     }
+
+    public function uploadMyShopFiles(Request $request, string $collectionname)
+    {
+        $retArr = [];
+        if ($request->files->count()) {
+            foreach ($request->files->all() as $item) {
+                $sOName = str_replace(['#', '/', '\\', ' '], '-', $item->getClientOriginalName());
+                $tmpShop =
+                    $request->user()
+                        ->xapp1s1shop;
+                $tmpShop->getMedia($collectionname)
+                    ->each(function ($fileAdder) use ($sOName) {
+                        if ($fileAdder->file_name == $sOName) {
+                            $fileAdder->delete();
+                        }
+                    });
+
+                // 单文件时文件名有效
+                $retArr = ['name' => $sOName];
+
+                $tmpShop
+                    ->addAllMediaFromRequest()
+                    ->each(function ($fileAdder) use ($sOName, $collectionname) {
+                        $fileAdder
+                            ->sanitizingFileName(function ($fileName) {
+                                return str_replace(['#', '/', '\\', ' '], '-', $fileName);
+                            })
+                            ->toMediaCollection($collectionname);
+                    });
+            }
+
+        }
+        return response()->json($retArr);
+    }
+
+    public function delMyShopFiles(Request $request, string $collection)
+    {
+        $retArr = [];
+        if (count($request->input("filenames")) > 0) {
+            foreach ($request->input("filenames") as $item) {
+                $sOName = str_replace(['#', '/', '\\', ' '], '-', $item["name"]);
+                $tmpShop =
+                    $request->user()
+                        ->xapp1s1shop;
+
+                $tmpShop->getMedia($collection)
+                    ->each(function ($fileAdder) use ($sOName) {
+                        if ($fileAdder->file_name == $sOName) {
+                            $fileAdder->delete();
+                        }
+                    });
+                // 单文件时文件名有效
+                $retArr = ['success' => true, 'data' => $sOName];
+            }
+
+        }
+        return response()->json($retArr);
+    }
+
+    public function getMyShopFiles(Request $request, string $collection)
+    {
+        $media = [];
+        $tmpShop =
+            $request->user()
+                ->xapp1s1shop;
+
+        $tmpShop->getMedia($collection)
+            ->each(function ($fileAdder) use (&$media) {
+                $media[] = ['name' => $fileAdder->file_name, 'url' => $fileAdder->getFullUrl()];
+            });
+        // 单文件时文件名有效
+        $retArr = ['media' => $media];
+        return response()->json($retArr);
+    }
 }

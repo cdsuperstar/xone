@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class xapp1s1slot extends Model
 {
     use HasFactory;
-    protected $field = ['req','price','note'];
+    protected $fillable = ['req','price','note'];
 
     public function user(){
         return $this->belongsTo('App\Models\User');

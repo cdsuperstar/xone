@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Traits\InteractsWithLike;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+//use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -133,6 +133,11 @@ class User extends Authenticatable implements HasMedia
     public function xapp1s1slots()
     {
         return $this->hasMany('App\Models\xapp1s1slot');
+    }
+
+    public function xapp1s1shop()
+    {
+        return $this->hasOne('App\Models\xapp1s1shop');
     }
 
     public function xapp1s1profile_pub()

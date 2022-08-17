@@ -39,10 +39,11 @@ class xapp1s1shop extends Model implements HasMedia
             ->addMediaCollection('shopAvatar')
             ->singleFile();
 
-        $this->addMediaCollection('products')
-            ->addMediaCollection('environments')
-            ->addMediaCollection('menus')
-            ->addMediaCollection('qualifications');
+//        $this->addMediaCollection('products')
+//            ->addMediaCollection('environments')
+//            ->addMediaCollection('menus')
+//            ->addMediaCollection('qualifications')
+//            ->addMediaCollection('others');
     }
 
     public function products() {
