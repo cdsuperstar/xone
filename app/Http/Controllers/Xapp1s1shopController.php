@@ -214,16 +214,19 @@ class Xapp1s1shopController extends Controller
     public function getMyShopFiles(Request $request, string $collection)
     {
         $media = [];
+        $retArr = [];
         $tmpShop =
             $request->user()
                 ->xapp1s1shop;
 
-        $tmpShop->getMedia($collection)
-            ->each(function ($fileAdder) use (&$media) {
-                $media[] = ['name' => $fileAdder->file_name, 'url' => $fileAdder->getFullUrl()];
-            });
-        // 单文件时文件名有效
-        $retArr = ['media' => $media];
+        if ($tmpShop) {
+            $tmpShop->getMedia($collection)
+                ->each(function ($fileAdder) use (&$media) {
+                    $media[] = ['name' => $fileAdder->file_name, 'url' => $fileAdder->getFullUrl()];
+                });
+            // 单文件时文件名有效
+            $retArr = ['media' => $media];
+        }
         return response()->json($retArr);
     }
 }
