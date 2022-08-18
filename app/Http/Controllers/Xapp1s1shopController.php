@@ -116,7 +116,7 @@ class Xapp1s1shopController extends Controller
 
     }
 
-    public function getTheShop(Request $request,xapp1s1shop $xapp1s1shop)
+    public function getTheShop(Request $request, xapp1s1shop $xapp1s1shop)
     {
         $aRet = [];
         $oItem = xapp1s1shop::with(['products'])->where(["id" => $xapp1s1shop->id])->get();
@@ -243,16 +243,16 @@ class Xapp1s1shopController extends Controller
         return response()->json($retArr);
     }
 
-    public function saveMyShopProduct(Request $request,xapp1s1shop $xapp1s1shop)
+    public function saveMyShopProduct(Request $request, xapp1s1shop $xapp1s1shop)
     {
         $aRet = [];
-        if($xapp1s1shop){
+        if ($xapp1s1shop && count($request->input("product")) > 0) {
             $oTmpProduct = new xapp1s1product($request->input("product"));
             $xapp1s1shop->products()->save($oTmpProduct);
-            $oItem = xapp1s1shop::with(['products'])->where(["user_id" => $request->user()->id,"id"=>$xapp1s1shop->id])->get();
+            $oItem = xapp1s1shop::with(['products'])->where(["user_id" => $request->user()->id, "id" => $xapp1s1shop->id])->get();
             $aRet = ['success' => true, 'data' => $oItem];
-        }else{
-            $aRet = ['error' => "Null shop."];
+        } else {
+            $aRet = ['error' => "Null shop or null product."];
 
         }
         return response()->json($aRet);
