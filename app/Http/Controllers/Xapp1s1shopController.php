@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\xapp1s1product;
 use App\Models\xapp1s1shop;
 use Illuminate\Http\Request;
 
@@ -240,5 +241,20 @@ class Xapp1s1shopController extends Controller
             $retArr = ['media' => $media];
         }
         return response()->json($retArr);
+    }
+
+    public function saveMyShopProduct(Request $request,xapp1s1shop $xapp1s1shop)
+    {
+        $aRet = [];
+        if($xapp1s1shop){
+            $oTmpProduct = new xapp1s1product($request->input("product"));
+            $xapp1s1shop->products()->save($oTmpProduct);
+            $oItem = xapp1s1shop::with(['products'])->where(["user_id" => $request->user()->id,"id"=>$xapp1s1shop->id])->get();
+            $aRet = ['success' => true, 'data' => $oItem];
+        }else{
+            $aRet = ['error' => "Null shop."];
+
+        }
+        return response()->json($aRet);
     }
 }

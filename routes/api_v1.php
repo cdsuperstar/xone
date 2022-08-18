@@ -135,6 +135,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('uploadMyShopFiles/{collectionname}', 'uploadMyShopFiles');
             Route::post('delMyShopFiles/{collectionname}', 'delMyShopFiles');
             Route::get('getMyShopFiles/{collectionname}', 'getMyShopFiles');
+
+            Route::post('saveMyShopProduct/{xapp1s1shop}', 'saveMyShopProduct');
         });
 
         // 商品管理
