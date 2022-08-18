@@ -257,4 +257,21 @@ class Xapp1s1shopController extends Controller
         }
         return response()->json($aRet);
     }
+
+    public function delMyShopProduct(Request $request, xapp1s1product $xapp1s1product)
+    {
+        $aRet = [];
+        $oItem = $request->user()->xapp1s1shop->products()->find($xapp1s1product->id);
+        if ($oItem->delete()) {
+
+            $aRet = array_merge([
+                'messages' => $oItem->id,
+                'success' => true,
+            ], ['data' => $oItem]);
+        } else {
+            $aRet = ['error' => trans('data.destroyfailed', ['data' => $oItem->id])];
+        }
+        return response()->json($aRet);
+    }
+
 }
