@@ -104,15 +104,18 @@ class Xapp1s1shopController extends Controller
 
     public function getMyShop(Request $request)
     {
+        $aRet = [];
         $oItem = xapp1s1shop::where(["user_id" => $request->user()->id])->first();
         if ($oItem) {
             if ($oItem->hasMedia('shopAvatar')) {
                 $oItem->avatar = $oItem->getMedia('shopAvatar')[0]->getFullUrl();
             }
-            return response()->json(['success' => true, 'data' => $oItem]);
+            $aRet = ['success' => true, 'data' => $oItem];
         } else {
-            return response()->json(['error' => "Null profile."]);
+            $aRet = ['error' => "Null profile."];
         }
+        return response()->json($aRet);
+
     }
 
     public function updateMyShop(Request $request)
