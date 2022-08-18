@@ -114,7 +114,7 @@ class xapp1s1shop extends Model implements HasMedia
         return $aRet;
     }
 
-    public function getImgothersAttribute(): string
+    public function getImgothersAttribute(): array
     {
         $aRet = [];
         $oMedias = $this->getMedia('others');
