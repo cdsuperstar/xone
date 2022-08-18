@@ -66,7 +66,7 @@ class xapp1s1shop extends Model implements HasMedia
         }
     }
 
-    public function getImgproductsAttribute(): string
+    public function getImgproductsAttribute(): array
     {
         $aRet = [];
         $oMedias = $this->getMedia('products');
@@ -75,10 +75,10 @@ class xapp1s1shop extends Model implements HasMedia
                 $aRet[] = $oMedia->getFullUrl();
             });
         }
-        return json_encode($aRet);
+        return $aRet;
     }
 
-    public function getImgenvironmentsAttribute(): string
+    public function getImgenvironmentsAttribute(): array
     {
         $aRet = [];
         $oMedias = $this->getMedia('environments');
@@ -87,10 +87,10 @@ class xapp1s1shop extends Model implements HasMedia
                 $aRet[] = $oMedia->getFullUrl();
             });
         }
-        return json_encode($aRet);
+        return $aRet;
     }
 
-    public function getImgmenusAttribute(): string
+    public function getImgmenusAttribute(): array
     {
         $aRet = [];
         $oMedias = $this->getMedia('menus');
@@ -99,10 +99,10 @@ class xapp1s1shop extends Model implements HasMedia
                 $aRet[] = $oMedia->getFullUrl();
             });
         }
-        return json_encode($aRet);
+        return $aRet;
     }
 
-    public function getImgqualificationsAttribute(): string
+    public function getImgqualificationsAttribute(): array
     {
         $aRet = [];
         $oMedias = $this->getMedia('qualifications');
@@ -111,7 +111,7 @@ class xapp1s1shop extends Model implements HasMedia
                 $aRet[] = $oMedia->getFullUrl();
             });
         }
-        return json_encode($aRet);
+        return $aRet;
     }
 
     public function getImgothersAttribute(): string
@@ -123,7 +123,7 @@ class xapp1s1shop extends Model implements HasMedia
                 $aRet[] = $oMedia->getFullUrl();
             });
         }
-        return json_encode($aRet);
+        return $aRet;
     }
 
 }

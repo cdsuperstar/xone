@@ -15,6 +15,7 @@ class xapp1s1product extends Model implements HasMedia
     protected $fillable = [
         'name', 'tagprice', 'price', 'note', 'timebegin', 'timeend'
     ];
+    protected $appends = ["productimgs"];
 
     public function registerMediaCollections(): void
     {
@@ -26,4 +27,17 @@ class xapp1s1product extends Model implements HasMedia
     {
         return $this->belongsTo('App\Models\xapp1s1shop');
     }
+
+    public function getProductimgsAttribute(): array
+    {
+        $aRet = [];
+        $oMedias = $this->getMedia('productimgs');
+        if (count($oMedias) > 0) {
+            $oMedias->each(function ($oMedia) use (&$aRet) {
+                $aRet[] = $oMedia->getFullUrl();
+            });
+        }
+        return $aRet;
+    }
+
 }
