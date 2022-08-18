@@ -143,6 +143,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::apiResource('products', Xapp1s1productController::class)->except(['show'])->parameters([
             'products' => 'xapp1s1product',
         ]);
+        Route::controller(Xapp1s1productController::class)->prefix('products')->group(function () {
+            Route::post('uploadProductFiles/{xapp1s1product}', 'uploadProductFiles');
+            Route::post('delProductFiles/{xapp1s1product}', 'delProductFiles');
+            Route::get('getProductFiles/{xapp1s1product}', 'getProductFiles');
+        });
 
         // 动态管理
         Route::apiResource('moments', Xapp1s1momentController::class)->except(['show'])->parameters([

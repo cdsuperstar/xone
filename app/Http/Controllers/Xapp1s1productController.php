@@ -24,7 +24,7 @@ class Xapp1s1productController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +47,7 @@ class Xapp1s1productController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\xapp1s1product  $xapp1s1product
+     * @param \App\Models\xapp1s1product $xapp1s1product
      * @return \Illuminate\Http\Response
      */
     public function show(xapp1s1product $xapp1s1product)
@@ -58,8 +58,8 @@ class Xapp1s1productController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\xapp1s1product  $xapp1s1product
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\xapp1s1product $xapp1s1product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, xapp1s1product $xapp1s1product)
@@ -83,7 +83,7 @@ class Xapp1s1productController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\xapp1s1product  $xapp1s1product
+     * @param \App\Models\xapp1s1product $xapp1s1product
      * @return \Illuminate\Http\Response
      */
     public function destroy(xapp1s1product $xapp1s1product)
@@ -100,4 +100,78 @@ class Xapp1s1productController extends Controller
         }
         return response()->json($aRet);
     }
+
+    public function uploadProductFiles(Request $request, xapp1s1product $xapp1s1product)
+    {
+        $retArr = [];
+        $collectionname = "productimgs";
+        if ($xapp1s1product) {
+            foreach ($request->files->all() as $item) {
+                $sOName = str_replace(['#', '/', '\\', ' '], '-', $item->getClientOriginalName());
+
+                $xapp1s1product->getMedia($collectionname)
+                    ->each(function ($fileAdder) use ($sOName) {
+                        if ($fileAdder->file_name == $sOName) {
+                            $fileAdder->delete();
+                        }
+                    });
+
+                // 单文件时文件名有效
+                $retArr = ['name' => $sOName];
+
+                $xapp1s1product
+                    ->addAllMediaFromRequest()
+                    ->each(function ($fileAdder) use ($sOName, $collectionname) {
+                        $fileAdder
+                            ->sanitizingFileName(function ($fileName) {
+                                return str_replace(['#', '/', '\\', ' '], '-', $fileName);
+                            })
+                            ->toMediaCollection($collectionname);
+                    });
+            }
+
+        }
+        return response()->json($retArr);
+    }
+
+    public function delProductFiles(Request $request, xapp1s1product $xapp1s1product)
+    {
+        $retArr = [];
+        $collectionname = "productimgs";
+
+        if ($xapp1s1product) {
+            foreach ($request->input("filenames") as $item) {
+                $sOName = str_replace(['#', '/', '\\', ' '], '-', $item["name"]);
+
+                $xapp1s1product->getMedia($collectionname)
+                    ->each(function ($fileAdder) use ($sOName) {
+                        if ($fileAdder->file_name == $sOName) {
+                            $fileAdder->delete();
+                        }
+                    });
+                // 单文件时文件名有效
+                $retArr = ['success' => true, 'data' => $sOName];
+            }
+
+        }
+        return response()->json($retArr);
+    }
+
+    public function getProductFiles(Request $request, xapp1s1product $xapp1s1product)
+    {
+        $media = [];
+        $retArr = [];
+        $collectionname = "productimgs";
+
+        if ($xapp1s1product) {
+            $xapp1s1product->getMedia($collectionname)
+                ->each(function ($fileAdder) use (&$media) {
+                    $media[] = ['name' => $fileAdder->file_name, 'url' => $fileAdder->getFullUrl()];
+                });
+            // 单文件时文件名有效
+            $retArr = ['media' => $media];
+        }
+        return response()->json($retArr);
+    }
+
 }
