@@ -31,7 +31,7 @@ class xapp1s1shop extends Model implements HasMedia
         'name', 'starttime', 'endtime', 'status', 'phone', 'tel', 'addr', 'longitude', 'latitude', 'approval'
     ];
 
-    protected $appends = ["avatar", "products", "environments", "menus", "qualifications", "others"];
+    protected $appends = ["avatar", "imgproducts", "imgenvironments", "imgmenus", "imgqualifications", "imgothers"];
 
     public function registerMediaCollections(): void
     {
@@ -66,7 +66,7 @@ class xapp1s1shop extends Model implements HasMedia
         }
     }
 
-    public function getProductsAttribute(): string
+    public function getImgproductsAttribute(): string
     {
         $aRet = [];
         $oMedias = $this->getMedia('products');
@@ -78,7 +78,7 @@ class xapp1s1shop extends Model implements HasMedia
         return json_encode($aRet);
     }
 
-    public function getEnvironmentsAttribute(): string
+    public function getImgenvironmentsAttribute(): string
     {
         $aRet = [];
         $oMedias = $this->getMedia('environments');
@@ -90,7 +90,7 @@ class xapp1s1shop extends Model implements HasMedia
         return json_encode($aRet);
     }
 
-    public function getMenusAttribute(): string
+    public function getImgmenusAttribute(): string
     {
         $aRet = [];
         $oMedias = $this->getMedia('menus');
@@ -102,7 +102,7 @@ class xapp1s1shop extends Model implements HasMedia
         return json_encode($aRet);
     }
 
-    public function getQualificationsAttribute(): string
+    public function getImgqualificationsAttribute(): string
     {
         $aRet = [];
         $oMedias = $this->getMedia('qualifications');
@@ -114,7 +114,7 @@ class xapp1s1shop extends Model implements HasMedia
         return json_encode($aRet);
     }
 
-    public function getOthersAttribute(): string
+    public function getImgothersAttribute(): string
     {
         $aRet = [];
         $oMedias = $this->getMedia('others');

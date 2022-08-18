@@ -105,7 +105,7 @@ class Xapp1s1shopController extends Controller
     public function getMyShop(Request $request)
     {
         $aRet = [];
-        $oItem = xapp1s1shop::where(["user_id" => $request->user()->id])->first();
+        $oItem = xapp1s1shop::with(['products'])->where(["user_id" => $request->user()->id])->get();
         if ($oItem) {
             $aRet = ['success' => true, 'data' => $oItem];
         } else {
@@ -118,7 +118,7 @@ class Xapp1s1shopController extends Controller
     public function getTheShop(Request $request,xapp1s1shop $xapp1s1shop)
     {
         $aRet = [];
-        $oItem = $xapp1s1shop;
+        $oItem = xapp1s1shop::with(['products'])->where(["id" => $xapp1s1shop->id])->get();
         if ($oItem) {
             $aRet = ['success' => true, 'data' => $oItem];
         } else {
