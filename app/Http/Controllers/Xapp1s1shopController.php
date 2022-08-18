@@ -199,7 +199,7 @@ class Xapp1s1shopController extends Controller
         return response()->json($retArr);
     }
 
-    public function delMyShopFiles(Request $request, string $collection)
+    public function delMyShopFiles(Request $request, string $collectionname)
     {
         $retArr = [];
         $tmpShop =
@@ -210,7 +210,7 @@ class Xapp1s1shopController extends Controller
             foreach ($request->input("filenames") as $item) {
                 $sOName = str_replace(['#', '/', '\\', ' '], '-', $item["name"]);
 
-                $tmpShop->getMedia($collection)
+                $tmpShop->getMedia($collectionname)
                     ->each(function ($fileAdder) use ($sOName) {
                         if ($fileAdder->file_name == $sOName) {
                             $fileAdder->delete();
@@ -224,7 +224,7 @@ class Xapp1s1shopController extends Controller
         return response()->json($retArr);
     }
 
-    public function getMyShopFiles(Request $request, string $collection)
+    public function getMyShopFiles(Request $request, string $collectionname)
     {
         $media = [];
         $retArr = [];
@@ -233,7 +233,7 @@ class Xapp1s1shopController extends Controller
                 ->xapp1s1shop;
 
         if ($tmpShop) {
-            $tmpShop->getMedia($collection)
+            $tmpShop->getMedia($collectionname)
                 ->each(function ($fileAdder) use (&$media) {
                     $media[] = ['name' => $fileAdder->file_name, 'url' => $fileAdder->getFullUrl()];
                 });
