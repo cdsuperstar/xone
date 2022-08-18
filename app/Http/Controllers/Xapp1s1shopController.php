@@ -107,9 +107,19 @@ class Xapp1s1shopController extends Controller
         $aRet = [];
         $oItem = xapp1s1shop::where(["user_id" => $request->user()->id])->first();
         if ($oItem) {
-            if ($oItem->hasMedia('shopAvatar')) {
-                $oItem->avatar = $oItem->getMedia('shopAvatar')[0]->getFullUrl();
-            }
+            $aRet = ['success' => true, 'data' => $oItem];
+        } else {
+            $aRet = ['error' => "Null profile."];
+        }
+        return response()->json($aRet);
+
+    }
+
+    public function getTheShop(Request $request,xapp1s1shop $xapp1s1shop)
+    {
+        $aRet = [];
+        $oItem = $xapp1s1shop;
+        if ($oItem) {
             $aRet = ['success' => true, 'data' => $oItem];
         } else {
             $aRet = ['error' => "Null profile."];

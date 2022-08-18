@@ -128,11 +128,13 @@ Route::group(['middleware' => ['auth']], function () {
         ]);
         Route::controller(Xapp1s1shopController::class)->prefix('shops')->group(function () {
             Route::get('getMyShop', 'getMyShop');
+            // 得到具体的店铺资料
+            Route::get('getTheShop/{xapp1s1shop}', 'getTheShop');
             Route::post('updateMyShop', 'updateMyShop');
 
-            Route::post('uploadMyShopFiles/{collectionname}','uploadMyShopFiles');
-            Route::post('delMyShopFiles/{collectionname}','delMyShopFiles');
-            Route::get('getMyShopFiles/{collectionname}','getMyShopFiles');
+            Route::post('uploadMyShopFiles/{collectionname}', 'uploadMyShopFiles');
+            Route::post('delMyShopFiles/{collectionname}', 'delMyShopFiles');
+            Route::get('getMyShopFiles/{collectionname}', 'getMyShopFiles');
         });
 
         // 商品管理
