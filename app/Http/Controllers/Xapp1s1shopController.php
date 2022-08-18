@@ -156,12 +156,13 @@ class Xapp1s1shopController extends Controller
     public function uploadMyShopFiles(Request $request, string $collectionname)
     {
         $retArr = [];
-        if ($request->files->count()) {
+        $tmpShop =
+            $request->user()
+                ->xapp1s1shop;
+        if ($request->files->count() && $tmpShop) {
             foreach ($request->files->all() as $item) {
                 $sOName = str_replace(['#', '/', '\\', ' '], '-', $item->getClientOriginalName());
-                $tmpShop =
-                    $request->user()
-                        ->xapp1s1shop;
+
                 $tmpShop->getMedia($collectionname)
                     ->each(function ($fileAdder) use ($sOName) {
                         if ($fileAdder->file_name == $sOName) {
@@ -190,12 +191,13 @@ class Xapp1s1shopController extends Controller
     public function delMyShopFiles(Request $request, string $collection)
     {
         $retArr = [];
-        if (count($request->input("filenames")) > 0) {
+        $tmpShop =
+            $request->user()
+                ->xapp1s1shop;
+
+        if (count($request->input("filenames")) > 0 && $tmpShop) {
             foreach ($request->input("filenames") as $item) {
                 $sOName = str_replace(['#', '/', '\\', ' '], '-', $item["name"]);
-                $tmpShop =
-                    $request->user()
-                        ->xapp1s1shop;
 
                 $tmpShop->getMedia($collection)
                     ->each(function ($fileAdder) use ($sOName) {
