@@ -8,13 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class xapp1s1slot extends Model
 {
     use HasFactory;
-    protected $fillable = ['req','price','note'];
 
-    public function user(){
+    protected $fillable = ['price', 'note', 'birthday', 'constellation', 'sex', 'height', 'incomebegin', 'incomeend', 'eduback', 'marriage', 'career', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu'];
+
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function active(){
+    public function active()
+    {
         return $this->belongsTo('App\Models\xapp1s1activate');
     }
 }

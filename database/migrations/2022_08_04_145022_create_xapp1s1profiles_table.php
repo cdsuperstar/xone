@@ -25,15 +25,15 @@ return new class extends Migration {
             $table->string('approval')->default('待审核')->nullable();// 审核状态
 
             // 自动生成
-            $table->date('birthday')->nullable(); // S
-            $table->string('constellation', 6)->nullable(); // S
-
-            $table->string('nickname', 30)->nullable();
             //0 - 未知的性别
             //1 - 男性
             //2 - 女性
             //9 - 未说明的性别
+            $table->date('birthday')->nullable(); // S
+            $table->string('constellation', 6)->nullable(); // S
             $table->string('sex', 1)->nullable();//性别 S
+
+            $table->string('nickname', 30)->nullable();
             $table->integer('height')->nullable();//身高 S
             $table->integer('incomebegin')->nullable();//收入开始 S
             $table->integer('incomeend')->nullable();//收入结束 S

@@ -17,9 +17,30 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('xapp1s1activate_id')->nullable(); // 活动ID
             $table->bigInteger('user_id')->nullable(); // 用户ID
-            $table->text('req')->nullable(); // 匹配条件
             $table->decimal('price', 7, 2)->nullable(); // 金额
             $table->text('note')->nullable(); // 备注
+
+            // 匹配条件
+            $table->date('birthday')->nullable(); // S
+            $table->string('constellation', 6)->nullable(); // S
+            //0 - 未知的性别
+            //1 - 男性
+            //2 - 女性
+            //9 - 未说明的性别
+            $table->string('sex', 1)->nullable();//性别 S
+
+            $table->integer('height')->nullable();//身高 S
+            $table->integer('incomebegin')->nullable();//收入开始 S
+            $table->integer('incomeend')->nullable();//收入结束 S
+            $table->string('eduback')->nullable();//学历 S
+            $table->string('marriage')->nullable();//婚姻状况 S
+            $table->string('career')->nullable();//职业 S
+            $table->integer('weight')->nullable();//体重 S
+            $table->string('housesitu')->nullable();//购房情况 S
+            $table->string('carsitu')->nullable();//购车情况 S
+            $table->string('smokesitu')->nullable();//吸烟情况 S
+            $table->string('drinksitu')->nullable();//喝酒情况 S
+            $table->string('childrensitu')->nullable();//小孩情况 S
 
             $table->unique(['xapp1s1activate_id', 'user_id']);
 
