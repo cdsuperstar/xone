@@ -25,7 +25,12 @@ return new class extends Migration {
             $table->string('status')->nullable(); // 商铺状态
             $table->string('phone')->nullable(); // 联系电话
             $table->string('tel')->nullable(); // 座机电话
-            $table->string('addr')->nullable(); // 商业地址
+
+            $table->string('province')->nullable(); // 商业地址省
+            $table->string('city')->nullable(); // 商业地址市
+            $table->string('district')->nullable(); // 商业地址区
+            $table->string('addr')->nullable(); // 商业地址区详细
+
             $table->double('longitude', 11, 8)->nullable(); // 商业地址
             $table->double('latitude', 11, 8)->nullable(); // 商业地址
 

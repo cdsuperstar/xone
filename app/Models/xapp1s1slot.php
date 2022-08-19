@@ -9,7 +9,7 @@ class xapp1s1slot extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['price', 'note', 'birthday', 'constellation', 'sex', 'height', 'incomebegin', 'incomeend', 'eduback', 'marriage', 'career', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu'];
+    protected $fillable = ['price','note','agebegin','ageend','constellation','sex','heightbegin','heightend','incomebegin','incomeend','eduback','marriage','career','weightbegin','weightend','housesitu','carsitu','smokesitu','drinksitu','childrensitu'];
 
     public function user()
     {

@@ -37,7 +37,12 @@ return new class extends Migration {
             $table->integer('height')->nullable();//身高 S
             $table->integer('incomebegin')->nullable();//收入开始 S
             $table->integer('incomeend')->nullable();//收入结束 S
-            $table->string('workaddress')->nullable();//工作地点
+
+            $table->string('province')->nullable(); // 商业地址省
+            $table->string('city')->nullable(); // 商业地址市
+            $table->string('district')->nullable(); // 商业地址区
+            $table->string('addr')->nullable(); // 商业地址区详细
+
             $table->string('eduback')->nullable();//学历 S
             $table->string('marriage')->nullable();//婚姻状况 S
 
