@@ -101,7 +101,17 @@ class xapp1s1profile extends Model implements HasMedia
 
     public function setIdcardAttribute($tmpIdcard)
     {
-        if (strlen($tmpIdcard) == 18 && Helper::checkIdcard($tmpIdcard) && $this->attributes['idcard'] != $tmpIdcard) {
+        // 检测idcard需要更新
+        $blIdcardUpdateAble = false;
+        if (isset($this->attributes['idcard'])) {
+            if ($this->attributes['idcard'] != $tmpIdcard) {
+                $blIdcardUpdateAble = true;
+            }
+        } else {
+            $blIdcardUpdateAble = true;
+        }
+
+        if ($blIdcardUpdateAble && strlen($tmpIdcard) == 18 && Helper::checkIdcard($tmpIdcard)) {
             $month = (int)substr($tmpIdcard, 10, 2);
             $day = (int)substr($tmpIdcard, 12, 2);
             if ($month < 1 || $month > 12 || $day < 1 || $day > 31) return false;

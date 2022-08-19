@@ -52,12 +52,6 @@ class Xapp1s1profileController extends Controller
     {
         $aRet = [];
         if ($user->xapp1s1profile_pub) {
-            $aUrls = [];
-            $user->xapp1s1profile_pub->getMedia('userAvatar')
-                ->each(function ($fileAdder) use (&$aUrls) {
-                    $aUrls[] = $fileAdder->getFullUrl();
-                });
-            $user->xapp1s1profile_pub->userAvatar = $aUrls;
             $aRet = ["success" => true, "data" => $user->xapp1s1profile_pub];
         } else {
             $aRet = ["error" => "Profile not found"];
