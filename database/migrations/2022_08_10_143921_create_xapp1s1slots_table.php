@@ -21,7 +21,8 @@ return new class extends Migration
             $table->text('note')->nullable(); // 备注
 
             // 匹配条件
-            $table->date('birthday')->nullable(); // S
+            $table->integer('agebegin')->nullable(); // S
+            $table->integer('ageend')->nullable(); // S
             $table->string('constellation', 6)->nullable(); // S
             //0 - 未知的性别
             //1 - 男性
