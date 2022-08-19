@@ -107,7 +107,7 @@ class Xapp1s1shopController extends Controller
     {
         $aRet = [];
         $oItem = xapp1s1shop::with(['products'])->where(["user_id" => $request->user()->id])->get();
-        if ($oItem) {
+        if (count($oItem) > 0) {
             $aRet = ['success' => true, 'data' => $oItem];
         } else {
             $aRet = ['error' => "Null profile."];
