@@ -28,7 +28,7 @@ class xapp1s1shop extends Model implements HasMedia
     use HasFactory, InteractsWithMedia, InteractsWithUser;
 
     protected $fillable = [
-        'name','starttime','endtime','status','phone','tel','province','city','district','addr','longitude','latitude','approval'
+        'user_id', 'name', 'starttime', 'endtime', 'status', 'phone', 'tel', 'province', 'city', 'district', 'addr', 'longitude', 'latitude', 'approval'
     ];
 
     protected $appends = ["avatar", "imgproducts", "imgenvironments", "imgmenus", "imgqualifications", "imgothers"];
