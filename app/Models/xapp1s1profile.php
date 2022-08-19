@@ -79,7 +79,7 @@ class xapp1s1profile extends Model implements HasMedia
     use HasFactory, InteractsWithMedia, InteractsWithUser;
 
     protected $fillable = [
-        'user_id', 'realname', 'idcard', 'phone', 'companyname', 'approval', 'nickname', 'height', 'incomebegin', 'incomeend', 'workaddress', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
+        'user_id', 'realname', 'idcard', 'phone', 'companyname', 'approval', 'birthday', 'constellation', 'sex', 'nickname', 'height', 'incomebegin', 'incomeend', 'province', 'city', 'district', 'addr', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
     ];
     protected $appends = ['avatar'];
 
