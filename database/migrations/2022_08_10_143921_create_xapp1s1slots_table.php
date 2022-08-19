@@ -29,13 +29,15 @@ return new class extends Migration
             //9 - 未说明的性别
             $table->string('sex', 1)->nullable();//性别 S
 
-            $table->integer('height')->nullable();//身高 S
+            $table->integer('heightbegin')->nullable();//身高 S
+            $table->integer('heightend')->nullable();//身高 S
             $table->integer('incomebegin')->nullable();//收入开始 S
             $table->integer('incomeend')->nullable();//收入结束 S
             $table->string('eduback')->nullable();//学历 S
             $table->string('marriage')->nullable();//婚姻状况 S
             $table->string('career')->nullable();//职业 S
-            $table->integer('weight')->nullable();//体重 S
+            $table->integer('weightbegin')->nullable();//体重 S
+            $table->integer('weightend')->nullable();//体重 S
             $table->string('housesitu')->nullable();//购房情况 S
             $table->string('carsitu')->nullable();//购车情况 S
             $table->string('smokesitu')->nullable();//吸烟情况 S
