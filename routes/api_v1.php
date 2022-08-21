@@ -177,6 +177,8 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('saveMyActivate', 'saveMyActivate');
             Route::post('updateMyActivate/{xapp1s1activate}', 'updateMyActivate');
             Route::post('delMyActivate/{xapp1s1activate}', 'delMyActivate');
+
+            Route::post('searchFitActivates', 'searchFitActivates');
         });
 
     });

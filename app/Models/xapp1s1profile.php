@@ -4,9 +4,11 @@ namespace App\Models;
 
 use App\Helper\Helper;
 use App\Traits\InteractsWithUser;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use phpDocumentor\Reflection\Types\Integer;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -81,7 +83,7 @@ class xapp1s1profile extends Model implements HasMedia
     protected $fillable = [
         'user_id', 'realname', 'idcard', 'phone', 'companyname', 'approval', 'nickname', 'height', 'incomebegin', 'incomeend', 'province', 'city', 'district', 'addr', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu', 'memo'
     ];
-    protected $appends = ['avatar'];
+    protected $appends = ['avatar','age'];
 
     public function registerMediaCollections(): void
     {
@@ -90,6 +92,14 @@ class xapp1s1profile extends Model implements HasMedia
             ->singleFile();
     }
 
+    public function getAgeAttribute(): int
+    {
+        if ($this->attributes['birthday']){
+            return Carbon::parse($this->attributes['birthday'])->age;
+        }else{
+            return 0;
+        }
+    }
     public function getAvatarAttribute(): string
     {
         if (count($this->getMedia('userAvatar')) > 0) {

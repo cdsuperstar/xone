@@ -155,4 +155,53 @@ class Xapp1s1activateController extends Controller
         }
         return response()->json($aRet);
     }
+
+    public function searchFitActivates(Request $request)
+    {
+        $aRet = [];
+        $aSearchParams = [];
+        if (isset($request->input[''])) {
+            $aSearchParams = $request->input['searchParams'];
+        }
+
+        $oSelfProfile = $request->user()->xapp1s1profile;
+        if($oSelfProfile){
+
+/*
+    phone: "13333333333",
+     companyname: "一个兔子两个大",
+     approval: "待审核",
+     birthday: "1979-11-09",
+     constellation: "天蝎座",
+     sex: "1",
+     nickname: "aaaa",
+     height: 123,
+     incomebegin: 3000,
+     incomeend: 12000,
+     province: "山西省",
+     city: "太原市",
+     district: "迎泽区",
+     addr: "what the fuck? ' or true or '",
+     eduback: "硕士",
+     marriage: "已婚",
+     nationality: "汉族",
+     career: "工程师",
+     nativeplace: "四川省",
+     weight: 123,
+     housesitu: "已购房",
+     carsitu: "已购车",
+     smokesitu: "烟抽得很多",
+     drinksitu: "稍微喝一点酒",
+     childrensitu: "没有孩子",
+ * */
+            $aRet = array_merge([
+                    'success' => true,
+                    'data' => $aSearchParams]
+            );
+        }else{
+            $aRet = ['error' => 'Null user profile.'];
+        }
+
+        return response()->json($aRet);
+    }
 }

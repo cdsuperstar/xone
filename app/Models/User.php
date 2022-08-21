@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\InteractsWithLike;
+
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -142,6 +143,11 @@ class User extends Authenticatable implements HasMedia
 
     public function xapp1s1profile_pub()
     {
-        return $this->hasOne('App\Models\xapp1s1profile', 'user_id')->select(['id', 'user_id', 'birthday','constellation','sex','nickname','height','incomebegin','incomeend','province','city','district','addr','eduback','marriage','nationality','career','nativeplace','weight','housesitu','carsitu','smokesitu','drinksitu','childrensitu']);
+        return $this->hasOne('App\Models\xapp1s1profile', 'user_id')->select(['id', 'user_id', 'birthday', 'constellation', 'sex', 'nickname', 'height', 'incomebegin', 'incomeend', 'province', 'city', 'district', 'addr', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu']);
+    }
+
+    public function xapp1s1profile()
+    {
+        return $this->hasOne('App\Models\xapp1s1profile', 'user_id');
     }
 }
