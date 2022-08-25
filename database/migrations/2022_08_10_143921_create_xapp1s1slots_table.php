@@ -22,12 +22,12 @@ return new class extends Migration {
             // 匹配条件
             $table->integer('agebegin')->nullable(); // S
             $table->integer('ageend')->nullable(); // S
-            $table->string('constellation', 6)->default("不限")->nullable(); // S
+            $table->string('constellation')->default("不限")->nullable(); // S
             //0 - 未知的性别
             //1 - 男性
             //2 - 女性
             //9 - 未说明的性别
-            $table->string('sex', 2)->default("不限")->nullable();//性别 S
+            $table->string('sex', 1)->default("0")->nullable();//性别 S
 
             $table->integer('heightbegin')->nullable();//身高 S
             $table->integer('heightend')->nullable();//身高 S

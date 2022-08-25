@@ -163,14 +163,14 @@ class Xapp1s1activateController extends Controller
         $aSearchParams = [];
 
         $oUser = $request->user();
-        if (isset($request->input[''])) {
+        if (is_array($request->input('searchParams'))) {
             $aSearchParams = $request->input('searchParams');
         }
 
         $oSelfProfile = $oUser->xapp1s1profile;
         if ($oSelfProfile) {
             $query = xapp1s1slot::with(['active'])->whereHas('active', function ($query) use ($aSearchParams) {
-                if ($aSearchParams["nameOrDescription"]) {
+                if (isset($aSearchParams["nameOrDescription"])) {
                     $query->where([['name', 'like', '%' . $aSearchParams["nameOrDescription"] . '%']])->orWhere([['description', 'like', '%' . $aSearchParams["nameOrDescription"] . '%']]);
                 }
             });
@@ -190,17 +190,24 @@ class Xapp1s1activateController extends Controller
 
             if ($oUser->xapp1s1profile->constellation) {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['constellation', $oUser->xapp1s1profile->constellation]])
-                        ->orWhere([['constellation', '不限']])
-                        ->orWhere([['constellation', null]]);
+                    $q->where([['constellation', 'like', "%" . trim($oUser->xapp1s1profile->constellation) . "%"]])
+                        ->orWhere([['constellation', '不限']]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['constellation', '不限']]);
                 });
             }
 
             if ($oUser->xapp1s1profile->sex) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['sex', $oUser->xapp1s1profile->sex]])
-                        ->orWhere([['sex', '不限']])
+                        ->orWhere([['sex', '0']])
                         ->orWhere([['sex', null]]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['sex', '0']]);
                 });
             }
 

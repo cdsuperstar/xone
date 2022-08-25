@@ -243,9 +243,9 @@ Route::group(['middleware' => ['easywechat.oauth']], function () {
 
 
 // 数据库调试
-//DB::listen(function ($event) {
-//    $sExecSql = Str::replaceArray('?', $event->bindings, $event->sql);
-//    \Log::info("Sql Debug:", [Str::replace("\"", "", $sExecSql)]);
-//});
+DB::listen(function ($event) {
+    $sExecSql = Str::replaceArray('?', $event->bindings, $event->sql);
+    \Log::info("Sql Debug:", [Str::replace("\"", "", $sExecSql)]);
+});
 
 ?>
