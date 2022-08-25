@@ -277,12 +277,12 @@ class Xapp1s1shopController extends Controller
     public function getMyactivates(Request $request)
     {
         $aRet = [];
-        if($request->user()->xapp1s1shop){
+        if ($request->user()->xapp1s1shop) {
             $oItem = $request->user()->xapp1s1shop->activates()->orderBy('id', 'desc')->get();
         }
         if ($oItem) {
             $aRet = array_merge([
-                'messages' => $oItem->id,
+                'messages' => count($oItem),
                 'success' => true,
             ], ['data' => $oItem]);
         } else {
