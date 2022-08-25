@@ -274,4 +274,19 @@ class Xapp1s1shopController extends Controller
         return response()->json($aRet);
     }
 
+    public function getMyactivates(Request $request)
+    {
+        $aRet = [];
+        $oItem = $request->user()->xapp1s1shop->activates()->orderBy('id', 'desc')->get();
+        if ($oItem) {
+            $aRet = array_merge([
+                'messages' => $oItem->id,
+                'success' => true,
+            ], ['data' => $oItem]);
+        } else {
+            $aRet = ['error' => null];
+        }
+
+        return response()->json($aRet);
+    }
 }

@@ -138,6 +138,8 @@ Route::group(['middleware' => ['auth']], function () {
 
             Route::post('saveMyShopProduct/{xapp1s1shop}', 'saveMyShopProduct');
             Route::post('delMyShopProduct/{xapp1s1product}', 'delMyShopProduct');
+
+            Route::get('getMyactivates','getMyactivates');
         });
 
         // 商品管理
