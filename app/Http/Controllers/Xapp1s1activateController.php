@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\xapp1s1activate;
 use Illuminate\Http\Request;
+use App\Models\xapp1s1slot;
 
 class Xapp1s1activateController extends Controller
 {
@@ -160,45 +161,213 @@ class Xapp1s1activateController extends Controller
     {
         $aRet = [];
         $aSearchParams = [];
+
+        $oUser = $request->user();
         if (isset($request->input[''])) {
-            $aSearchParams = $request->input['searchParams'];
+            $aSearchParams = $request->input('searchParams');
         }
 
-        $oSelfProfile = $request->user()->xapp1s1profile;
-        if($oSelfProfile){
+        $oSelfProfile = $oUser->xapp1s1profile;
+        if ($oSelfProfile) {
+            $query = xapp1s1slot::with(['active'])->whereHas('active', function ($query) use ($aSearchParams) {
+                if ($aSearchParams["nameOrDescription"]) {
+                    $query->where([['name', 'like', '%' . $aSearchParams["nameOrDescription"] . '%']])->orWhere([['description', 'like', '%' . $aSearchParams["nameOrDescription"] . '%']]);
+                }
+            });
 
-/*
-    phone: "13333333333",
-     companyname: "一个兔子两个大",
-     approval: "待审核",
-     birthday: "1979-11-09",
-     constellation: "天蝎座",
-     sex: "1",
-     nickname: "aaaa",
-     height: 123,
-     incomebegin: 3000,
-     incomeend: 12000,
-     province: "山西省",
-     city: "太原市",
-     district: "迎泽区",
-     addr: "what the fuck? ' or true or '",
-     eduback: "硕士",
-     marriage: "已婚",
-     nationality: "汉族",
-     career: "工程师",
-     nativeplace: "四川省",
-     weight: 123,
-     housesitu: "已购房",
-     carsitu: "已购车",
-     smokesitu: "烟抽得很多",
-     drinksitu: "稍微喝一点酒",
-     childrensitu: "没有孩子",
- * */
+            if ($oUser->xapp1s1profile->age) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['agebegin', '<=', $oUser->xapp1s1profile->age], ['ageend', '>=', $oUser->xapp1s1profile->age]])
+                        ->orWhere([['agebegin', null], ['ageend', null]])
+                        ->orWhere([['agebegin', '<=', $oUser->xapp1s1profile->age], ['ageend', null]])
+                        ->orWhere([['agebegin', null], ['ageend', '>=', $oUser->xapp1s1profile->age]]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['agebegin', null], ['ageend', null]]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->constellation) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['constellation', $oUser->xapp1s1profile->constellation]])
+                        ->orWhere([['constellation', '不限']])
+                        ->orWhere([['constellation', null]]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->sex) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['sex', $oUser->xapp1s1profile->sex]])
+                        ->orWhere([['sex', '不限']])
+                        ->orWhere([['sex', null]]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->height) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['heightbegin', '<=', $oUser->xapp1s1profile->height], ['heightend', '>=', $oUser->xapp1s1profile->height]])
+                        ->orWhere([['heightbegin', null], ['heightend', null]])
+                        ->orWhere([['heightbegin', '<=', $oUser->xapp1s1profile->height], ['heightend', null]])
+                        ->orWhere([['heightbegin', null], ['heightend', '>=', $oUser->xapp1s1profile->height]]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['heightbegin', null], ['heightend', null]]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->incomebegin) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['incomebegin', '<=', $oUser->xapp1s1profile->incomebegin]])
+                        ->orWhere([['incomebegin', null]]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->incomeend) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['incomeend', '>=', $oUser->xapp1s1profile->incomeend]])
+                        ->orWhere([['incomeend', null]]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->eduback) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['eduback', 'like', "%" . trim($oUser->xapp1s1profile->eduback) . "%"]])
+                        ->orWhere([['eduback', '不限']]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['eduback', '不限']]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->marriage) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['marriage', 'like', "%" . trim($oUser->xapp1s1profile->marriage) . "%"]])
+                        ->orWhere([['marriage', '不限']]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['marriage', '不限']]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->career) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['career', 'like', "%" . trim($oUser->xapp1s1profile->career) . "%"]])
+                        ->orWhere([['career', '不限']]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['career', '不限']]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->weight) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['weightbegin', '<=', $oUser->xapp1s1profile->weight]])
+                        ->orWhere([['weightbegin', null]]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->weight) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['weightend', '>=', $oUser->xapp1s1profile->weight]])
+                        ->orWhere([['weightend', null]]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->housesitu) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['housesitu', 'like', "%" . trim($oUser->xapp1s1profile->housesitu) . "%"]])
+                        ->orWhere([['housesitu', '不限']]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['housesitu', '不限']]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->carsitu) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['carsitu', 'like', "%" . trim($oUser->xapp1s1profile->carsitu) . "%"]])
+                        ->orWhere([['carsitu', '不限']]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['carsitu', '不限']]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->smokesitu) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['smokesitu', 'like', "%" . trim($oUser->xapp1s1profile->smokesitu) . "%"]])
+                        ->orWhere([['smokesitu', '不限']]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['smokesitu', '不限']]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->drinksitu) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['drinksitu', 'like', "%" . trim($oUser->xapp1s1profile->drinksitu) . "%"]])
+                        ->orWhere([['drinksitu', '不限']]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['drinksitu', '不限']]);
+                });
+            }
+
+            if ($oUser->xapp1s1profile->childrensitu) {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['childrensitu', 'like', "%" . trim($oUser->xapp1s1profile->childrensitu) . "%"]])
+                        ->orWhere([['childrensitu', '不限']]);
+                });
+            } else {
+                $query = $query->where(function ($q) use ($oUser) {
+                    $q->where([['childrensitu', '不限']]);
+                });
+            }
+
+            $oItems = $query->orderBy('id', 'desc')->get();
             $aRet = array_merge([
                     'success' => true,
-                    'data' => $aSearchParams]
+                    'data' => $oItems]
             );
-        }else{
+
+            /*
+                phone: "13333333333",
+                 companyname: "一个兔子两个大",
+                 approval: "待审核",
+                 birthday: "1979-11-09",
+                 constellation: "天蝎座",
+                 sex: "1",
+                 nickname: "aaaa",
+                 height: 123,
+                 incomebegin: 3000,
+                 incomeend: 12000,
+                 province: "山西省",
+                 city: "太原市",
+                 district: "迎泽区",
+                 addr: "what the fuck? ' or true or '",
+                 eduback: "硕士",
+                 marriage: "已婚",
+                 nationality: "汉族",
+                 career: "工程师",
+                 nativeplace: "四川省",
+                 weight: 123,
+                 housesitu: "已购房",
+                 carsitu: "已购车",
+                 smokesitu: "烟抽得很多",
+                 drinksitu: "稍微喝一点酒",
+                 childrensitu: "没有孩子",
+             * */
+
+        } else {
             $aRet = ['error' => 'Null user profile.'];
         }
 
