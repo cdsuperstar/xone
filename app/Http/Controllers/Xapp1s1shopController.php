@@ -278,7 +278,7 @@ class Xapp1s1shopController extends Controller
     {
         $aRet = [];
         if ($request->user()->xapp1s1shop) {
-            $oItem = $request->user()->xapp1s1shop->activates()->orderBy('id', 'desc')->get();
+            $oItem = xapp1s1shop::with('activates')->where('user_id', $request->user()->id)->orderBy('id', 'desc')->get();
         }
         if ($oItem) {
             $aRet = array_merge([
