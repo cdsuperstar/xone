@@ -101,13 +101,18 @@ class Xapp1s1activateController extends Controller
         return response()->json($aRet);
     }
 
-    public function saveMyActivate(Request $request)
+    public function saveMyActivate(Request $request, xapp1s1activate $xapp1s1activate)
     {
-        $rec = new xapp1s1activate($request->input());
+        if ($xapp1s1activate) {
+            $rec = $xapp1s1activate;
+        } else {
+            $rec = new xapp1s1activate($request->input());
+        }
         $aRet = [];
         $rec->xapp1s1shop_id = $request->user()->id;
         if ($rec->save()) {
             if (is_array($request->input("slots"))) {
+                $rec->slots()->detach();
                 $rec->slots()->createMany($request->input("slots"));
             }
 
@@ -118,24 +123,6 @@ class Xapp1s1activateController extends Controller
             );
         } else {
             $aRet = ['error' => 'NotCreated'];
-        }
-        return response()->json($aRet);
-    }
-
-    public function updateMyActivate(Request $request, xapp1s1activate $xapp1s1activate)
-    {
-        $aRet = [];
-        if ($xapp1s1activate->xapp1s1shop_id == $request->user()->id) {
-            if ($xapp1s1activate->update($request->toArray())) {
-                $aRet = array_merge([
-                    'success' => true,
-                ], ['data' => $xapp1s1activate]
-                );
-            } else {
-                $aRet = ['error' => 'Update failed'];
-            }
-        } else {
-            $aRet = ['error' => 'Update failed, activate not found'];
         }
         return response()->json($aRet);
     }

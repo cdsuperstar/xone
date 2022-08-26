@@ -176,8 +176,7 @@ Route::group(['middleware' => ['auth']], function () {
             'activates' => 'xapp1s1activate',
         ]);
         Route::controller(Xapp1s1activateController::class)->prefix('activates')->group(function () {
-            Route::post('saveMyActivate', 'saveMyActivate');
-            Route::post('updateMyActivate/{xapp1s1activate}', 'updateMyActivate');
+            Route::post('saveMyActivate/{xapp1s1activate}', 'saveMyActivate');
             Route::post('delMyActivate/{xapp1s1activate}', 'delMyActivate');
 
             Route::post('searchFitActivates', 'searchFitActivates');
