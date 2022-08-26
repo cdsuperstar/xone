@@ -138,6 +138,7 @@ Route::group(['middleware' => ['auth']], function () {
 
             Route::post('saveMyShopProduct/{xapp1s1shop}', 'saveMyShopProduct');
             Route::post('delMyShopProduct/{xapp1s1product}', 'delMyShopProduct');
+            Route::get('getMyShopProducts/{xapp1s1shop}', 'getMyShopProducts');
 
             Route::get('getMyactivates','getMyactivates');
         });

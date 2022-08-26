@@ -291,4 +291,21 @@ class Xapp1s1shopController extends Controller
 
         return response()->json($aRet);
     }
+
+    public function getMyShopProducts(Request $request, xapp1s1shop $xapp1s1shop)
+    {
+        $aRet = [];
+        $oItems = xapp1s1shop::with('products')->where([['user_id', $request->user()->id],['id',$xapp1s1shop->id]])->orderBy('id', 'desc')->get();
+
+        if ($oItems) {
+            $aRet = array_merge([
+                'messages' => count($oItems),
+                'success' => true,
+            ], ['data' => $oItems]);
+        } else {
+            $aRet = ['error' => null];
+        }
+
+        return response()->json($aRet);
+    }
 }
