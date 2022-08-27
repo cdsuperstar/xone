@@ -111,6 +111,7 @@ class Xapp1s1activateController extends Controller
         } else {
             $rec = new xapp1s1activate($request->input());
             $blActSuccess = $request->user()->xapp1s1shop->activates()->save($rec);
+            \Log::info("Activate debug:",[$rec]);
         }
 
         if ($blActSuccess) {
