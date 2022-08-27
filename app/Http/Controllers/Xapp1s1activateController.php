@@ -181,11 +181,11 @@ class Xapp1s1activateController extends Controller
             if ($oUser->xapp1s1profile->constellation) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['constellation', 'like', "%" . trim($oUser->xapp1s1profile->constellation) . "%"]])
-                        ->orWhere([['constellation', '不限']]);
+                        ->orWhere([['constellation', 'like', '%不限%']]);
                 });
             } else {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['constellation', '不限']]);
+                    $q->where([['constellation', 'like', '%不限%']]);
                 });
             }
 
@@ -231,33 +231,33 @@ class Xapp1s1activateController extends Controller
             if ($oUser->xapp1s1profile->eduback) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['eduback', 'like', "%" . trim($oUser->xapp1s1profile->eduback) . "%"]])
-                        ->orWhere([['eduback', '不限']]);
+                        ->orWhere([['eduback', 'like', '%不限%']]);
                 });
             } else {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['eduback', '不限']]);
+                    $q->where([['eduback', 'like', '%不限%']]);
                 });
             }
 
             if ($oUser->xapp1s1profile->marriage) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['marriage', 'like', "%" . trim($oUser->xapp1s1profile->marriage) . "%"]])
-                        ->orWhere([['marriage', '不限']]);
+                        ->orWhere([['marriage', 'like', '%不限%']]);
                 });
             } else {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['marriage', '不限']]);
+                    $q->where([['marriage', 'like', '%不限%']]);
                 });
             }
 
             if ($oUser->xapp1s1profile->career) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['career', 'like', "%" . trim($oUser->xapp1s1profile->career) . "%"]])
-                        ->orWhere([['career', '不限']]);
+                        ->orWhere([['career', 'like', '%不限%']]);
                 });
             } else {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['career', '不限']]);
+                    $q->where([['career', 'like', '%不限%']]);
                 });
             }
 
@@ -278,55 +278,55 @@ class Xapp1s1activateController extends Controller
             if ($oUser->xapp1s1profile->housesitu) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['housesitu', 'like', "%" . trim($oUser->xapp1s1profile->housesitu) . "%"]])
-                        ->orWhere([['housesitu', '不限']]);
+                        ->orWhere([['housesitu', 'like', '%不限%']]);
                 });
             } else {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['housesitu', '不限']]);
+                    $q->where([['housesitu', 'like', '%不限%']]);
                 });
             }
 
             if ($oUser->xapp1s1profile->carsitu) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['carsitu', 'like', "%" . trim($oUser->xapp1s1profile->carsitu) . "%"]])
-                        ->orWhere([['carsitu', '不限']]);
+                        ->orWhere([['carsitu', 'like', '%不限%']]);
                 });
             } else {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['carsitu', '不限']]);
+                    $q->where([['carsitu', 'like', '%不限%']]);
                 });
             }
 
             if ($oUser->xapp1s1profile->smokesitu) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['smokesitu', 'like', "%" . trim($oUser->xapp1s1profile->smokesitu) . "%"]])
-                        ->orWhere([['smokesitu', '不限']]);
+                        ->orWhere([['smokesitu', 'like', '%不限%']]);
                 });
             } else {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['smokesitu', '不限']]);
+                    $q->where([['smokesitu', 'like', '%不限%']]);
                 });
             }
 
             if ($oUser->xapp1s1profile->drinksitu) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['drinksitu', 'like', "%" . trim($oUser->xapp1s1profile->drinksitu) . "%"]])
-                        ->orWhere([['drinksitu', '不限']]);
+                        ->orWhere([['drinksitu', 'like', '%不限%']]);
                 });
             } else {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['drinksitu', '不限']]);
+                    $q->where([['drinksitu', 'like', '%不限%']]);
                 });
             }
 
             if ($oUser->xapp1s1profile->childrensitu) {
                 $query = $query->where(function ($q) use ($oUser) {
                     $q->where([['childrensitu', 'like', "%" . trim($oUser->xapp1s1profile->childrensitu) . "%"]])
-                        ->orWhere([['childrensitu', '不限']]);
+                        ->orWhere([['childrensitu', 'like', '%不限%']]);
                 });
             } else {
                 $query = $query->where(function ($q) use ($oUser) {
-                    $q->where([['childrensitu', '不限']]);
+                    $q->where([['childrensitu', 'like', '%不限%']]);
                 });
             }
 
