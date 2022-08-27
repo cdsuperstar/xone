@@ -109,10 +109,10 @@ class Xapp1s1activateController extends Controller
             $rec = new xapp1s1activate($request->input());
         }
         $aRet = [];
-        $rec->xapp1s1shop_id = $request->user()->id;
+        $rec->xapp1s1shop_id = $request->user()->xapp1s1shop->id;
         if ($rec->save()) {
             if (is_array($request->input("slots"))) {
-                $rec->slots()->detach();
+                $rec->slots()->delete();
                 $rec->slots()->createMany($request->input("slots"));
             }
 
