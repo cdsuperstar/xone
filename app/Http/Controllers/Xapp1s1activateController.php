@@ -110,8 +110,7 @@ class Xapp1s1activateController extends Controller
             $blActSuccess = $xapp1s1activate->update($request->toArray());
         } else {
             $rec = new xapp1s1activate($request->input());
-            $rec->xapp1s1shop_id = $request->user()->xapp1s1shop->id;
-            $blActSuccess = $rec->save();
+            $blActSuccess = $request->user()->xapp1s1shop->activates()->save($rec);
         }
 
         if ($blActSuccess) {
