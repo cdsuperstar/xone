@@ -105,14 +105,12 @@ class Xapp1s1activateController extends Controller
     {
         $blActSuccess = false;
         $aRet = [];
-        if ($xapp1s1activate) {
-            \Log::info("Activate input debug:",[$xapp1s1activate]);
+        if ($xapp1s1activate->id) {
             $rec = $xapp1s1activate;
             $blActSuccess = $rec->update($request->toArray());
         } else {
             $rec = new xapp1s1activate($request->input());
             $blActSuccess = $request->user()->xapp1s1shop->activates()->save($rec);
-            \Log::info("Activate debug:",[$rec]);
         }
 
         if ($blActSuccess) {
