@@ -115,6 +115,7 @@ class Xapp1s1activateController extends Controller
                 $rec->slots()->delete();
                 $rec->slots()->createMany($request->input("slots"));
             }
+            \Log::info("Activate debug:",[$rec]);
 
             $aRet = array_merge([
                 'messages' => $rec->id,
