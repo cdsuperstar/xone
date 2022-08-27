@@ -106,6 +106,7 @@ class Xapp1s1activateController extends Controller
         $blActSuccess = false;
         $aRet = [];
         if ($xapp1s1activate) {
+            \Log::info("Activate input debug:",[$xapp1s1activate]);
             $rec = $xapp1s1activate;
             $blActSuccess = $rec->update($request->toArray());
         } else {
