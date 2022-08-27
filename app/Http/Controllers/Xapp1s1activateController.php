@@ -103,19 +103,22 @@ class Xapp1s1activateController extends Controller
 
     public function saveMyActivate(Request $request, xapp1s1activate $xapp1s1activate)
     {
+        $blActSuccess = false;
+        $aRet = [];
         if ($xapp1s1activate) {
             $rec = $xapp1s1activate;
+            $blActSuccess = $xapp1s1activate->update($request->toArray());
         } else {
             $rec = new xapp1s1activate($request->input());
+            $rec->xapp1s1shop_id = $request->user()->xapp1s1shop->id;
+            $blActSuccess = $rec->save();
         }
-        $aRet = [];
-        $rec->xapp1s1shop_id = $request->user()->xapp1s1shop->id;
-        if ($rec->save()) {
+
+        if ($blActSuccess) {
             if (is_array($request->input("slots"))) {
                 $rec->slots()->delete();
                 $rec->slots()->createMany($request->input("slots"));
             }
-            \Log::info("Activate debug:",[$rec]);
 
             $aRet = array_merge([
                 'messages' => $rec->id,
