@@ -140,7 +140,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('delMyShopProduct/{xapp1s1product}', 'delMyShopProduct');
             Route::get('getMyShopProducts/{xapp1s1shop}', 'getMyShopProducts');
 
-            Route::get('getMyactivates','getMyactivates');
+            Route::get('getMyactivates', 'getMyactivates');
         });
 
         // 商品管理
@@ -179,6 +179,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::controller(Xapp1s1activateController::class)->prefix('activates')->group(function () {
             Route::post('saveMyActivate/{xapp1s1activate?}', 'saveMyActivate');
             Route::post('delMyActivate/{xapp1s1activate}', 'delMyActivate');
+
+            Route::post('uploadMyActivateFiles/{xapp1s1activate}', 'uploadMyActivateFiles');
+            Route::post('delMyActivateFiles/{xapp1s1activate}', 'delMyActivateFiles');
+            Route::get('getMyActivateFiles/{xapp1s1activate}', 'getMyActivateFiles');
+
 
             Route::post('searchFitActivates', 'searchFitActivates');
         });

@@ -147,6 +147,78 @@ class Xapp1s1activateController extends Controller
         return response()->json($aRet);
     }
 
+    public function uploadMyActivateFiles(Request $request, xapp1s1activate $xapp1s1activate)
+    {
+        $retArr = [];
+        if ($request->files->count() && $xapp1s1activate) {
+            foreach ($request->files->all() as $item) {
+                $sOName = str_replace(['#', '/', '\\', ' '], '-', $item->getClientOriginalName());
+
+                $xapp1s1activate->getMedia("pics")
+                    ->each(function ($fileAdder) use ($sOName) {
+                        if ($fileAdder->file_name == $sOName) {
+                            $fileAdder->delete();
+                        }
+                    });
+
+                // 单文件时文件名有效
+                $retArr = ['name' => $sOName];
+
+                $xapp1s1activate
+                    ->addAllMediaFromRequest()
+                    ->each(function ($fileAdder) use ($sOName) {
+                        $fileAdder
+                            ->sanitizingFileName(function ($fileName) {
+                                return str_replace(['#', '/', '\\', ' '], '-', $fileName);
+                            })
+                            ->toMediaCollection("pics");
+                    });
+            }
+
+        }
+        return response()->json($retArr);
+    }
+
+    public function delMyActivateFiles(Request $request, xapp1s1activate $xapp1s1activate)
+    {
+        $retArr = [];
+        $collectionname = "pics";
+
+        if (count($request->input("filenames")) > 0 && $xapp1s1activate) {
+            foreach ($request->input("filenames") as $item) {
+                $sOName = str_replace(['#', '/', '\\', ' '], '-', $item["name"]);
+
+                $xapp1s1activate->getMedia($collectionname)
+                    ->each(function ($fileAdder) use ($sOName) {
+                        if ($fileAdder->file_name == $sOName) {
+                            $fileAdder->delete();
+                        }
+                    });
+                // 单文件时文件名有效
+                $retArr = ['success' => true, 'data' => $sOName];
+            }
+
+        }
+        return response()->json($retArr);
+    }
+
+    public function getMyActivateFiles(Request $request, xapp1s1activate $xapp1s1activate)
+    {
+        $media = [];
+        $retArr = [];
+        $collectionname = "pics";
+
+        if ($xapp1s1activate) {
+            $xapp1s1activate->getMedia($collectionname)
+                ->each(function ($fileAdder) use (&$media) {
+                    $media[] = ['name' => $fileAdder->file_name, 'url' => $fileAdder->getFullUrl()];
+                });
+            // 单文件时文件名有效
+            $retArr = ['media' => $media];
+        }
+        return response()->json($retArr);
+    }
+
     public function searchFitActivates(Request $request)
     {
         $aRet = [];
