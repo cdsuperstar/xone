@@ -278,7 +278,8 @@ class Xapp1s1shopController extends Controller
     {
         $aRet = [];
         if ($request->user()->xapp1s1shop) {
-            $oItem = xapp1s1shop::with('activates.slots')->where('user_id', $request->user()->id)->orderBy('id', 'desc')->get();
+//            $oItem = xapp1s1shop::with('activates.slots')->where('user_id', $request->user()->id)->orderBy('id', 'desc')->get();
+            $oItem = xapp1s1activate::with(['slots', 'shop'])->where('xapp1s1shop_id', $request->user()->xapp1s1shop->id)->orderBy('id', 'desc')->get();
         }
         if ($oItem) {
             $aRet = array_merge([
@@ -295,7 +296,7 @@ class Xapp1s1shopController extends Controller
     public function getMyShopProducts(Request $request, xapp1s1shop $xapp1s1shop)
     {
         $aRet = [];
-        $oItems = xapp1s1shop::with('products')->where([['user_id', $request->user()->id],['id',$xapp1s1shop->id]])->orderBy('id', 'desc')->get();
+        $oItems = xapp1s1shop::with('products')->where([['user_id', $request->user()->id], ['id', $xapp1s1shop->id]])->orderBy('id', 'desc')->get();
 
         if ($oItems) {
             $aRet = array_merge([
