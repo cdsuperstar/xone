@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\xapp1s1product;
+use App\Models\xapp1s1activate;
 use App\Models\xapp1s1shop;
 use Illuminate\Http\Request;
 
