@@ -141,7 +141,7 @@ class Xapp1s1momentController extends Controller
     // 关注的动态
     public function getFocusedMoments()
     {
-        $oItems = xapp1s1moment::with(['user_pub.xapp1s1profile_pub', 'comments.user_pub.xapp1s1profile_pub', 'thumbs.user_pub.xapp1s1profile_pub'])->where('type', '=', '个人')->orderBy('id','desc')->get();
+        $oItems = xapp1s1moment::with(['user_pub.xapp1s1profile_pub', 'comments.user_pub.xapp1s1profile_pub', 'thumbs.user_pub.xapp1s1profile_pub'])->where('type', '=', '个人')->orderBy('id', 'desc')->get();
         $oItems->each(function (&$oItem) {
             $aUrls = [];
             $oItem->getMedia('pics')
@@ -246,7 +246,7 @@ class Xapp1s1momentController extends Controller
         if ($request->input('content')) {
             $tmpContent = $request->input('content');
             if ($xapp1s1moment->comments()->create(['content' => $tmpContent])->user_pub()->associate($request->user()->id)->save()) {
-                $aRet = ['success' => true, 'data' => $xapp1s1moment->comments()->get(['id', 'user_id', 'content', 'created_at'])];
+                $aRet = ['success' => true, 'data' => xapp1s1moment::with(['user_pub.xapp1s1profile_pub', 'comments.user_pub.xapp1s1profile_pub', 'thumbs.user_pub.xapp1s1profile_pub'])->where([['type', '=', '个人'], ['id', $xapp1s1moment->id]])->orderBy('id', 'desc')->get()];
             } else {
                 $aRet = ['error' => 'Comment create failed!'];
             }
