@@ -14,6 +14,7 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         // By Luke Lin
         'api/*',
+//        'laravel-websockets/*'
 //        'wechat',
     ];
 }

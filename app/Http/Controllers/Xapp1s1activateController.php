@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\msgEvt;
 use App\Models\xapp1s1activate;
 use Illuminate\Http\Request;
 use App\Models\xapp1s1slot;
+use Illuminate\Support\Facades\Auth;
 
 class Xapp1s1activateController extends Controller
 {
@@ -228,6 +230,7 @@ class Xapp1s1activateController extends Controller
         if (is_array($request->input('searchParams'))) {
             $aSearchParams = $request->input('searchParams');
         }
+        broadcast(new msgEvt(Auth::id(), "Server side test! " . $aSearchParams["nameOrDescription"]));
 
         $oSelfProfile = $oUser->xapp1s1profile;
         if ($oSelfProfile) {
