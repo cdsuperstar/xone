@@ -150,4 +150,10 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->hasOne('App\Models\xapp1s1profile', 'user_id');
     }
+
+    public function oauth_access_token()
+    {
+        return $this->hasOne('App\Models\oauth_access_token', 'user_id')->select(['user_id', 'created_at']);
+
+    }
 }

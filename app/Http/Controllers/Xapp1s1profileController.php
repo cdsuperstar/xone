@@ -113,7 +113,7 @@ class Xapp1s1profileController extends Controller
                         if ($fileAdder->file_name == $aFile["name"]) {
                             $oItem->clearMediaCollection('userAvatar');
                             $fileAdder->move($oItem, 'userAvatar');
-                        }else{
+                        } else {
                             $fileAdder->delete();
                         }
                     }
@@ -163,5 +163,16 @@ class Xapp1s1profileController extends Controller
     public function destroy(xapp1s1profile $xapp1s1profile)
     {
         //
+    }
+
+    public function getMyLikedUsers(Request $request)
+    {
+        $aRet = [];
+        $oItems = $request->user()->likes()->with(['user_pub.xapp1s1profile_pub', 'user_pub.oauth_access_token', 'user_pub.like' => function ($q) use ($request) {
+            $q->where('user_id', $request->user()->id);
+        }])->get();
+        $aRet = ["success" => true, "data" => $oItems];
+
+        return response()->json($aRet);
     }
 }

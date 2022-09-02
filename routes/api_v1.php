@@ -113,6 +113,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::post('updateMyProfile', 'updateMyProfile');
             Route::post('updateMyAvatar', 'updateMyAvatar');
             Route::get('getTheUserProfile/{user}', 'getTheUserProfile');
+            Route::get('getMyLikedUsers','getMyLikedUsers');
         });
 
         // 类别管理

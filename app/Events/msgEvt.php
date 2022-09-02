@@ -15,6 +15,7 @@ class msgEvt implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $msg;
+    public $create_at;
     private $touserid;
 
     /**
@@ -26,6 +27,7 @@ class msgEvt implements ShouldBroadcast
     {
         //
         $this->msg = $msg;
+        $this->create_at = now()->format('Y-m-d H:i:s');
         $this->touserid = $touserid;
     }
 

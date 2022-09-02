@@ -94,7 +94,7 @@ class xapp1s1profile extends Model implements HasMedia
 
     public function getAgeAttribute(): int
     {
-        if ($this->attributes['birthday']){
+        if (isset($this->attributes['birthday'])){
             return Carbon::parse($this->attributes['birthday'])->age;
         }else{
             return 0;
