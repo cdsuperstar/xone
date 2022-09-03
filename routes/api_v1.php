@@ -224,6 +224,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('delMyTmpFiles', [ZeroController::class, 'delMyTmpFiles']);
         // 设置我的用户配置
         Route::post('setMyUsercfg', [ZeroController::class, 'setMyUsercfg']);
+
+        // 向用户发消息
+        Route::post('sendMsgToUser/{user}', [ZeroController::class, 'sendMsgToUser']);
+
     });
 
 });

@@ -294,7 +294,8 @@ class UserController extends Controller
 
     public function self()
     {
-        $aReturn = ["success" => true, "data" => auth('api')->user()];
+        $aReturn = ["success" => true, "data" => User::with(['xapp1s1profile_pub'])->where('id', auth('api')->user()->id)->first()];
+//        $aReturn = ["success" => true, "data" => auth('api')->user()];
         return response()->json($aReturn);
     }
 

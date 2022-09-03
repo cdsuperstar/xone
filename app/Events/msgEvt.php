@@ -14,21 +14,23 @@ class msgEvt implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $msg;
+    public $message;
     public $create_at;
-    private $touserid;
+    public $reciver;
+    public $sender;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($touserid, $msg)
+    public function __construct($reciver, $message)
     {
         //
-        $this->msg = $msg;
+        $this->message = $message;
         $this->create_at = now()->format('Y-m-d H:i:s');
-        $this->touserid = $touserid;
+        $this->reciver = $reciver;
+        $this->sender = auth('api')->user()->id;
     }
 
     /**
@@ -39,6 +41,6 @@ class msgEvt implements ShouldBroadcast
     public function broadcastOn()
     {
 //        return new PrivateChannel('channel-name');
-        return new PrivateChannel('App.Models.User.' . $this->touserid);
+        return new PrivateChannel('App.Models.User.' . $this->reciver);
     }
 }

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\msgEvt;
 use App\Models\z_module;
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Role;
 use App\Models\Permission;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 
 class ZeroController extends Controller
@@ -253,9 +256,18 @@ class ZeroController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public
-    function destroy($id)
+    public function destroy($id)
     {
         //
+    }
+
+    public function sendMsgToUser(Request $request, User $user)
+    {
+        $sMsg = "";
+        if ($request->input('message')) {
+            $sMsg = $request->input('message');
+            broadcast(new msgEvt($user->id, $sMsg));
+        }
+
     }
 }
