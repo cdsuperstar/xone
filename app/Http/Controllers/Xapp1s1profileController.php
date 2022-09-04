@@ -170,7 +170,7 @@ class Xapp1s1profileController extends Controller
         $aRet = [];
         $oItems = $request->user()->likes()->with(['user_pub.xapp1s1profile_pub', 'user_pub.oauth_access_token', 'user_pub.like' => function ($q) use ($request) {
             $q->where('user_id', $request->user()->id);
-        }])->get();
+        }])->WhereNotNull('user_id')->get();
         $aRet = ["success" => true, "data" => $oItems];
 
         return response()->json($aRet);
