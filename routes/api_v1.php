@@ -27,21 +27,23 @@ use App\Http\Controllers\Xapp1s1activateController;
 setlocale(LC_ALL, 'C.UTF-8');
 
 if (env('APP_DEBUG')) {
-    \Log::info('API Debug:', ['url' => Request::url(), 'request' => Request::all(), 'method' => Request::method(), 'Client IP' => Request::getClientIp(), 'isJson' => Request::isJson()]);
+    \Log::info('API Debug:', ['##Url' => Request::url(), '##Request' => Request::all(), '##Method' => Request::method(), '##Client IP' => Request::getClientIp(), '##isJson' => Request::isJson(), '##Login check' => auth()->check()]);
 }
 //Auth::routes();
 
 // 系统基础功能
 Route::post('oauth/token', [\Laravel\Passport\Http\Controllers\AccessTokenController::class, 'issueToken']);
+
 //Route::post('oauth/refresh', '\Laravel\Passport\Http\Controllers\TransientTokenController@refresh');
 Route::post('auth/logout', [LoginController::class, 'logout']);
 Route::get('auth/logout', [LoginController::class, 'logout']);
-Route::get('auth/user', [UserController::class, 'self']);
 Route::post('auth/register', [RegisterController::class, 'register']);
 Route::post('broadcasting/auth', [\Illuminate\Broadcasting\BroadcastController::class, 'authenticate']);
 
 //需要认证
 Route::group(['middleware' => ['auth']], function () {
+// 得到用户配置
+    Route::get('auth/user', [UserController::class, 'self']);
 // 模块管理
     Route::apiResource('z_module', ZModuleController::class)->except(['show']);
     Route::controller(ZModuleController::class)->prefix('z_module')->group(function () {

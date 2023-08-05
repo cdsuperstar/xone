@@ -39,10 +39,10 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\HandleInertiaRequests::class,
         ],
 
-        'api' => [
+        'api_v1' => [
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
 //            \Illuminate\Session\Middleware\StartSession::class,
-            'throttle:api',
+            'throttle:api_v1',
 //            'throttle:600,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],

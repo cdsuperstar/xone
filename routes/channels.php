@@ -20,4 +20,4 @@ use Illuminate\Support\Facades\Broadcast;
 Broadcast::channel('App.Models.User.{userId}', function ($user, $userId) {
 //    \Log::info('Channel debug: ', [$user->id]);
     return (int)$user->id === (int)$userId;
-}, ['guards' => ['api']]);
+}, ['guards' => ['api_v1']]);
