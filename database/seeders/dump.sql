@@ -26,37 +26,37 @@ SET row_security = off;
 -- Data for Name: permissions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (13, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有设置用户权限功能', 'users.bsetpermission', 'api', '2020-03-24 05:52:21', '2020-03-24 05:52:21');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (32, '{"required":false,"type":"number","default":null}', '[用户信息]管理单位根节点', 'profile.iManageUnit', 'api', '2020-04-02 07:57:05', '2020-04-02 07:57:05');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (33, '{"required":false,"type":"Boolean","default":null}', '[用户信息]是否有设置用户单位功能', 'profile.bsetunit', 'api', '2020-04-02 07:57:05', '2020-04-02 07:57:05');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (34, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有添加功能', 'users.badd', 'api', '2020-04-02 07:58:06', '2020-04-02 07:58:06');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (35, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有删除功能', 'users.bDelete', 'api', '2020-04-02 07:58:06', '2020-04-02 07:58:06');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (36, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有修改功能', 'users.bmodify', 'api', '2020-04-02 07:58:06', '2020-04-02 07:58:06');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (37, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有设置用户角色功能', 'users.bsetrole', 'api', '2020-04-02 07:58:06', '2020-04-02 07:58:06');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (38, '{"required":false,"type":"Boolean","default":null}', '[角色管理]是否有添加功能', 'role.badd', 'api', '2020-04-02 07:58:10', '2020-04-02 07:58:10');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (39, '{"required":false,"type":"Boolean","default":null}', '[角色管理]是否有模块设置功能', 'role.bSetTree', 'api', '2020-04-02 07:58:10', '2020-04-02 07:58:10');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (40, '{"required":false,"type":"Boolean","default":null}', '[角色管理]是否有删除功能', 'role.bDelete', 'api', '2020-04-02 07:58:10', '2020-04-02 07:58:10');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (41, '{"required":false,"type":"Boolean","default":null}', '[角色管理]是否有修改功能', 'role.bmodify', 'api', '2020-04-02 07:58:10', '2020-04-02 07:58:10');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (42, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有添加功能', 'modules.badd', 'api', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (43, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有删除功能', 'modules.bDelete', 'api', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (44, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有修改功能', 'modules.bmodify', 'api', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (45, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有导出功能', 'modules.bexport', 'api', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (46, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有导入功能', 'modules.bimport', 'api', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (47, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有调整树功能', 'modules.bSetTree', 'api', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (48, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有添加功能', 'permission.badd', 'api', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (49, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有修改功能', 'permission.bmodify', 'api', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (50, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有导出功能', 'permission.bexport', 'api', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (51, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有设置权限JSON树功能', 'permission.bJsonedit', 'api', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (52, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有删除功能', 'permission.bDelete', 'api', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (53, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有调整机构树功能', 'units.bSetTree', 'api', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (54, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有修改功能', 'units.bmodify', 'api', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (55, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有导出功能', 'units.bexport', 'api', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (56, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有添加功能', 'units.badd', 'api', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (57, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有删除功能', 'units.bDelete', 'api', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (58, '{"required":false,"type":"Boolean","default":null}', '[文章列表]是否有添加功能', 'articlelist.badd', 'api', '2020-04-02 07:58:16', '2020-04-02 07:58:16');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (59, '{"required":false,"type":"Boolean","default":null}', '[文章列表]是否有导出功能', 'articlelist.bexport', 'api', '2020-04-02 07:58:16', '2020-04-02 07:58:16');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (60, '{"required":false,"type":"Boolean","default":null}', '[文章列表]是否有删除功能', 'articlelist.bDelete', 'api', '2020-04-02 07:58:16', '2020-04-02 07:58:16');
-INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (61, '{"required":false,"type":"Boolean","default":null}', '[文章列表]是否有修改功能', 'articlelist.bmodify', 'api', '2020-04-02 07:58:16', '2020-04-02 07:58:16');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (13, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有设置用户权限功能', 'users.bsetpermission', 'api_v1', '2020-03-24 05:52:21', '2020-03-24 05:52:21');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (32, '{"required":false,"type":"number","default":null}', '[用户信息]管理单位根节点', 'profile.iManageUnit', 'api_v1', '2020-04-02 07:57:05', '2020-04-02 07:57:05');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (33, '{"required":false,"type":"Boolean","default":null}', '[用户信息]是否有设置用户单位功能', 'profile.bsetunit', 'api_v1', '2020-04-02 07:57:05', '2020-04-02 07:57:05');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (34, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有添加功能', 'users.badd', 'api_v1', '2020-04-02 07:58:06', '2020-04-02 07:58:06');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (35, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有删除功能', 'users.bDelete', 'api_v1', '2020-04-02 07:58:06', '2020-04-02 07:58:06');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (36, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有修改功能', 'users.bmodify', 'api_v1', '2020-04-02 07:58:06', '2020-04-02 07:58:06');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (37, '{"required":false,"type":"Boolean","default":null}', '[用户管理]是否有设置用户角色功能', 'users.bsetrole', 'api_v1', '2020-04-02 07:58:06', '2020-04-02 07:58:06');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (38, '{"required":false,"type":"Boolean","default":null}', '[角色管理]是否有添加功能', 'role.badd', 'api_v1', '2020-04-02 07:58:10', '2020-04-02 07:58:10');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (39, '{"required":false,"type":"Boolean","default":null}', '[角色管理]是否有模块设置功能', 'role.bSetTree', 'api_v1', '2020-04-02 07:58:10', '2020-04-02 07:58:10');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (40, '{"required":false,"type":"Boolean","default":null}', '[角色管理]是否有删除功能', 'role.bDelete', 'api_v1', '2020-04-02 07:58:10', '2020-04-02 07:58:10');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (41, '{"required":false,"type":"Boolean","default":null}', '[角色管理]是否有修改功能', 'role.bmodify', 'api_v1', '2020-04-02 07:58:10', '2020-04-02 07:58:10');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (42, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有添加功能', 'modules.badd', 'api_v1', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (43, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有删除功能', 'modules.bDelete', 'api_v1', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (44, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有修改功能', 'modules.bmodify', 'api_v1', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (45, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有导出功能', 'modules.bexport', 'api_v1', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (46, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有导入功能', 'modules.bimport', 'api_v1', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (47, '{"required":false,"type":"Boolean","default":null}', '[模块管理]是否有调整树功能', 'modules.bSetTree', 'api_v1', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (48, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有添加功能', 'permission.badd', 'api_v1', '2020-04-02 07:58:12', '2020-04-02 07:58:12');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (49, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有修改功能', 'permission.bmodify', 'api_v1', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (50, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有导出功能', 'permission.bexport', 'api_v1', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (51, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有设置权限JSON树功能', 'permission.bJsonedit', 'api_v1', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (52, '{"required":false,"type":"Boolean","default":null}', '[权限管理]是否有删除功能', 'permission.bDelete', 'api_v1', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (53, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有调整机构树功能', 'units.bSetTree', 'api_v1', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (54, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有修改功能', 'units.bmodify', 'api_v1', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (55, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有导出功能', 'units.bexport', 'api_v1', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (56, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有添加功能', 'units.badd', 'api_v1', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (57, '{"required":false,"type":"Boolean","default":null}', '[单位管理]是否有删除功能', 'units.bDelete', 'api_v1', '2020-04-02 07:58:13', '2020-04-02 07:58:13');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (58, '{"required":false,"type":"Boolean","default":null}', '[文章列表]是否有添加功能', 'articlelist.badd', 'api_v1', '2020-04-02 07:58:16', '2020-04-02 07:58:16');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (59, '{"required":false,"type":"Boolean","default":null}', '[文章列表]是否有导出功能', 'articlelist.bexport', 'api_v1', '2020-04-02 07:58:16', '2020-04-02 07:58:16');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (60, '{"required":false,"type":"Boolean","default":null}', '[文章列表]是否有删除功能', 'articlelist.bDelete', 'api_v1', '2020-04-02 07:58:16', '2020-04-02 07:58:16');
+INSERT INTO public.permissions (id, syscfg, title, name, guard_name, created_at, updated_at) VALUES (61, '{"required":false,"type":"Boolean","default":null}', '[文章列表]是否有修改功能', 'articlelist.bmodify', 'api_v1', '2020-04-02 07:58:16', '2020-04-02 07:58:16');
 
 
 --
@@ -100,11 +100,11 @@ INSERT INTO public.model_has_permissions (permission_id, model_type, usrcfg, mod
 -- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (1, 'admin', '超级管理员', 'api', '2020-02-25 14:07:37', '2020-02-25 14:07:37');
-INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (2, 'test1', '测试角色1', 'api', '2020-02-25 14:15:15', '2020-02-25 14:15:15');
-INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (3, 'test2', '测试角色2', 'api', '2020-02-25 14:15:18', '2020-02-25 14:15:18');
-INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (4, 'test3', '测试角色3', 'api', '2020-02-25 14:15:19', '2020-02-25 14:15:19');
-INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (5, 'test4', '测试角色4', 'api', '2020-02-25 14:16:50', '2020-02-25 14:16:50');
+INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (1, 'admin', '超级管理员', 'api_v1', '2020-02-25 14:07:37', '2020-02-25 14:07:37');
+INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (2, 'test1', '测试角色1', 'api_v1', '2020-02-25 14:15:15', '2020-02-25 14:15:15');
+INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (3, 'test2', '测试角色2', 'api_v1', '2020-02-25 14:15:18', '2020-02-25 14:15:18');
+INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (4, 'test3', '测试角色3', 'api_v1', '2020-02-25 14:15:19', '2020-02-25 14:15:19');
+INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (5, 'test4', '测试角色4', 'api_v1', '2020-02-25 14:16:50', '2020-02-25 14:16:50');
 
 
 --
@@ -324,6 +324,67 @@ SELECT pg_catalog.setval('public.z_modules_id_seq', 61, true);
 --
 
 SELECT pg_catalog.setval('public.z_units_id_seq', 6, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.0
+-- Dumped by pg_dump version 14.0
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Data for Name: xapp1s1categs; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: xapp1s1profiles; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: xapp1s1shops; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Name: xapp1s1categs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.xapp1s1categs_id_seq', 1, false);
+
+
+--
+-- Name: xapp1s1profiles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.xapp1s1profiles_id_seq', 1, false);
+
+
+--
+-- Name: xapp1s1shops_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.xapp1s1shops_id_seq', 1, false);
 
 
 --
