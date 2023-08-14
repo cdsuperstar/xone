@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\xapp1s1;
 
-use App\Models\xapp1s1categ;
+use App\Models\xapp1s1\xapp1s1categ;
 use Illuminate\Http\Request;
 
 class Xapp1s1categController extends Controller

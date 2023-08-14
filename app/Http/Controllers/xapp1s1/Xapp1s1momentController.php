@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\xapp1s1;
 
 use App\Models\comment;
-use App\Models\xapp1s1moment;
+use App\Models\xapp1s1\xapp1s1moment;
 use Illuminate\Http\Request;
 
 class Xapp1s1momentController extends Controller

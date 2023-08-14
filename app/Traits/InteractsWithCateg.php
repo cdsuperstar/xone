@@ -8,12 +8,12 @@ trait InteractsWithCateg
 {
     public function categs(): MorphMany
     {
-        return $this->morphMany('App\Models\xapp1s1categ', 'categable');
+        return $this->morphMany('App\Models\xapp1s1\xapp1s1categ', 'categable');
     }
 
     public function categ(): MorphOne
     {
-        return $this->morphOne('App\Models\xapp1s1categ', 'categable');
+        return $this->morphOne('App\Models\xapp1s1\xapp1s1categ', 'categable');
     }
 }
 ?>

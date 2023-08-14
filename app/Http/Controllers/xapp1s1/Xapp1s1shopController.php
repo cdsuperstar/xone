@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\xapp1s1;
 
-use App\Models\xapp1s1product;
-use App\Models\xapp1s1activate;
-use App\Models\xapp1s1shop;
+use App\Models\xapp1s1\xapp1s1product;
+use App\Models\xapp1s1\xapp1s1activate;
+use App\Models\xapp1s1\xapp1s1shop;
 use Illuminate\Http\Request;
 
 class Xapp1s1shopController extends Controller

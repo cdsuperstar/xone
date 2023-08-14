@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\xapp1s1;
 
 use App\Events\msgEvt;
-use App\Models\xapp1s1activate;
+use App\Models\xapp1s1\xapp1s1activate;
 use Illuminate\Http\Request;
-use App\Models\xapp1s1slot;
+use App\Models\xapp1s1\xapp1s1slot;
 use Illuminate\Support\Facades\Auth;
 
 class Xapp1s1activateController extends Controller

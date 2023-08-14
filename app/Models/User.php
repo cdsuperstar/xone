@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\InteractsWithLike;
+use App\Traits\xapp1s1\InteractsWithUserextend;
 
 //use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -60,10 +61,21 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUsercfg($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\like|null $like
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\like[] $likes
+ * @property-read int|null $likes_count
+ * @property-read \App\Models\oauth_access_token|null $oauth_access_token
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\xapp1s1\xapp1s1moment[] $xapp1s1moments
+ * @property-read int|null $xapp1s1moments_count
+ * @property-read \App\Models\xapp1s1\xapp1s1profile|null $xapp1s1profile
+ * @property-read \App\Models\xapp1s1\xapp1s1profile|null $xapp1s1profile_pub
+ * @property-read \App\Models\xapp1s1\xapp1s1shop|null $xapp1s1shop
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\xapp1s1\xapp1s1slot[] $xapp1s1slots
+ * @property-read int|null $xapp1s1slots_count
  */
 class User extends Authenticatable implements HasMedia
 {
-    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia, HasRoles, InteractsWithLike;
+    use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia, HasRoles, InteractsWithLike, InteractsWithUserextend;
 
     /**
      * The attributes that are mass assignable.
@@ -124,31 +136,6 @@ class User extends Authenticatable implements HasMedia
     {
         if ($this->attributes['password'] != $value)
             $this->attributes['password'] = bcrypt($value);
-    }
-
-    public function xapp1s1moments()
-    {
-        return $this->hasMany('App\Models\xapp1s1moment');
-    }
-
-    public function xapp1s1slots()
-    {
-        return $this->hasMany('App\Models\xapp1s1slot');
-    }
-
-    public function xapp1s1shop()
-    {
-        return $this->hasOne('App\Models\xapp1s1shop');
-    }
-
-    public function xapp1s1profile_pub()
-    {
-        return $this->hasOne('App\Models\xapp1s1profile', 'user_id')->select(['id', 'user_id', 'birthday', 'constellation', 'sex', 'nickname', 'height', 'incomebegin', 'incomeend', 'province', 'city', 'district', 'addr', 'eduback', 'marriage', 'nationality', 'career', 'nativeplace', 'weight', 'housesitu', 'carsitu', 'smokesitu', 'drinksitu', 'childrensitu']);
-    }
-
-    public function xapp1s1profile()
-    {
-        return $this->hasOne('App\Models\xapp1s1profile', 'user_id');
     }
 
     public function oauth_access_token()

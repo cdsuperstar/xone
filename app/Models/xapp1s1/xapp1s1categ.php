@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\xapp1s1;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +22,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1categ whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1categ whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $categable_type
+ * @property int $categable_id
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1categ whereCategableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1categ whereCategableType($value)
  */
 class xapp1s1categ extends Model
 {

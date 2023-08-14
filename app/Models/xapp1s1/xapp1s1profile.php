@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\xapp1s1;
 
 use App\Helper\Helper;
 use App\Traits\InteractsWithUser;
@@ -75,6 +75,24 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereWeight($value)
  * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereWorkaddress($value)
  * @mixin \Eloquent
+ * @property int $user_id
+ * @property string|null $approval
+ * @property string|null $birthday
+ * @property string|null $constellation
+ * @property string|null $province
+ * @property string|null $city
+ * @property string|null $district
+ * @property string|null $addr
+ * @property-read int $age
+ * @property-read \App\Models\User $user_pub
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereAddr($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereApproval($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereBirthday($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereConstellation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereDistrict($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereProvince($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|xapp1s1profile whereUserId($value)
  */
 class xapp1s1profile extends Model implements HasMedia
 {

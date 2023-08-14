@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\xapp1s1;
 
 use App\Models\User;
-use App\Models\xapp1s1profile;
+use App\Models\xapp1s1\xapp1s1profile;
 use Illuminate\Http\Request;
 
 
