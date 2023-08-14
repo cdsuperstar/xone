@@ -30,7 +30,7 @@ class msgEvt implements ShouldBroadcast
         $this->message = $message;
         $this->create_at = now()->format('Y-m-d H:i:s');
         $this->reciver = $reciver;
-        $this->sender = auth('api')->user()->id;
+        $this->sender = auth('api_v1')->user()->id;
     }
 
     /**
