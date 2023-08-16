@@ -191,6 +191,10 @@ class UserController extends Controller
         if ($user) {
             foreach ($request->input() as $key => $val) {
                 $user->$key = $val;
+                if ($user->$key == "password") {
+                    $user->password = Hash::make($val);
+                }
+
             }
 
             if ($user->save()) {
@@ -253,6 +257,8 @@ class UserController extends Controller
                 $aTmp[$key] = $val;
             }
             $user->fill($aTmp);
+            $user->password = Hash::make($aTmp['password']);
+
             if ($user->save()) {
                 $aRet = array_merge([
                     'messages' => 'UpdateSucess',
@@ -297,7 +303,7 @@ class UserController extends Controller
         if (env('APP_DEBUG')) {
             Log::info('User self Debug auth :', [auth('api_v1')->user()]);
         }
-        $aReturn =[];
+        $aReturn = [];
         $aReturn = ["success" => true, "data" => User::with(['xapp1s1profile_pub'])->where('id', auth('api_v1')->user()->id)->first()];
 //        $aReturn = ["success" => true, "data" => auth('api')->user()];
         return response()->json($aReturn);

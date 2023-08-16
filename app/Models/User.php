@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Illuminate\Support\Facades\Hash;
 use Laravel\Passport\HasApiTokens;
 
 // add by luke
@@ -92,7 +93,6 @@ class User extends Authenticatable implements HasMedia
      * @var array<int, string>
      */
     protected $hidden = [
-//        'password',
         'remember_token',
     ];
 
@@ -132,11 +132,15 @@ class User extends Authenticatable implements HasMedia
             ->addMediaCollection('userTmpFiles');
     }
 
-    public function setPasswordAttribute($value)
-    {
-        if ($this->attributes['password'] != $value)
-            $this->attributes['password'] = bcrypt($value);
-    }
+//    public function setPasswordAttribute($value)
+//    {
+//        if (env('APP_DEBUG')) {
+//            \Log::info('Setting password attribute', [$this->attributes, $value]);
+//        }
+//        if ($this->attributes['password'] != $value)
+//            $this->attributes['password'] = Hash::make($value);
+////            $this->attributes['password'] = bcrypt($value);
+//    }
 
     public function oauth_access_token()
     {
