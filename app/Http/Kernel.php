@@ -43,7 +43,7 @@ class Kernel extends HttpKernel
         ],
 
         'api_v1' => [
-            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+//            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
 //            \Illuminate\Session\Middleware\StartSession::class,
             'throttle:api_v1',
 //            'throttle:600,1',
