@@ -20,6 +20,12 @@ SET row_security = off;
 -- Data for Name: media; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.media (id, model_type, model_id, uuid, collection_name, name, file_name, mime_type, disk, conversions_disk, size, manipulations, custom_properties, generated_conversions, responsive_images, order_column, created_at, updated_at) VALUES (47, 'App\Models\xapp1s1\xapp1s1profile', 1, '3956054c-fdfe-4d02-961e-bc27c18f33a2', 'userAvatar', 'Screenshot 2023-04-04 140548', 'Screenshot-2023-04-04-140548.png', 'image/png', 'media', 'media', 2830, '[]', '[]', '[]', '[]', 1, '2023-08-16 18:24:11', '2023-08-16 18:24:11');
+INSERT INTO public.media (id, model_type, model_id, uuid, collection_name, name, file_name, mime_type, disk, conversions_disk, size, manipulations, custom_properties, generated_conversions, responsive_images, order_column, created_at, updated_at) VALUES (48, 'App\Models\xapp1s1\xapp1s1shop', 1, '2ff32337-d5ff-4ae5-8413-9a2c2a1970e4', 'shopAvatar', 'Konachan.com - 356103 sample', 'Konachan.com---356103-sample.jpg', 'image/jpeg', 'media', 'media', 844787, '[]', '[]', '[]', '[]', 1, '2023-08-16 18:25:37', '2023-08-16 18:25:37');
+INSERT INTO public.media (id, model_type, model_id, uuid, collection_name, name, file_name, mime_type, disk, conversions_disk, size, manipulations, custom_properties, generated_conversions, responsive_images, order_column, created_at, updated_at) VALUES (52, 'App\Models\xapp1s1\xapp1s1profile', 2, 'b4a47fef-29ac-477e-990e-9cc389a1303e', 'userAvatar', '00ee0e1f6764e2c9051e14ad911f28de1c8cc8b035d65-HaEAt9', '00ee0e1f6764e2c9051e14ad911f28de1c8cc8b035d65-HaEAt9.jpg', 'application/x-empty', 'media', 'media', 0, '[]', '[]', '[]', '[]', 1, '2023-08-16 18:26:54', '2023-08-16 18:26:54');
+INSERT INTO public.media (id, model_type, model_id, uuid, collection_name, name, file_name, mime_type, disk, conversions_disk, size, manipulations, custom_properties, generated_conversions, responsive_images, order_column, created_at, updated_at) VALUES (54, 'App\Models\xapp1s1\xapp1s1profile', 3, '5ce03df0-656a-41b3-994c-30a16aa092db', 'userAvatar', '(3))7IB@BK[))BC$OX62RKP', '(3))7IB@BK[))BC$OX62RKP.png', 'image/png', 'media', 'media', 4150, '[]', '[]', '[]', '[]', 1, '2023-08-16 18:27:40', '2023-08-16 18:27:40');
+INSERT INTO public.media (id, model_type, model_id, uuid, collection_name, name, file_name, mime_type, disk, conversions_disk, size, manipulations, custom_properties, generated_conversions, responsive_images, order_column, created_at, updated_at) VALUES (56, 'App\Models\xapp1s1\xapp1s1moment', 2, '31ffeef9-abbe-430b-89c7-917f60cd54c3', 'pics', 'Konachan.com - 356103 sample', 'Konachan.com---356103-sample.jpg', 'image/jpeg', 'media', 'media', 844787, '[]', '[]', '[]', '[]', 1, '2023-08-16 18:29:56', '2023-08-16 18:29:56');
+INSERT INTO public.media (id, model_type, model_id, uuid, collection_name, name, file_name, mime_type, disk, conversions_disk, size, manipulations, custom_properties, generated_conversions, responsive_images, order_column, created_at, updated_at) VALUES (58, 'App\Models\xapp1s1\xapp1s1moment', 3, '2d593d71-f3b4-4e91-81e9-efff6c9b4674', 'pics', 'Screenshot 2023-05-18 105534', 'Screenshot-2023-05-18-105534.png', 'image/png', 'media', 'media', 10762, '[]', '[]', '[]', '[]', 1, '2023-08-16 18:30:45', '2023-08-16 18:30:45');
 
 
 --
@@ -105,6 +111,7 @@ INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) V
 INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (3, 'test2', '测试角色2', 'api_v1', '2020-02-25 14:15:18', '2020-02-25 14:15:18');
 INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (4, 'test3', '测试角色3', 'api_v1', '2020-02-25 14:15:19', '2020-02-25 14:15:19');
 INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (5, 'test4', '测试角色4', 'api_v1', '2020-02-25 14:16:50', '2020-02-25 14:16:50');
+INSERT INTO public.roles (id, name, title, guard_name, created_at, updated_at) VALUES (8, 'xappUser', 'Xapp角色', 'api_v1', '2023-08-16 17:40:25', '2023-08-16 17:40:25');
 
 
 --
@@ -125,6 +132,14 @@ INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (4, 'A
 INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (3, 'App\Models\User', 1);
 INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (2, 'App\Models\User', 1);
 INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (1, 'App\Models\User', 1);
+INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (8, 'App\Models\User', 16);
+INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (8, 'App\Models\User', 17);
+INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (8, 'App\Models\User', 18);
+INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (8, 'App\Models\User', 19);
+INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (8, 'App\Models\User', 20);
+INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (8, 'App\Models\User', 21);
+INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (8, 'App\Models\User', 22);
+INSERT INTO public.model_has_roles (role_id, model_type, model_id) VALUES (8, 'App\Models\User', 23);
 
 
 --
@@ -237,6 +252,20 @@ INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 52);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 49);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 6);
 INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 1);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 53);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 55);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 56);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 59);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 60);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 54);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 46);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 45);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 44);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 51);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 52);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 43);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 61);
+INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (8, 49);
 
 
 --
@@ -246,7 +275,15 @@ INSERT INTO public.role_z_module (role_id, z_module_id) VALUES (1, 1);
 INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (3, '33', '3@3.com', NULL, NULL, '$2y$10$TIqHWiRgmZa0O67hSJ9wB.nRgLiCaqh5Pqx2YJwIm/Rr8r2ynONCi', NULL, '2020-02-25 14:06:21', '2020-02-25 14:06:21');
 INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (4, '44', '4@4.com', NULL, NULL, '$2y$10$cPmvOYJzl0iK6PxYa5teOunHE0rlYTEgjADAoTLX5oxFz2Mhwl6/i', NULL, '2020-02-25 14:06:34', '2020-02-25 14:06:34');
 INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (2, '22', '2@2.com', '{"theme":"Bright","dark":false}', NULL, '$2y$10$Co/4Yv77LDf3EbXK5MvyqOxrxyqwKbERIPAuyBivBbiTXVx3zYlfC', NULL, '2020-02-25 14:06:05', '2020-11-16 21:20:20');
-INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (1, '11', '1@1.com', '{"quickapplication":[],"theme":"Bright"}', NULL, '$2y$10$B/0mHy.9GpDW7tS4N7SSiOzA5xS46c6IFSQe/XJYi.GFP84MsUA4C', NULL, '2020-01-24 08:12:56', '2022-08-05 10:57:10');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (16, 'tyj', '1017266402@qq.com', NULL, NULL, '$2y$10$plpAkdJ7buqn4k01efJYbufcnnxSVMDKlw7yYGXjEVvZc8iRD1jMi', NULL, '2023-08-16 17:39:43', '2023-08-16 17:39:43');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (17, 'tyj', '2333@1.com', NULL, NULL, '$2y$10$r/c2/P0HX0AHjhQwB9H7L.JyYpy32EoKNcWMde9jqzSTjTZZBbBq.', NULL, '2023-08-16 17:39:55', '2023-08-16 17:39:55');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (19, 'Garry2', 'admin@apple.com', NULL, NULL, '$2y$10$Cnukb/urHrOJY8grA6t6AOXCFw9ThPCzldgNJ3.KI7UVcMuCeH08y', NULL, '2023-08-16 17:40:11', '2023-08-16 17:40:11');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (22, 'FLQQ', '481897240@qq.com', NULL, NULL, '$2y$10$kQcwbweVXFUyc/L6bqXcMeBgqReGOLsL/Ugl0LKwF2myb0mGQYP4O', NULL, '2023-08-16 17:42:12', '2023-08-16 17:42:12');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (23, 'Antares2', 'normal@bilibili.com', NULL, NULL, '$2y$10$yJikuVP3DcsjC9IvEYWvg.8Bfj8/O.aGAmlpX6bnnzhJz2GKZqaFW', NULL, '2023-08-16 17:43:08', '2023-08-16 17:43:08');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (21, 'LQQ', '481897250@qq.com', '{"quickapplication":[]}', NULL, '$2y$10$6wShA7q/Jk/DGmPMwLtakOlzMwCptWxOGUTcfKGLL8DMveWgpQj0C', NULL, '2023-08-16 17:41:51', '2023-08-16 17:44:15');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (20, 'Antares', '1422810622@qq.com', '{"theme":"blue","dark":false,"quickapplication":[]}', NULL, '$2y$10$2mgMKmsPKqFbwcMCpRuRJONgRpcIdF0TJYvqVwDmoafBPSHPipeTy', NULL, '2023-08-16 17:41:23', '2023-08-16 18:24:00');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (18, 'Garry', '1056776801@qq.com', '{"quickapplication":[]}', NULL, '$2y$10$ha5BNa1EvR6NaEIDxhRtueISPS5wgUclJXqfeT6JhstCwm91JwOTy', NULL, '2023-08-16 17:39:56', '2023-08-16 18:27:49');
+INSERT INTO public.users (id, name, email, usercfg, email_verified_at, password, remember_token, created_at, updated_at) VALUES (1, '11', '1@1.com', '{"quickapplication":[],"theme":"blue","dark":false}', NULL, '$2y$10$B/0mHy.9GpDW7tS4N7SSiOzA5xS46c6IFSQe/XJYi.GFP84MsUA4C', NULL, '2020-01-24 08:12:56', '2023-08-21 12:01:57');
 
 
 --
@@ -281,7 +318,7 @@ INSERT INTO public.z_userprofiles (id, no, avatar, name, sex, "position", title,
 -- Name: media_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.media_id_seq', 45, true);
+SELECT pg_catalog.setval('public.media_id_seq', 59, true);
 
 
 --
@@ -302,14 +339,14 @@ SELECT pg_catalog.setval('public.permissions_id_seq', 66, true);
 -- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.roles_id_seq', 7, true);
+SELECT pg_catalog.setval('public.roles_id_seq', 8, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 15, true);
+SELECT pg_catalog.setval('public.users_id_seq', 23, true);
 
 
 --
@@ -349,21 +386,146 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.comments (id, commentable_type, commentable_id, user_id, content, created_at, updated_at) VALUES (1, 'App\Models\xapp1s1\xapp1s1moment', 2, 18, '！！！！！！！！！', '2023-08-16 18:30:12', '2023-08-16 18:30:12');
+INSERT INTO public.comments (id, commentable_type, commentable_id, user_id, content, created_at, updated_at) VALUES (2, 'App\Models\xapp1s1\xapp1s1moment', 2, 1, '?', '2023-08-16 18:32:11', '2023-08-16 18:32:11');
+
+
+--
+-- Data for Name: likes; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: scores; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Data for Name: thumbs; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.thumbs (id, thumbable_type, thumbable_id, user_id, content, created_at, updated_at) VALUES (34, 'App\Models\xapp1s1\xapp1s1moment', 2, 1, 1, '2023-08-16 18:31:58', '2023-08-16 18:31:58');
+INSERT INTO public.thumbs (id, thumbable_type, thumbable_id, user_id, content, created_at, updated_at) VALUES (3, 'App\Models\xapp1s1\xapp1s1moment', 2, 21, 1, '2023-08-16 18:30:48', '2023-08-16 18:30:48');
+INSERT INTO public.thumbs (id, thumbable_type, thumbable_id, user_id, content, created_at, updated_at) VALUES (13, 'App\Models\xapp1s1\xapp1s1moment', 3, 20, 1, '2023-08-16 18:30:59', '2023-08-16 18:30:59');
+INSERT INTO public.thumbs (id, thumbable_type, thumbable_id, user_id, content, created_at, updated_at) VALUES (25, 'App\Models\xapp1s1\xapp1s1moment', 2, 18, 1, '2023-08-16 18:31:09', '2023-08-16 18:31:09');
+INSERT INTO public.thumbs (id, thumbable_type, thumbable_id, user_id, content, created_at, updated_at) VALUES (27, 'App\Models\xapp1s1\xapp1s1moment', 2, 20, 1, '2023-08-16 18:31:13', '2023-08-16 18:31:13');
+INSERT INTO public.thumbs (id, thumbable_type, thumbable_id, user_id, content, created_at, updated_at) VALUES (30, 'App\Models\xapp1s1\xapp1s1moment', 1, 21, 1, '2023-08-16 18:31:19', '2023-08-16 18:31:19');
+INSERT INTO public.thumbs (id, thumbable_type, thumbable_id, user_id, content, created_at, updated_at) VALUES (33, 'App\Models\xapp1s1\xapp1s1moment', 1, 18, 1, '2023-08-16 18:31:53', '2023-08-16 18:31:53');
+
+
+--
+-- Data for Name: xapp1s1activates; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 17:44:26', '2023-08-16 17:44:26');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 17:45:04', '2023-08-16 17:45:04');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 17:45:07', '2023-08-16 17:45:07');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:27:06', '2023-08-16 18:27:06');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:29:31', '2023-08-16 18:29:31');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (6, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:29:46', '2023-08-16 18:29:46');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (7, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:30:02', '2023-08-16 18:30:02');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (8, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:31:01', '2023-08-16 18:31:01');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (9, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:31:09', '2023-08-16 18:31:09');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:32:03', '2023-08-16 18:32:03');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (11, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:32:14', '2023-08-16 18:32:14');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (12, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:33:34', '2023-08-16 18:33:34');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (13, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:35:18', '2023-08-16 18:35:18');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (14, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:35:47', '2023-08-16 18:35:47');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (15, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-21 11:18:17', '2023-08-21 11:18:17');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (16, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-21 11:28:58', '2023-08-21 11:28:58');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (17, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-21 11:29:02', '2023-08-21 11:29:02');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (18, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-21 12:00:10', '2023-08-21 12:00:10');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (19, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-21 12:01:10', '2023-08-21 12:01:10');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (20, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-21 12:02:53', '2023-08-21 12:02:53');
+INSERT INTO public.xapp1s1activates (id, xapp1s1shop_id, name, description, tagprice, price, timebegin, timeend, address, slot, created_at, updated_at) VALUES (21, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-21 12:03:08', '2023-08-21 12:03:08');
+
+
+--
 -- Data for Name: xapp1s1categs; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 
 
 --
+-- Data for Name: xapp1s1moments; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.xapp1s1moments (id, user_id, note, type, created_at, updated_at) VALUES (1, 18, 'ljjjljlkjlkjlkjl', '个人', '2023-08-16 18:29:27', '2023-08-16 18:29:27');
+INSERT INTO public.xapp1s1moments (id, user_id, note, type, created_at, updated_at) VALUES (2, 20, 'wowowowow', '个人', '2023-08-16 18:29:56', '2023-08-16 18:29:56');
+INSERT INTO public.xapp1s1moments (id, user_id, note, type, created_at, updated_at) VALUES (3, 20, '123123123', '个人', '2023-08-16 18:30:45', '2023-08-16 18:30:45');
+INSERT INTO public.xapp1s1moments (id, user_id, note, type, created_at, updated_at) VALUES (4, 21, 'test1', '个人', '2023-08-16 18:33:31', '2023-08-16 18:33:31');
+
+
+--
+-- Data for Name: xapp1s1products; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+INSERT INTO public.xapp1s1products (id, name, tagprice, price, timebegin, timeend, note, xapp1s1shop_id, created_at, updated_at) VALUES (1, '纯净水', 2.00, 1.50, '2023-08-16 09:00:00', '2024-02-08 18:00:00', NULL, 1, '2023-08-16 18:26:33', '2023-08-16 18:26:33');
+INSERT INTO public.xapp1s1products (id, name, tagprice, price, timebegin, timeend, note, xapp1s1shop_id, created_at, updated_at) VALUES (2, '雪碧', 3.50, 3.00, '2023-08-16 09:00:00', '2024-11-14 18:00:00', NULL, 1, '2023-08-16 18:27:05', '2023-08-16 18:27:05');
+
+
+--
 -- Data for Name: xapp1s1profiles; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.xapp1s1profiles (id, user_id, realname, idcard, phone, companyname, approval, birthday, constellation, sex, nickname, height, incomebegin, incomeend, province, city, district, addr, eduback, marriage, nationality, career, nativeplace, weight, housesitu, carsitu, smokesitu, drinksitu, childrensitu, memo, created_at, updated_at) VALUES (1, 20, 'hahah', NULL, NULL, NULL, '待审核', NULL, NULL, NULL, 'Antares', NULL, 0, 50000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2023-08-16 18:24:07', '2023-08-16 18:24:07');
+INSERT INTO public.xapp1s1profiles (id, user_id, realname, idcard, phone, companyname, approval, birthday, constellation, sex, nickname, height, incomebegin, incomeend, province, city, district, addr, eduback, marriage, nationality, career, nativeplace, weight, housesitu, carsitu, smokesitu, drinksitu, childrensitu, memo, created_at, updated_at) VALUES (2, 21, '骆', NULL, '150*************', 'cdut', '待审核', NULL, NULL, NULL, 'LQQ', 180, 0, 50000, '江西省', '南昌市', '东湖区', 'cdut', '大学本科', '未婚', '汉族', '工人', '江西省', 150, '和家人同住', '未购车', '不抽烟', '不喝酒', '没有孩子', 'Hi~ o(*￣▽￣*)ブ', '2023-08-16 18:25:30', '2023-08-16 18:25:30');
+INSERT INTO public.xapp1s1profiles (id, user_id, realname, idcard, phone, companyname, approval, birthday, constellation, sex, nickname, height, incomebegin, incomeend, province, city, district, addr, eduback, marriage, nationality, career, nativeplace, weight, housesitu, carsitu, smokesitu, drinksitu, childrensitu, memo, created_at, updated_at) VALUES (3, 1, '唐远杰', '510105200008203034', '18980989769', 'tete', '待审核', '2000-08-20', '狮子座', '1', 'tyj', 173, 2265, 38143, '四川省', '成都市', '新都区', 'tete', '大学本科', '未婚', '汉族', '赛车手', '四川省', 55, '和家人同住', '已购车', '不抽烟', '不喝酒', '有孩子且住在一起', 'test', '2023-08-16 18:27:03', '2023-08-16 18:27:03');
+INSERT INTO public.xapp1s1profiles (id, user_id, realname, idcard, phone, companyname, approval, birthday, constellation, sex, nickname, height, incomebegin, incomeend, province, city, district, addr, eduback, marriage, nationality, career, nativeplace, weight, housesitu, carsitu, smokesitu, drinksitu, childrensitu, memo, created_at, updated_at) VALUES (4, 18, '321', NULL, '2323232323232', '-09-i-i-0i-0i-i-', '待审核', NULL, NULL, NULL, '123', 9999999, 0, 50000, '内蒙古', '兴安盟', '阿尔山市', 'ihnioj', '大学本科', '离异', '彝族', '军人', '吉林省', 99999999, '打算婚后购房', '已购车', '烟抽得很多', '稍微喝一点酒', '有孩子但不在身边', 'pjjlojlkjlkj', '2023-08-16 18:29:04', '2023-08-16 18:29:04');
 
 
 --
 -- Data for Name: xapp1s1shops; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.xapp1s1shops (id, user_id, name, starttime, endtime, status, phone, tel, province, city, district, addr, longitude, latitude, approval, created_at, updated_at) VALUES (1, 20, 'myShop', '09:00:00', '22:00:00', '营业', '13730880595', '874928', NULL, NULL, NULL, '333', NULL, NULL, '待审核', '2023-08-16 18:25:02', '2023-08-16 18:25:42');
+INSERT INTO public.xapp1s1shops (id, user_id, name, starttime, endtime, status, phone, tel, province, city, district, addr, longitude, latitude, approval, created_at, updated_at) VALUES (2, 1, 'TestShop', '09:00:00', '22:00:00', '营业', '18988888888', '123123', NULL, NULL, NULL, 'eeee', NULL, NULL, '待审核', '2023-08-21 11:57:37', '2023-08-21 11:57:37');
+
+
+--
+-- Data for Name: xapp1s1slots; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.comments_id_seq', 2, true);
+
+
+--
+-- Name: likes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.likes_id_seq', 1, false);
+
+
+--
+-- Name: scores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.scores_id_seq', 1, false);
+
+
+--
+-- Name: thumbs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.thumbs_id_seq', 34, true);
+
+
+--
+-- Name: xapp1s1activates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.xapp1s1activates_id_seq', 21, true);
 
 
 --
@@ -374,17 +536,38 @@ SELECT pg_catalog.setval('public.xapp1s1categs_id_seq', 1, false);
 
 
 --
+-- Name: xapp1s1moments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.xapp1s1moments_id_seq', 4, true);
+
+
+--
+-- Name: xapp1s1products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.xapp1s1products_id_seq', 2, true);
+
+
+--
 -- Name: xapp1s1profiles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.xapp1s1profiles_id_seq', 1, false);
+SELECT pg_catalog.setval('public.xapp1s1profiles_id_seq', 4, true);
 
 
 --
 -- Name: xapp1s1shops_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.xapp1s1shops_id_seq', 1, false);
+SELECT pg_catalog.setval('public.xapp1s1shops_id_seq', 2, true);
+
+
+--
+-- Name: xapp1s1slots_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.xapp1s1slots_id_seq', 1, false);
 
 
 --
