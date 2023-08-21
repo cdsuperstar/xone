@@ -35,7 +35,7 @@ Route::post('auth/register', [RegisterController::class, 'register']);
 Route::post('broadcasting/auth', [\Illuminate\Broadcasting\BroadcastController::class, 'authenticate']);
 
 //需要认证
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth:api_v1']], function () {
 // 得到用户配置
     Route::get('auth/user', [UserController::class, 'self']);
 // 模块管理
