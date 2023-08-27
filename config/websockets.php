@@ -70,7 +70,7 @@ return [
      */
     'middleware' => [
         'web',
-        'api',
+        'api_v1',
         Authorize::class,
     ],
 
