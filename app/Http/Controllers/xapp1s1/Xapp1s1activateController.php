@@ -445,4 +445,21 @@ class Xapp1s1activateController extends Controller
 
         return response()->json($aRet);
     }
+
+    public function getTheActivateDetail(Request $request, xapp1s1activate $xapp1s1activate)
+    {
+        $aRet = [];
+        if ($xapp1s1activate) {
+            $oItems = $xapp1s1activate->with(['slots'])->get();
+            $aRet = array_merge([
+                    'success' => true,
+                    'data' => $oItems]
+            );
+        } else {
+            $aRet = ['error' => 'Invalid activate.'];
+
+        }
+        return response()->json($aRet);
+    }
+
 }

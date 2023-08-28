@@ -91,6 +91,8 @@ Route::prefix('xapp1s1')->group(function () {
 
 
         Route::post('searchFitActivates', 'searchFitActivates');
+        // 得到活动详细情况,包含槽位信息
+        Route::post('getTheActivateDetail/{xapp1s1activate}', 'getTheActivateDetail');
     });
 
 });
