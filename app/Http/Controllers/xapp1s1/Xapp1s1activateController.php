@@ -450,7 +450,7 @@ class Xapp1s1activateController extends Controller
     {
         $aRet = [];
         if ($xapp1s1activate) {
-            $oItems = $xapp1s1activate->with(['slots'])->get();
+            $oItems = xapp1s1activate::with(['slots.user_pub'])->where([['id', $xapp1s1activate->id]])->get();
             $aRet = array_merge([
                     'success' => true,
                     'data' => $oItems]
