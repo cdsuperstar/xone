@@ -462,4 +462,26 @@ class Xapp1s1activateController extends Controller
         return response()->json($aRet);
     }
 
+    public function signupTheActivate(Request $request, xapp1s1slot $xapp1s1slot)
+    {
+        // 初始返回数组
+        $aRet = [];
+        if ($xapp1s1slot) {
+            $xapp1s1slot->user()->associate($request->user()->id);
+            if ($xapp1s1slot->save()) {
+                $oItems = xapp1s1activate::with(['slots.user_pub'])->where([['id', $xapp1s1slot->xapp1s1activate_id]])->get();
+                $aRet = array_merge([
+                        'success' => true,
+                        'data' => $oItems]
+                );
+            } else {
+                $aRet = ['error' => 'Slot saved failed.'];
+            }
+        } else {
+            $aRet = ['error' => 'Invalid slot.'];
+
+        }
+        return response()->json($aRet);
+    }
+
 }

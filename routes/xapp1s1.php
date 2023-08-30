@@ -7,6 +7,7 @@ use App\Http\Controllers\xapp1s1\Xapp1s1shopController;
 use App\Http\Controllers\xapp1s1\Xapp1s1productController;
 use App\Http\Controllers\xapp1s1\Xapp1s1momentController;
 use App\Http\Controllers\xapp1s1\Xapp1s1activateController;
+use App\Models\xapp1s1\xapp1s1slot;
 
 // XApp1s1
 Route::prefix('xapp1s1')->group(function () {
@@ -93,6 +94,8 @@ Route::prefix('xapp1s1')->group(function () {
         Route::post('searchFitActivates', 'searchFitActivates');
         // 得到活动详细情况,包含槽位信息
         Route::post('getTheActivateDetail/{xapp1s1activate}', 'getTheActivateDetail');
+        // 报名活动
+        Route::post('signupTheActivate/{xapp1s1slot}','signupTheActivate');
     });
 
 });
