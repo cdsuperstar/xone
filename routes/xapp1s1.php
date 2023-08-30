@@ -96,6 +96,8 @@ Route::prefix('xapp1s1')->group(function () {
         Route::post('getTheActivateDetail/{xapp1s1activate}', 'getTheActivateDetail');
         // 报名活动
         Route::post('signupTheActivate/{xapp1s1slot}','signupTheActivate');
+        // 取消报名活动
+        Route::post('giveupTheActivate/{xapp1s1slot}','giveupTheActivate');
     });
 
 });

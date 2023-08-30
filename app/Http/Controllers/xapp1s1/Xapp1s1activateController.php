@@ -468,15 +468,21 @@ class Xapp1s1activateController extends Controller
         $aRet = [];
         if ($xapp1s1slot) {
             $xapp1s1slot->user()->associate($request->user()->id);
-            if ($xapp1s1slot->save()) {
-                $oItems = xapp1s1activate::with(['slots.user_pub'])->where([['id', $xapp1s1slot->xapp1s1activate_id]])->get();
-                $aRet = array_merge([
-                        'success' => true,
-                        'data' => $oItems]
-                );
+            $cntTest = xapp1s1slot::where([['xapp1s1activate_id', $xapp1s1slot->xapp1s1activate_id], ['user_id', $request->user()->id]])->count();
+            if ($cntTest > 0) {
+                $aRet = ['error' => 'Activate signup already.'];
             } else {
-                $aRet = ['error' => 'Slot saved failed.'];
+                if ($xapp1s1slot->save()) {
+                    $oItems = xapp1s1activate::with(['slots.user_pub'])->where([['id', $xapp1s1slot->xapp1s1activate_id]])->get();
+                    $aRet = array_merge([
+                            'success' => true,
+                            'data' => $oItems]
+                    );
+                } else {
+                    $aRet = ['error' => 'Slot saved failed.'];
+                }
             }
+
         } else {
             $aRet = ['error' => 'Invalid slot.'];
 
@@ -484,4 +490,31 @@ class Xapp1s1activateController extends Controller
         return response()->json($aRet);
     }
 
+    public function giveupTheActivate(Request $request, xapp1s1slot $xapp1s1slot)
+    {
+        // 初始返回数组
+        $aRet = [];
+        if ($xapp1s1slot) {
+            $cntTest = xapp1s1slot::where([['id', $xapp1s1slot->id], ['user_id', $request->user()->id]])->count();
+            if ($cntTest <= 0) {
+                $aRet = ['error' => 'None sing up slot.'];
+            } else {
+                $xapp1s1slot->user()->disssociate($request->user()->id);
+                if ($xapp1s1slot->save()) {
+                    $oItems = xapp1s1activate::with(['slots.user_pub'])->where([['id', $xapp1s1slot->xapp1s1activate_id]])->get();
+                    $aRet = array_merge([
+                            'success' => true,
+                            'data' => $oItems]
+                    );
+                } else {
+                    $aRet = ['error' => 'Slot saved failed.'];
+                }
+            }
+
+        } else {
+            $aRet = ['error' => 'Invalid slot.'];
+
+        }
+        return response()->json($aRet);
+    }
 }
