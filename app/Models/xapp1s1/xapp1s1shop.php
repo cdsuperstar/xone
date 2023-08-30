@@ -37,15 +37,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
  * @property float|null $latitude
  * @property string|null $approval
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\xapp1s1\xapp1s1activate[] $activates
- * @property-read int|null $activates_count
- * @property-read string $avatar
- * @property-read array $imgenvironments
- * @property-read array $imgmenus
- * @property-read array $imgothers
- * @property-read array $imgproducts
- * @property-read array $imgqualifications
  * @property-read \Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection|\Spatie\MediaLibrary\MediaCollections\Models\Media[] $media
- * @property-read int|null $media_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\xapp1s1\xapp1s1product[] $products
  * @property-read int|null $products_count
  * @property-read \App\Models\User $user
