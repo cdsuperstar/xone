@@ -503,7 +503,7 @@ class Xapp1s1activateController extends Controller
             if ($cntTest <= 0) {
                 $aRet = ['error' => 'None sing up slot.'];
             } else {
-                $xapp1s1slot->user()->disssociate($request->user()->id);
+                $xapp1s1slot->user()->dissociate($request->user()->id);
                 if ($xapp1s1slot->save()) {
                     $oItems = xapp1s1activate::with(['slots.user_pub'])->where([['id', $xapp1s1slot->xapp1s1activate_id]])->get();
                     $aRet = array_merge([
