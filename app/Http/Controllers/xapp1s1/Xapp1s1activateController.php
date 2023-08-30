@@ -230,7 +230,7 @@ class Xapp1s1activateController extends Controller
         if (is_array($request->input('searchParams'))) {
             $aSearchParams = $request->input('searchParams');
         }
-        broadcast(new msgEvt(Auth::id(), "Server side test(broadcast), content is: " . $aSearchParams["nameOrDescription"]));
+//        broadcast(new msgEvt(Auth::id(), "Server side test(broadcast), content is: " . $aSearchParams["nameOrDescription"]));
 
         $oSelfProfile = $oUser->xapp1s1profile;
         if ($oSelfProfile) {
