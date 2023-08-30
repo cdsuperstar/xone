@@ -37,15 +37,22 @@ class Xapp1s1profileController extends Controller
 
     public function getMyProfile(Request $request)
     {
-        $oItem = xapp1s1profile::where(["user_id" => $request->user()->id])->first();
-        if ($oItem) {
-            if ($oItem->hasMedia('userAvatar')) {
-                $oItem->avatar = $oItem->getMedia('userAvatar')[0]->getFullUrl();
+        $aRet = [];
+        if ($request->user()) {
+            $oItem = xapp1s1profile::where(["user_id" => $request->user()->id])->first();
+            if ($oItem) {
+                if ($oItem->hasMedia('userAvatar')) {
+                    $oItem->avatar = $oItem->getMedia('userAvatar')[0]->getFullUrl();
+                }
+                $aRet = ['success' => true, 'data' => $oItem];
+            } else {
+                $aRet = ['error' => "Null profile."];
             }
-            return response()->json(['success' => true, 'data' => $oItem]);
         } else {
-            return response()->json(['error' => "Null profile."]);
+            $aRet = ['error' => "Null authed user."];
         }
+        return response()->json($aRet);
+
     }
 
     public function getTheUserProfile(User $user)
