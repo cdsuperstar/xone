@@ -175,10 +175,14 @@ class Xapp1s1profileController extends Controller
     public function getMyLikedUsers(Request $request)
     {
         $aRet = [];
-        $oItems = $request->user()->likes()->with(['user_pub.xapp1s1profile_pub', 'user_pub.oauth_access_token', 'user_pub.like' => function ($q) use ($request) {
-            $q->where('user_id', $request->user()->id);
-        }])->WhereNotNull('user_id')->get();
-        $aRet = ["success" => true, "data" => $oItems];
+        if($request->user()->likes()->count() > 0){
+            $oItems = $request->user()->likes()->with(['user_pub.xapp1s1profile_pub', 'user_pub.oauth_access_token', 'user_pub.like' => function ($q) use ($request) {
+                $q->where('user_id', $request->user()->id);
+            }])->WhereNotNull('user_id')->get();
+            $aRet = ["success" => true, "data" => $oItems];
+        }else{
+            $aRet = ["error" => "Likes not found"];
+        }
 
         return response()->json($aRet);
     }
