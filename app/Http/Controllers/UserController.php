@@ -317,17 +317,21 @@ class UserController extends Controller
         if ($request->input('content')) {
             $tmpContent = $request->input('content');
         }
-        if ($request->user()->like()->where('user_id', $user->id)->where('content', $tmpContent)->count() > 0) {
-            if ($request->user()->like()->where('user_id', $user->id)->where('content', $tmpContent)->delete()) {
-                $aRet = ['success' => true, 'data' => $request->user()->like()->get(['id', 'user_id', 'content'])];
-            } else {
-                $aRet = ['error' => 'Like cancel failed!'];
-            }
+        if ($request->user()->id == $user->id) {
+            $aRet = ['error' => 'Can\'t like self!'];
         } else {
-            if ($request->user()->like()->create(['content' => $tmpContent])->user_pub()->associate($user->id)->save()) {
-                $aRet = ['success' => true, 'data' => $request->user()->like()->get(['id', 'user_id', 'content'])];
+            if ($request->user()->like()->where('user_id', $user->id)->where('content', $tmpContent)->count() > 0) {
+                if ($request->user()->like()->where('user_id', $user->id)->where('content', $tmpContent)->delete()) {
+                    $aRet = ['success' => true, 'data' => $request->user()->like()->get(['id', 'user_id', 'content'])];
+                } else {
+                    $aRet = ['error' => 'Like cancel failed!'];
+                }
             } else {
-                $aRet = ['error' => 'Like failed!'];
+                if ($request->user()->like()->create(['content' => $tmpContent])->user_pub()->associate($user->id)->save()) {
+                    $aRet = ['success' => true, 'data' => $request->user()->like()->get(['id', 'user_id', 'content'])];
+                } else {
+                    $aRet = ['error' => 'Like failed!'];
+                }
             }
         }
         return response()->json($aRet);
