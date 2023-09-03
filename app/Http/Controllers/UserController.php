@@ -318,7 +318,7 @@ class UserController extends Controller
             $tmpContent = $request->input('content');
         }
         if ($request->user()->like()->where('user_id', $user->id)->where('content', $tmpContent)->count() > 0) {
-            if ($request->user()->where('user_id', $user->id)->where('content', $tmpContent)->delete()) {
+            if ($request->user()->like()->where('user_id', $user->id)->where('content', $tmpContent)->delete()) {
                 $aRet = ['success' => true, 'data' => $request->user()->like()->get(['id', 'user_id', 'content'])];
             } else {
                 $aRet = ['error' => 'Like cancel failed!'];
