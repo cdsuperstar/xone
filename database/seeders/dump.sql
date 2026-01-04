@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict 1OKUAFQbUobsRkjFLKHnkI4mwV2hQPm0CQqHch5qiHG85OzeejDgbu3v0sWH45q
+-- \restrict 1OKUAFQbUobsRkjFLKHnkI4mwV2hQPm0CQqHch5qiHG85OzeejDgbu3v0sWH45q
 
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.1
@@ -314,5 +314,5 @@ SELECT pg_catalog.setval('public.z_units_id_seq', 6, true);
 -- PostgreSQL database dump complete
 --
 
-\unrestrict 1OKUAFQbUobsRkjFLKHnkI4mwV2hQPm0CQqHch5qiHG85OzeejDgbu3v0sWH45q
+-- \unrestrict 1OKUAFQbUobsRkjFLKHnkI4mwV2hQPm0CQqHch5qiHG85OzeejDgbu3v0sWH45q
 
